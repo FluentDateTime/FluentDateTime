@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FluentDateTime</id>
+    <version>9.9.9.9</version>
+    <title>FluentDateTime</title>
+    <authors>Simon Cropp</authors>
+    <owners>Simon Cropp</owners>
+    <licenseUrl>http://fluentdatetime.codeplex.com/license</licenseUrl>
+    <projectUrl>http://fluentdatetime.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A set of (Ruby inspired) C# Extension Methods for easier and more natural DateTime handling and operations in .NET.</description>
+    <summary />
+    <language>en-AU</language>
+    <tags>DateTime</tags>
+  </metadata>
+</package>

@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 11
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimeTests", "FluentDateTimeTests\FluentDateTimeTests.csproj", "{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B} = {E999EA36-1B17-4EDA-A536-82D519F94C3B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceBundler", "SourceBundle\SourceBundler.csproj", "{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B} = {E999EA36-1B17-4EDA-A536-82D519F94C3B}
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A} = {F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetProject", "NuGet\NugetProject.csproj", "{D0C113B0-6DB4-4018-AFFA-603151840372}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92} = {3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE} = {DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimeNet35", "FluentDateTime\FluentDateTimeNet35.csproj", "{E999EA36-1B17-4EDA-A536-82D519F94C3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimePCL", "FluentDateTime\FluentDateTimePCL.csproj", "{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}.Release|x86.ActiveCfg = Release|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D0C113B0-6DB4-4018-AFFA-603151840372}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|Any CPU.Build.0 = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|x86.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Debug|x86.Build.0 = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|Any CPU.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|Any CPU.Build.0 = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|Mixed Platforms.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|Mixed Platforms.Build.0 = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|x86.ActiveCfg = Debug|x86
+		{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}.Release|x86.Build.0 = Debug|x86
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E999EA36-1B17-4EDA-A536-82D519F94C3B}.Release|x86.ActiveCfg = Release|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+		Svn-Managed = True
+	EndGlobalSection
+EndGlobal

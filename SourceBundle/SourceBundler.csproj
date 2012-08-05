@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ProjectGuid>{DD6B781D-4640-4865-A7C8-A1FC3F60E1DE}</ProjectGuid>
+  </PropertyGroup>
+  <Target Name="Clean">
+    <ItemGroup>
+      <FilesToDelete Include="$(SolutionDir)SourceBundleBuild\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <RemoveDir Directories="$(SolutionDir)SourceBundleBuild" />
+  </Target>
+  <Target Name="Build" DependsOnTargets="Package" />
+  <Target Name="ReBuild" DependsOnTargets="Package" />
+  <Target Name="Package" DependsOnTargets="Clean">
+    <MakeDir Directories="$(SolutionDir)SourceBundleBuild" />
+    <ItemGroup>
+      <SourceFiles Include="$(SolutionDir)\**\*.*" Exclude="&#xD;&#xA;					$(SolutionDir)\**\.svn\**;&#xD;&#xA;					$(SolutionDir)\**\*ReSharper*\**;&#xD;&#xA;					$(SolutionDir)\**\Packages\**;&#xD;&#xA;					$(SolutionDir)\**\bin\**;&#xD;&#xA;					$(SolutionDir)\**\obj\**;&#xD;&#xA;					$(SolutionDir)\**\NuGetBuild\**;&#xD;&#xA;					$(SolutionDir)\**\*.user;&#xD;&#xA;					$(SolutionDir)\**\*.metaproj.*;&#xD;&#xA;					$(SolutionDir)\**\*.teamcity.*;&#xD;&#xA;					$(SolutionDir)\**\.svnignore;&#xD;&#xA;					" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(SolutionDir)SourceBundleBuild\%(RecursiveDir)">
+    </Copy>
+  </Target>
+</Project>

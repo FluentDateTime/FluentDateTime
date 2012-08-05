@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0C113B0-6DB4-4018-AFFA-603151840372}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <ConfigurationName>Debug</ConfigurationName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <ConfigurationName>Release</ConfigurationName>
+  </PropertyGroup>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(SolutionDir)NuGetBuild" />
+  </Target>
+  <Target Name="Build" DependsOnTargets="NuGetBuild" />
+  <Target Name="ReBuild" DependsOnTargets="NuGetBuild" />
+  <UsingTask TaskName="NuGet.MSBuild.NuGet" AssemblyFile="$(SolutionDir)Tools\NuGet.MSBuild.dll" />
+  <UsingTask TaskName="PepitaPackage.WeavingTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
+  <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="$(SolutionDir)Tools\MSBuild.Community.Tasks.dll" />
+  <Target Name="NuGetBuild" DependsOnTargets="Clean">
+    <MakeDir Directories="$(SolutionDir)NuGetBuild" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
+    <Copy SourceFiles="$(SolutionDir)NuGet\FluentDateTime.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
+    <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll">
+      <Output TaskParameter="Assemblies" ItemName="WeaverAssembly" />
+    </GetAssemblyIdentity>
+    <FileUpdate Files="$(SolutionDir)NuGetBuild\FluentDateTime.nuspec" Regex="version&gt;([^&lt;]*)&lt;/version" ReplacementText="version&gt;%(WeaverAssembly.Version)&lt;/version" />
+    <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" />
+  </Target>
+  <ItemGroup>
+    <None Include="FluentDateTime.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)FluentDateTime\FluentDateTimeNet35.csproj">
+        <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="$(SolutionDir)FluentDateTime\FluentDateTimePCL.csproj">
+        <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
