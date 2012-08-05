@@ -29,6 +29,9 @@ local.properties
 .buildpath
 
 
+NuGetBuild
+
+
 #################
 ## Visual Studio
 #################
