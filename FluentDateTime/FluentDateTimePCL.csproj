@@ -13,6 +13,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile2</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,23 +36,13 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\ReleasePCL\FluentDateTime.XML</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="FluentTimeSpan.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="RoundTo.cs" />
     <Compile Include="TimeSpanExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="key.snk" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
