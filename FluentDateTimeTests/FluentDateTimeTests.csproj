@@ -86,7 +86,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicTests.cs" />
+    <Compile Include="DateTimeTests.cs" />
+    <Compile Include="DateTimeOffsetTests.cs" />
     <Compile Include="FluentTimeSpanTests.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

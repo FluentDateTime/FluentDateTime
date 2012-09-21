@@ -38,14 +38,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="DateTimeOffset\DateTimeExtensions.cs" />
+    <Compile Include="DateTimeOffset\TimeSpanExtensions.cs" />
+    <Compile Include="DateTime\DateTimeExtensions.cs" />
+    <Compile Include="DateTime\TimeSpanExtensions.cs" />
     <Compile Include="FluentTimeSpan.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="RoundTo.cs" />
-    <Compile Include="TimeSpanExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

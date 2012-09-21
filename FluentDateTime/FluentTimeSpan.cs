@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace FluentDateTime
+namespace FluentDate
 {
 
     [StructLayout(LayoutKind.Sequential)]
@@ -11,8 +11,6 @@ namespace FluentDateTime
 		public int Months { get; set; }
 		public int Years { get; set; }
 		public TimeSpan TimeSpan { get; set; }
-       
-
     
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.

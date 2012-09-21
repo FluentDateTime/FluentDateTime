@@ -1,34 +1,36 @@
 ﻿using System;
+using FluentDate;
+using FluentDateTime;
 
-namespace FluentDateTime
+namespace FluentDateTimeOffset
 {
 	/// <summary>
-	/// Static class containing Fluent <see cref="DateTime"/> extension methods.
+	/// Static class containing Fluent <see cref="Timespan"/> extension methods.
 	/// </summary>
-	public static class TimeSpanExtensions
+	public static class TimeSpanOffsetExtensions
 	{
 
 		/// <summary>
 		/// Subtracts given <see cref="TimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Ago(this TimeSpan from)
+        public static DateTimeOffset Ago(this TimeSpan from)
 		{
-			return from.Before(DateTime.Now);
+            return from.Before(DateTimeOffset.Now);
 		}
 
 		/// <summary>
-		/// Subtracts given <see cref="FluentTimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
+        /// Subtracts given <see cref="FluentTimeSpan"/> from current date (<see cref=""DateTimeOffset".Now"/>) and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Ago(this FluentTimeSpan from)
+        public static DateTimeOffset Ago(this FluentTimeSpan from)
 		{
-			return from.Before(DateTime.Now);
+            return from.Before(DateTimeOffset.Now);
 		}
 
 
 		/// <summary>
 		/// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Ago(this TimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Ago(this TimeSpan from, DateTimeOffset originalValue)
 		{
 			return from.Before(originalValue);
 		}
@@ -36,7 +38,7 @@ namespace FluentDateTime
 		/// <summary>
 		/// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Ago(this FluentTimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Ago(this FluentTimeSpan from, DateTimeOffset originalValue)
 		{
 			return from.Before(originalValue);
 		}
@@ -44,7 +46,7 @@ namespace FluentDateTime
 		/// <summary>
 		/// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Before(this TimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Before(this TimeSpan from, DateTimeOffset originalValue)
 		{
 			return originalValue - from;
 		}
@@ -52,7 +54,7 @@ namespace FluentDateTime
 		/// <summary>
 		/// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
-		public static DateTime Before(this FluentTimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Before(this FluentTimeSpan from, DateTimeOffset originalValue)
 		{
 			return originalValue.AddMonths(-from.Months).AddYears(-from.Years).Add(-from.TimeSpan);
 		}
@@ -61,23 +63,23 @@ namespace FluentDateTime
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to current <see cref="DateTime.Now"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		public static DateTime FromNow(this TimeSpan from)
+		public static DateTimeOffset FromNow(this TimeSpan from)
 		{
-			return from.From(DateTime.Now);
+            return from.From(DateTimeOffset.Now);
 		}
 
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to current <see cref="DateTime.Now"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		public static DateTime FromNow(this FluentTimeSpan from)
+		public static DateTimeOffset FromNow(this FluentTimeSpan from)
 		{
-			return from.From(DateTime.Now);
+            return from.From(DateTimeOffset.Now);
 		}
 
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		public static DateTime From(this TimeSpan from, DateTime originalValue)
+		public static DateTimeOffset From(this TimeSpan from, DateTimeOffset originalValue)
 		{
 			return originalValue + from;
 		}
@@ -85,7 +87,7 @@ namespace FluentDateTime
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		public static DateTime From(this FluentTimeSpan from, DateTime originalValue)
+		public static DateTimeOffset From(this FluentTimeSpan from, DateTimeOffset originalValue)
 		{
 			return originalValue.AddMonths(from.Months).AddYears(from.Years).Add(from.TimeSpan);
 		}
@@ -97,7 +99,7 @@ namespace FluentDateTime
 		/// <remarks>
 		/// Synonym of <see cref="From(System.TimeSpan,System.DateTime)"/> method.
 		/// </remarks>
-		public static DateTime Since(this TimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Since(this TimeSpan from, DateTimeOffset originalValue)
 		{
 			return From(from, originalValue);
 		}
@@ -105,11 +107,11 @@ namespace FluentDateTime
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		/// <seealso cref="From(FluentDateTime.FluentTimeSpan,System.DateTime)"/>
+		/// <seealso cref="From(FluentDateTimeOffset.FluentTimeSpan,System.DateTime)"/>
 		/// <remarks>
-		/// Synonym of <see cref="From(FluentDateTime.FluentTimeSpan,System.DateTime)"/> method.
+		/// Synonym of <see cref="From(FluentDateTimeOffset.FluentTimeSpan,System.DateTime)"/> method.
 		/// </remarks>
-		public static DateTime Since(this FluentTimeSpan from, DateTime originalValue)
+		public static DateTimeOffset Since(this FluentTimeSpan from, DateTimeOffset originalValue)
 		{
 			return From(from, originalValue);
 		}

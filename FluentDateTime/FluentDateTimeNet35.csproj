@@ -57,11 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="DateTimeOffset\DateTimeExtensions.cs" />
+    <Compile Include="DateTimeOffset\TimeSpanExtensions.cs" />
+    <Compile Include="DateTime\DateTimeExtensions.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="FluentTimeSpan.cs" />
     <Compile Include="RoundTo.cs" />
-    <Compile Include="TimeSpanExtensions.cs" />
+    <Compile Include="DateTime\TimeSpanExtensions.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

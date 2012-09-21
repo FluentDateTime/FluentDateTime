@@ -1,4 +1,5 @@
 using System;
+using FluentDate;
 using FluentDateTime;
 using NUnit.Framework;
 
@@ -7,7 +8,30 @@ namespace FluentDateTimeTests
     [TestFixture]
     public class FluentTimeSpanTests
     {
+     
 
+
+        [Test]
+        [TestCase(1)]
+        [TestCase(32)]
+        [TestCase(100)]
+        [TestCase(1000)]
+        [TestCase(-1)]
+        [TestCase(-100)]
+        [TestCase(0)]
+        public void Years_Months_Weeks_Days_Hours_Minutes_Seconds_Milliseconds_SimpleTests(int value)
+        {
+            Assert.AreEqual(value.Years(), new FluentTimeSpan { Years = value });
+            Assert.AreEqual(value.Months(), new FluentTimeSpan { Months = value });
+            Assert.AreEqual(value.Weeks(), new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(value * 7) });
+            Assert.AreEqual(value.Days(), new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(value) });
+
+            Assert.AreEqual(value.Hours(), new FluentTimeSpan { TimeSpan = TimeSpan.FromHours(value) });
+            Assert.AreEqual(value.Minutes(), new FluentTimeSpan { TimeSpan = TimeSpan.FromMinutes(value) });
+            Assert.AreEqual(value.Seconds(), new FluentTimeSpan { TimeSpan = TimeSpan.FromSeconds(value) });
+            Assert.AreEqual(value.Milliseconds(), new FluentTimeSpan { TimeSpan = TimeSpan.FromMilliseconds(value) });
+            Assert.AreEqual(value.Ticks(), new FluentTimeSpan { TimeSpan = TimeSpan.FromTicks(value) });
+        }
 
         [Test]
         public void Subtract()
