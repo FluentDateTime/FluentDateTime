@@ -16,6 +16,9 @@ local.properties
 .settings/
 .loadpath
 
+*.DotSettings
+*.ncrunchsolution
+
 # External tool builders
 .externalToolBuilders/
 
