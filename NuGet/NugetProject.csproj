@@ -31,19 +31,10 @@
     <MakeDir Directories="$(SolutionDir)NuGetBuild" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\WinRT45" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\SL40-WP" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />	
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
     <Copy SourceFiles="$(SolutionDir)NuGet\FluentDateTime.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
     <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll">
       <Output TaskParameter="Assemblies" ItemName="WeaverAssembly" />

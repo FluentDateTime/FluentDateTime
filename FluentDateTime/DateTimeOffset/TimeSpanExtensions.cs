@@ -5,7 +5,7 @@ using FluentDateTime;
 namespace FluentDateTimeOffset
 {
 	/// <summary>
-	/// Static class containing Fluent <see cref="Timespan"/> extension methods.
+	/// Static class containing Fluent <see cref="TimeSpan"/> extension methods.
 	/// </summary>
 	public static class TimeSpanOffsetExtensions
 	{
@@ -19,7 +19,7 @@ namespace FluentDateTimeOffset
 		}
 
 		/// <summary>
-        /// Subtracts given <see cref="FluentTimeSpan"/> from current date (<see cref=""DateTimeOffset".Now"/>) and returns resulting <see cref="DateTime"/> in the past.
+        /// Subtracts given <see cref="FluentTimeSpan"/> from current date (<see cref="DateTimeOffset.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
 		/// </summary>
         public static DateTimeOffset Ago(this FluentTimeSpan from)
 		{

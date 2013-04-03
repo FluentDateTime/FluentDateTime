@@ -28,3 +28,7 @@ Download the [FluentDateTime Nuget](http://nuget.org/List/Packages/FluentDateTim
 The latest build can be found here: [CodeBetter](http://teamcity.codebetter.com/viewLog.html?buildId=lastSuccessful&buildTypeId=bt85&tab=artifacts)
 
 Note that these builds, while passing all tests, may not be as stable as those taken from the Downloads page. They will however have all the latest bug fixes and features. 
+
+## Icon
+
+<a href="http://thenounproject.com/noun/calendar/#icon-No404" target="_blank">Calendar</a>  from The Noun Project

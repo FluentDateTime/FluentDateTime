@@ -62,6 +62,8 @@ namespace FluentDate
         {
             return AddInternal(left, right);
         }
+
+
         public static FluentTimeSpan operator +(TimeSpan left, FluentTimeSpan right)
         {
             return AddInternal(left, right);
@@ -154,6 +156,7 @@ namespace FluentDate
         {
             return ((TimeSpan)left <= right);
         }
+
         public static bool operator <=(TimeSpan left, FluentTimeSpan right)
         {
             return (left <= (TimeSpan)right);
@@ -263,8 +266,6 @@ namespace FluentDate
         }
 
 
-
-
         static FluentTimeSpan AddInternal(FluentTimeSpan left, FluentTimeSpan right)
         {
             return new FluentTimeSpan
@@ -275,11 +276,6 @@ namespace FluentDate
             };
         }
 
-        /// <summary>
-        /// Internal subtraction function for the subtraction of fluentTimeSpans.
-        /// </summary>
-        /// <param name="left">The left hand side.</param>
-        /// <param name="right">The right hand side.</param>
         static FluentTimeSpan SubtractInternal(FluentTimeSpan left, FluentTimeSpan right)
         {
 
@@ -291,9 +287,9 @@ namespace FluentDate
             };
         }
 
-
-
-
+        /// <summary>
+        /// Gets the number of ticks that represent the value of the current <see cref="TimeSpan"/> structure.
+        /// </summary>
         public long Ticks
         {
             get

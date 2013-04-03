@@ -25,3 +25,6 @@
 *.dll binary
 *.exe binary
 *.snk binary
+*.pdb binary
+*.png binary
+*.svg binary
