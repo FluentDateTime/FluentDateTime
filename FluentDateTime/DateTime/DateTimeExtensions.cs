@@ -13,7 +13,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime EndOfDay(this DateTime date)
 		{
-			return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999);
+            return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind);
 		}
 
 		/// <summary>
@@ -21,7 +21,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime BeginningOfDay(this DateTime date)
 		{
-			return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0);
+            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind);
 		}
 
 
@@ -37,10 +37,10 @@ namespace FluentDateTime
 			if (numberOfDaysInSameMonthNextYear < start.Day)
 			{
 				var differenceInDays = start.Day - numberOfDaysInSameMonthNextYear;
-				var dateTime = new DateTime(nextYear, start.Month, numberOfDaysInSameMonthNextYear, start.Hour, start.Minute, start.Second, start.Millisecond);
+				var dateTime = new DateTime(nextYear, start.Month, numberOfDaysInSameMonthNextYear, start.Hour, start.Minute, start.Second, start.Millisecond, start.Kind);
 				return dateTime + differenceInDays.Days();
 			}
-			return new DateTime(nextYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond);
+            return new DateTime(nextYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond, start.Kind);
 		}
 
 		/// <summary>
@@ -55,10 +55,10 @@ namespace FluentDateTime
 			if (numberOfDaysInSameMonthPreviousYear < start.Day)
 			{
 				var differenceInDays = start.Day - numberOfDaysInSameMonthPreviousYear;
-				var dateTime = new DateTime(previousYear, start.Month, numberOfDaysInSameMonthPreviousYear, start.Hour, start.Minute, start.Second, start.Millisecond);
+                var dateTime = new DateTime(previousYear, start.Month, numberOfDaysInSameMonthPreviousYear, start.Hour, start.Minute, start.Second, start.Millisecond, start.Kind);
 				return dateTime + differenceInDays.Days();
 			}
-			return new DateTime(previousYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond);
+            return new DateTime(previousYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond, start.Kind);
 		}
 
 		/// <summary>
@@ -144,7 +144,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetTime(this DateTime originalDate, int hour)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -152,7 +152,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetTime(this DateTime originalDate, int hour, int minute)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, originalDate.Second, originalDate.Millisecond);
+			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -160,7 +160,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetTime(this DateTime originalDate, int hour, int minute, int second)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, originalDate.Millisecond);
+			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -168,7 +168,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetTime(this DateTime originalDate, int hour, int minute, int second, int millisecond)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -176,7 +176,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetHour(this DateTime originalDate, int hour)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -184,7 +184,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetMinute(this DateTime originalDate, int minute)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, minute, originalDate.Second, originalDate.Millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -192,7 +192,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetSecond(this DateTime originalDate, int second)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, second, originalDate.Millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, second, originalDate.Millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -200,7 +200,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetMillisecond(this DateTime originalDate, int millisecond)
 		{
-			return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, originalDate.Second, millisecond);
+            return new DateTime(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, originalDate.Second, millisecond, originalDate.Kind);
 		}
 
 		/// <summary>
@@ -226,7 +226,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetDate(this DateTime value, int year)
 		{
-			return new DateTime(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -234,7 +234,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetDate(this DateTime value, int year, int month)
 		{
-			return new DateTime(year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -242,7 +242,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetDate(this DateTime value, int year, int month, int day)
 		{
-			return new DateTime(year, month, day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(year, month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -250,7 +250,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetYear(this DateTime value, int year)
 		{
-			return new DateTime(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -258,7 +258,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetMonth(this DateTime value, int month)
 		{
-			return new DateTime(value.Year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(value.Year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -266,7 +266,7 @@ namespace FluentDateTime
 		/// </summary>
 		public static DateTime SetDay(this DateTime value, int day)
 		{
-			return new DateTime(value.Year, value.Month, day, value.Hour, value.Minute, value.Second, value.Millisecond);
+            return new DateTime(value.Year, value.Month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 		}
 
 		/// <summary>
@@ -423,7 +423,7 @@ namespace FluentDateTime
 			{
 				case RoundTo.Second:
 					{
-						rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second);
+						rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Kind);
 						if (dateTime.Millisecond >= 500)
 						{
 							rounded = rounded.AddSeconds(1);
@@ -432,7 +432,7 @@ namespace FluentDateTime
 					}
 				case RoundTo.Minute:
 					{
-						rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
+                        rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0, dateTime.Kind);
 						if (dateTime.Second >= 30)
 						{
 							rounded = rounded.AddMinutes(1);
@@ -441,7 +441,7 @@ namespace FluentDateTime
 					}
 				case RoundTo.Hour:
 					{
-						rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
+                        rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0, dateTime.Kind);
 						if (dateTime.Minute >= 30)
 						{
 							rounded = rounded.AddHours(1);
@@ -450,7 +450,7 @@ namespace FluentDateTime
 					}
 				case RoundTo.Day:
 					{
-						rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0);
+                        rounded = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, dateTime.Kind);
 						if (dateTime.Hour >= 12)
 						{
 							rounded = rounded.AddDays(1);

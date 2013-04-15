@@ -22,35 +22,35 @@ namespace FluentDateTimeTests
         [TestCase(0)]
         public void Ago_FromFixedDateTime_Tests(int agoValue)
         {
-            var originalPointInTime = new DateTime(1976, 12, 31, 17, 0, 0, 0);
+            var originalPointInTime = new DateTime(1976, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
 
-            Assert.AreEqual(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
-            Assert.AreEqual(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
-            Assert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * DAYS_PER_WEEK));
-            Assert.AreEqual(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
+            DateAssert.AreEqual(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
+            DateAssert.AreEqual(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
+            DateAssert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * DAYS_PER_WEEK));
+            DateAssert.AreEqual(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
 
-            Assert.AreEqual(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
-            Assert.AreEqual(agoValue.Minutes().Before(originalPointInTime), originalPointInTime.AddMinutes(-agoValue));
-            Assert.AreEqual(agoValue.Seconds().Before(originalPointInTime), originalPointInTime.AddSeconds(-agoValue));
-            Assert.AreEqual(agoValue.Milliseconds().Before(originalPointInTime), originalPointInTime.AddMilliseconds(-agoValue));
-            Assert.AreEqual(agoValue.Ticks().Before(originalPointInTime), originalPointInTime.AddTicks(-agoValue));
+            DateAssert.AreEqual(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
+            DateAssert.AreEqual(agoValue.Minutes().Before(originalPointInTime), originalPointInTime.AddMinutes(-agoValue));
+            DateAssert.AreEqual(agoValue.Seconds().Before(originalPointInTime), originalPointInTime.AddSeconds(-agoValue));
+            DateAssert.AreEqual(agoValue.Milliseconds().Before(originalPointInTime), originalPointInTime.AddMilliseconds(-agoValue));
+            DateAssert.AreEqual(agoValue.Ticks().Before(originalPointInTime), originalPointInTime.AddTicks(-agoValue));
         }
         [Test]
         public void Ago_FromOneMonth()
         {
-            var originalPointInTime = new DateTime(1976, 4, 30);
+            var originalPointInTime = new DateTime(1976, 4, 30,0,0,0,DateTimeKind.Local);
 
-            Assert.AreEqual(1.Months().Before(originalPointInTime), new DateTime(1976, 3, 30));
-            Assert.AreEqual(1.Months().From(originalPointInTime), new DateTime(1976, 5, 30));
+            DateAssert.AreEqual(1.Months().Before(originalPointInTime), new DateTime(1976, 3, 30, 0, 0, 0, DateTimeKind.Local));
+            DateAssert.AreEqual(1.Months().From(originalPointInTime), new DateTime(1976, 5, 30, 0, 0, 0, DateTimeKind.Local));
         }
 
         [Test]
         public void Ago_FromOneYearLeap()
         {
-            var originalPointInTime = new DateTime(2004, 2, 29);
+            var originalPointInTime = new DateTime(2004, 2, 29,0,0,0,DateTimeKind.Local);
 
-            Assert.AreEqual(1.Years().Before(originalPointInTime), new DateTime(2003, 2, 28));
-            Assert.AreEqual(1.Years().From(originalPointInTime), new DateTime(2005, 2, 28));
+            DateAssert.AreEqual(1.Years().Before(originalPointInTime), new DateTime(2003, 2, 28, 0, 0, 0, DateTimeKind.Local));
+            DateAssert.AreEqual(1.Years().From(originalPointInTime), new DateTime(2005, 2, 28, 0, 0, 0, DateTimeKind.Local));
         }
 
 
@@ -64,18 +64,18 @@ namespace FluentDateTimeTests
         [TestCase(0)]
         public void From_FromFixedDateTime_Tests(int value)
         {
-            var originalPointInTime = new DateTime(1976, 12, 31, 17, 0, 0, 0);
+            var originalPointInTime = new DateTime(1976, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
 
-            Assert.AreEqual(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
-            Assert.AreEqual(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
-            Assert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * DAYS_PER_WEEK));
-            Assert.AreEqual(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
+            DateAssert.AreEqual(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
+            DateAssert.AreEqual(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
+            DateAssert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * DAYS_PER_WEEK));
+            DateAssert.AreEqual(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
 
-            Assert.AreEqual(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
-            Assert.AreEqual(value.Minutes().From(originalPointInTime), originalPointInTime.AddMinutes(value));
-            Assert.AreEqual(value.Seconds().From(originalPointInTime), originalPointInTime.AddSeconds(value));
-            Assert.AreEqual(value.Milliseconds().From(originalPointInTime), originalPointInTime.AddMilliseconds(value));
-            Assert.AreEqual(value.Ticks().From(originalPointInTime), originalPointInTime.AddTicks(value));
+            DateAssert.AreEqual(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
+            DateAssert.AreEqual(value.Minutes().From(originalPointInTime), originalPointInTime.AddMinutes(value));
+            DateAssert.AreEqual(value.Seconds().From(originalPointInTime), originalPointInTime.AddSeconds(value));
+            DateAssert.AreEqual(value.Milliseconds().From(originalPointInTime), originalPointInTime.AddMilliseconds(value));
+            DateAssert.AreEqual(value.Ticks().From(originalPointInTime), originalPointInTime.AddTicks(value));
         }
 
 
@@ -88,12 +88,12 @@ namespace FluentDateTimeTests
         [TestCase(23)]
         public void ChangeTime_Hour_SimpleTests(int value)
         {
-            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0);
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
             var result = toChange.SetTime(value);
-            var expected = new DateTime(2008, 10, 25, value, 0, 0, 0);
+            var expected = new DateTime(2008, 10, 25, value, 0, 0, 0, DateTimeKind.Local);
 
-            Assert.AreEqual(expected, result);
+            DateAssert.AreEqual(expected, result);
         }
 
 
@@ -105,9 +105,10 @@ namespace FluentDateTimeTests
         [TestCase(60, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Minute_SimpleTests(int value)
         {
-            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0);
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
-            Assert.AreEqual(new DateTime(2008, 10, 25, 0, value, 0, 0), toChange.SetTime(0, value));
+            var expected = new DateTime(2008, 10, 25, 0, value, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, toChange.SetTime(0, value));
         }
 
         [Test]
@@ -118,14 +119,13 @@ namespace FluentDateTimeTests
         [TestCase(60, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Second_SimpleTests(int value)
         {
-            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0);
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
             var changed = toChange.SetTime(0, 0, value);
 
+            var expected = new DateTime(2008, 10, 25, 0, 0, value, 0, DateTimeKind.Local);
 
-            var expected = new DateTime(2008, 10, 25, 0, 0, value, 0);
-
-            Assert.AreEqual(expected, changed);
+            DateAssert.AreEqual(expected, changed);
         }
 
         [Test]
@@ -136,46 +136,47 @@ namespace FluentDateTimeTests
         [TestCase(1000, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Millisecond_SimpleTests(int value)
         {
-            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0);
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
-            Assert.AreEqual(new DateTime(2008, 10, 25, 0, 0, 0, value), toChange.SetTime(0, 0, 0, value));
+            var expected = new DateTime(2008, 10, 25, 0, 0, 0, value, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, toChange.SetTime(0, 0, 0, value));
         }
 
         [Test]
         public void BasicTests()
         {
             var now = DateTime.Now;
-            Assert.AreEqual(new DateTime(now.Year, now.Month, now.Day, 23, 59, 59, 999), DateTime.Now.EndOfDay(), " End of the day wrong");
-            Assert.AreEqual(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0), DateTime.Now.BeginningOfDay(), "Start of the day wrong");
+            DateAssert.AreEqual(new DateTime(now.Year, now.Month, now.Day, 23, 59, 59, 999, DateTimeKind.Local), DateTime.Now.EndOfDay(), " End of the day wrong");
+            DateAssert.AreEqual(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0, DateTimeKind.Local), DateTime.Now.BeginningOfDay(), "Start of the day wrong");
 
-            var firstBirthDay = new DateTime(1977, 12, 31, 17, 0, 0, 0);
-            Assert.AreEqual(firstBirthDay + new TimeSpan(1, 0, 5, 0, 0), firstBirthDay + 1.Days() + 5.Minutes());
+            var firstBirthDay = new DateTime(1977, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(firstBirthDay + new TimeSpan(1, 0, 5, 0, 0), firstBirthDay + 1.Days() + 5.Minutes());
 
-            Assert.AreEqual(now + TimeSpan.FromDays(1), now.NextDay());
-            Assert.AreEqual(now - TimeSpan.FromDays(1), now.PreviousDay());
+            DateAssert.AreEqual(now + TimeSpan.FromDays(1), now.NextDay());
+            DateAssert.AreEqual(now - TimeSpan.FromDays(1), now.PreviousDay());
 
-            Assert.AreEqual(now + TimeSpan.FromDays(7), now.WeekAfter());
-            Assert.AreEqual(now - TimeSpan.FromDays(7), now.WeekEarlier());
+            DateAssert.AreEqual(now + TimeSpan.FromDays(7), now.WeekAfter());
+            DateAssert.AreEqual(now - TimeSpan.FromDays(7), now.WeekEarlier());
 
-            Assert.AreEqual(new DateTime(2009, 1, 1, 0, 0, 0, 0), new DateTime(2008, 12, 31, 0, 0, 0).Add(1.Days()));
-            Assert.AreEqual(new DateTime(2009, 1, 2, 0, 0, 0, 0), new DateTime(2009, 1, 1, 0, 0, 0, 0).Add(1.Days()));
+            Assert.AreEqual(new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2008, 12, 31, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
+            Assert.AreEqual(new DateTime(2009, 1, 2, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
 
-            var sampleDate = new DateTime(2009, 1, 1, 13, 0, 0, 0);
-            Assert.AreEqual(new DateTime(2009, 1, 1, 12, 0, 0, 0), sampleDate.Noon());
-            Assert.AreEqual(new DateTime(2009, 1, 1, 0, 0, 0, 0), sampleDate.Midnight());
+            var sampleDate = new DateTime(2009, 1, 1, 13, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(new DateTime(2009, 1, 1, 12, 0, 0, 0, DateTimeKind.Local), sampleDate.Noon());
+            DateAssert.AreEqual(new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), sampleDate.Midnight());
 
             Assert.AreEqual(3.Days() + 3.Days(), 6.Days());
             Assert.AreEqual(102.Days() - 3.Days(), 99.Days());
 
             Assert.AreEqual(24.Hours(), 1.Days());
 
-            sampleDate = new DateTime(2008, 1, 1, 0, 0, 0, 0);
-            Assert.AreEqual(3.Days().Since(sampleDate), sampleDate + 3.Days());
+            sampleDate = new DateTime(2008, 1, 1, 0, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(3.Days().Since(sampleDate), sampleDate + 3.Days());
 
-            var saturday = new DateTime(2008, 10, 25, 12, 0, 0);
-            Assert.AreEqual(new DateTime(2008, 11, 1, 12, 0, 0), saturday.Next(DayOfWeek.Saturday));
+            var saturday = new DateTime(2008, 10, 25, 12, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(new DateTime(2008, 11, 1, 12, 0, 0, DateTimeKind.Local), saturday.Next(DayOfWeek.Saturday));
 
-            Assert.AreEqual(new DateTime(2008, 10, 18, 12, 0, 0), saturday.Previous(DayOfWeek.Saturday));
+            DateAssert.AreEqual(new DateTime(2008, 10, 18, 12, 0, 0, DateTimeKind.Local), saturday.Previous(DayOfWeek.Saturday));
 
             // ReSharper disable UnusedVariable
             var nextWeek = DateTime.Now + 1.Weeks();
@@ -197,54 +198,58 @@ namespace FluentDateTimeTests
         [Test]
         public void NextYear_ReturnsTheSameDateButNextYear()
         {
-            var birthday = new DateTime(1976, 12, 31, 17, 0, 0, 0);
+            var birthday = new DateTime(1976, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
             var nextYear = birthday.NextYear();
-            Assert.AreEqual(new DateTime(1977, 12, 31, 17, 0, 0, 0), nextYear);
+            var expected = new DateTime(1977, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, nextYear);
         }
 
         [Test]
         public void PreviousYear_ReturnsTheSameDateButPreviousYear()
         {
-            var birthday = new DateTime(1976, 12, 31, 17, 0, 0, 0);
+            var birthday = new DateTime(1976, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
             var previousYear = birthday.PreviousYear();
-            Assert.AreEqual(new DateTime(1975, 12, 31, 17, 0, 0, 0), previousYear);
+            var expected = new DateTime(1975, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, previousYear);
         }
 
 
         [Test]
         public void NextYear_IfNextYearDoesNotHaveTheSameDayInTheSameMonthThenCalculateHowManyDaysIsMissingAndAddThatToTheLastDayInTheSameMonthNextYear()
         {
-            var someBirthday = new DateTime(2008, 2, 29, 17, 0, 0, 0);
+            var someBirthday = new DateTime(2008, 2, 29, 17, 0, 0, 0, DateTimeKind.Local);
             var nextYear = someBirthday.NextYear();
-            Assert.AreEqual(new DateTime(2009, 3, 1, 17, 0, 0, 0), nextYear);
+            var expected = new DateTime(2009, 3, 1, 17, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, nextYear);
         }
 
         [Test]
         public void PreviousYear_IfPreviousYearDoesNotHaveTheSameDayInTheSameMonthThenCalculateHowManyDaysIsMissingAndAddThatToTheLastDayInTheSameMonthPreviousYear()
         {
-            var someBirthday = new DateTime(2012, 2, 29, 17, 0, 0, 0);
+            var someBirthday = new DateTime(2012, 2, 29, 17, 0, 0, 0, DateTimeKind.Local);
             var previousYear = someBirthday.PreviousYear();
-            Assert.AreEqual(new DateTime(2011, 3, 1, 17, 0, 0, 0), previousYear);
+            var expected = new DateTime(2011, 3, 1, 17, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, previousYear);
         }
 
         [Test]
         public void Next_ReturnsNextFridayProperly()
         {
-            var friday = new DateTime(2009, 7, 10, 1, 0, 0, 0);
-            var reallyNextFriday = new DateTime(2009, 7, 17, 1, 0, 0, 0);
+            var friday = new DateTime(2009, 7, 10, 1, 0, 0, 0, DateTimeKind.Local);
+            var reallyNextFriday = new DateTime(2009, 7, 17, 1, 0, 0, 0, DateTimeKind.Local);
             var nextFriday = friday.Next(DayOfWeek.Friday);
 
-            Assert.AreEqual(reallyNextFriday, nextFriday);
+            DateAssert.AreEqual(reallyNextFriday, nextFriday);
         }
 
         [Test]
         public void Next_ReturnsPreviousFridayProperly()
         {
-            var friday = new DateTime(2009, 7, 17, 1, 0, 0, 0);
-            var reallyPrevFriday = new DateTime(2009, 7, 10, 1, 0, 0, 0);
+            var friday = new DateTime(2009, 7, 17, 1, 0, 0, 0, DateTimeKind.Local);
+            var reallyPrevFriday = new DateTime(2009, 7, 10, 1, 0, 0, 0, DateTimeKind.Local);
             var prevFriday = friday.Previous(DayOfWeek.Friday);
 
-            Assert.AreEqual(reallyPrevFriday, prevFriday);
+            DateAssert.AreEqual(reallyPrevFriday, prevFriday);
         }
 
         [Test]
@@ -290,54 +295,65 @@ namespace FluentDateTimeTests
         [Test]
         public void At_SetsHourAndMinutesProperly()
         {
-            Assert.AreEqual(new DateTime(2002, 12, 17, 18, 06, 01), new DateTime(2002, 12, 17, 17, 05, 01).At(18, 06));
+            var expected = new DateTime(2002, 12, 17, 18, 06, 01, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).At(18, 06));
         }
 
         [Test]
         public void At_SetsHourAndMinutesAndSecondsProperly()
         {
-            Assert.AreEqual(new DateTime(2002, 12, 17, 18, 06, 02), new DateTime(2002, 12, 17, 17, 05, 01).At(18, 06, 02));
+            var expected = new DateTime(2002, 12, 17, 18, 06, 02, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).At(18, 06, 02));
         }
 
         [Test]
         public void At_SetsHourAndMinutesAndMillisecondsProperly()
         {
-            Assert.AreEqual(new DateTime(2002, 12, 17, 18, 06, 02,03), new DateTime(2002, 12, 17, 17, 05, 01).At(18, 06, 02,03));
+            var expected = new DateTime(2002, 12, 17, 18, 06, 02, 03, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).At(18, 06, 02, 03));
         }
 
 
         [Test]
         public void FirstDayOfMonth_SetsTheDayToOne()
         {
-            Assert.AreEqual(new DateTime(2002, 12, 1, 17, 05, 01), new DateTime(2002, 12, 17, 17, 05, 01).FirstDayOfMonth());
+            var expected = new DateTime(2002, 12, 1, 17, 05, 01, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).FirstDayOfMonth());
         }
 
         [Test]
         public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth()
         {
-            Assert.AreEqual(new DateTime(2002, 1, 31, 17, 05, 01), new DateTime(2002, 1, 1, 17, 05, 01).LastDayOfMonth());
+            var expected = new DateTime(2002, 1, 31, 17, 05, 01, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2002, 1, 1, 17, 05, 01, DateTimeKind.Local).LastDayOfMonth());
         }
 
         [Test]
         public void AddBusinessDays_AdsDaysProperlyWhenThereIsWeekendAhead()
         {
-            Assert.AreEqual(new DateTime(2009, 7, 13), new DateTime(2009, 7, 9).AddBusinessDays(2));
+            var expected = new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(2));
         }
+
         [Test]
         public void AddBusinessDays_Negative()
         {
-            Assert.AreEqual(new DateTime(2009, 7, 9), new DateTime(2009, 7, 13).AddBusinessDays(-2));
+            var expected = new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(-2));
         }
 
         [Test]
         public void SubtractBusinessDays_SubtractsDaysProperlyWhenThereIsWeekend()
         {
-            Assert.AreEqual(new DateTime(2009, 7, 9), new DateTime(2009, 7, 13).SubtractBusinessDays(2));
+            var expected = new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local).SubtractBusinessDays(2));
         }
+
         [Test]
         public void SubtractBusinessDays_Negative()
         {
-            Assert.AreEqual(new DateTime(2009, 7, 13), new DateTime(2009, 7, 9).SubtractBusinessDays(-2));
+            var expected = new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local).SubtractBusinessDays(-2));
         }
 
         [Test]
@@ -368,10 +384,16 @@ namespace FluentDateTimeTests
         public void FirstDayOfWeek_FirstDayOfWeekIsMonday(int value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            var currentCulture = new CultureInfo("en-AU")
+                {
+                    DateTimeFormat =
+                        {
+                            FirstDayOfWeek = DayOfWeek.Monday
+                        }
+                };
             Thread.CurrentThread.CurrentCulture = currentCulture;
-            Assert.AreEqual(new DateTime(2011, 1, 24), new DateTime(2011, 1, value).FirstDayOfWeek());
+            var expected = new DateTime(2011, 1, 24, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2011, 1, value, 0, 0, 0, DateTimeKind.Local).FirstDayOfWeek());
             Thread.CurrentThread.CurrentCulture = ci;
         }
 
@@ -386,10 +408,16 @@ namespace FluentDateTimeTests
         public void FirstDayOfWeek_FirstDayOfWeekIsSunday(int value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Sunday;
+            var currentCulture = new CultureInfo("en-AU")
+                {
+                    DateTimeFormat =
+                        {
+                            FirstDayOfWeek = DayOfWeek.Sunday
+                        }
+                };
             Thread.CurrentThread.CurrentCulture = currentCulture;
-            Assert.AreEqual(new DateTime(2011, 1, 23), new DateTime(2011, 1, value).FirstDayOfWeek());
+            var expected = new DateTime(2011, 1, 23, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2011, 1, value, 0, 0, 0, DateTimeKind.Local).FirstDayOfWeek());
             Thread.CurrentThread.CurrentCulture = ci;
         }
 
@@ -409,8 +437,13 @@ namespace FluentDateTimeTests
         public void LastDayOfWeek_BasicTest(string value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            var currentCulture = new CultureInfo("en-AU")
+                {
+                    DateTimeFormat =
+                        {
+                            FirstDayOfWeek = DayOfWeek.Monday
+                        }
+                };
             Thread.CurrentThread.CurrentCulture = currentCulture;
             Assert.AreEqual(new DateTime(2011, 12, 25, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfWeek());
             Thread.CurrentThread.CurrentCulture = ci;
@@ -428,27 +461,30 @@ namespace FluentDateTimeTests
         [Test]
         public void PreviousMonth_BasicTest()
         {
-            Assert.AreEqual(new DateTime(2009, 12, 20, 06, 40, 20, 5), new DateTime(2010, 1, 20, 06, 40, 20, 5).PreviousMonth());
-
+            var expected = new DateTime(2009, 12, 20, 06, 40, 20, 5, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2010, 1, 20, 06, 40, 20, 5, DateTimeKind.Local).PreviousMonth());
         }
 
         [Test]
         public void PreviousMonth_PreviousMonthDoesntHaveThatManyDays()
         {
-            Assert.AreEqual(new DateTime(2009, 2, 28, 06, 40, 20, 5), new DateTime(2009, 3, 31, 06, 40, 20, 5).PreviousMonth());
+            var expected = new DateTime(2009, 2, 28, 06, 40, 20, 5, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 3, 31, 06, 40, 20, 5, DateTimeKind.Local).PreviousMonth());
         }
 
 
         [Test]
         public void NextMonth_BasicTest()
         {
-            Assert.AreEqual(new DateTime(2013, 1, 5, 06, 40, 20, 5), new DateTime(2012, 12, 5, 06, 40, 20, 5).NextMonth());
-        }       
-        
+            var expected = new DateTime(2013, 1, 5, 06, 40, 20, 5, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2012, 12, 5, 06, 40, 20, 5, DateTimeKind.Local).NextMonth());
+        }
+
         [Test]
         public void PreviousMonth_NextMonthDoesntHaveThatManyDays()
         {
-            Assert.AreEqual(new DateTime(2013, 2, 28, 06, 40, 20, 5), new DateTime(2013, 1, 31, 06, 40, 20, 5).NextMonth());
+            var expected = new DateTime(2013, 2, 28, 06, 40, 20, 5, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2013, 1, 31, 06, 40, 20, 5, DateTimeKind.Local).NextMonth());
         }
     }
 
