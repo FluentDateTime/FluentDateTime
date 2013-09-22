@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using FluentDateTime;
+using FluentDate;
 using FluentDateTimeOffset;
 using NUnit.Framework;
 using System.Threading;
@@ -369,8 +369,13 @@ namespace FluentDateTimeTests
         public void FirstDayOfWeek_FirstDayOfWeekIsMonday(int value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            var currentCulture = new CultureInfo("en-AU")
+                                 {
+                                     DateTimeFormat =
+                                     {
+                                         FirstDayOfWeek = DayOfWeek.Monday
+                                     }
+                                 };
             Thread.CurrentThread.CurrentCulture = currentCulture;
             Assert.AreEqual(new DateTimeOffset(2011, 1, 24, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
             Thread.CurrentThread.CurrentCulture = ci;
@@ -387,8 +392,13 @@ namespace FluentDateTimeTests
         public void FirstDayOfWeek_FirstDayOfWeekIsSunday(int value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Sunday;
+            var currentCulture = new CultureInfo("en-AU")
+                                 {
+                                     DateTimeFormat =
+                                     {
+                                         FirstDayOfWeek = DayOfWeek.Sunday
+                                     }
+                                 };
             Thread.CurrentThread.CurrentCulture = currentCulture;
             Assert.AreEqual(new DateTimeOffset(2011, 1, 23, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
             Thread.CurrentThread.CurrentCulture = ci;
@@ -411,8 +421,13 @@ namespace FluentDateTimeTests
         public void LastDayOfWeek_BasicTest(string value)
         {
             var ci = Thread.CurrentThread.CurrentCulture;
-            var currentCulture = new CultureInfo("en-AU");
-            currentCulture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            var currentCulture = new CultureInfo("en-AU")
+                                 {
+                                     DateTimeFormat =
+                                     {
+                                         FirstDayOfWeek = DayOfWeek.Monday
+                                     }
+                                 };
             Thread.CurrentThread.CurrentCulture = currentCulture;
             var expected = new DateTimeOffset(2011, 12, 25, 06, 40, 20, 5, TimeSpan.Zero);
             Assert.AreEqual(expected, DateTimeOffset.Parse(value).LastDayOfWeek());

@@ -1,7 +1,6 @@
-﻿using FluentDate;
-using System;
+﻿using System;
 
-namespace FluentDateTime
+namespace FluentDate
 {
 
 	/// <summary>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using FluentDateTime;
+using FluentDate;
 
 namespace FluentDateTimeOffset
 {

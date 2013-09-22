@@ -1,4 +1,4 @@
-﻿namespace FluentDateTime
+﻿namespace FluentDate
 {
     /// <summary>
     /// Used for rounding precision
