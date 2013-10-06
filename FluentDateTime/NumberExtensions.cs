@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace FluentDate
+﻿namespace FluentDate
 {
+    using System;
 
 	/// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.

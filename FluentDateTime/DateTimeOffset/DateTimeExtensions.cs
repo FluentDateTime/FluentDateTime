@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading;
-using FluentDate;
-
-namespace FluentDateTimeOffset
+﻿namespace FluentDateTimeOffset
 {
+    using System;
+    using System.Threading;
+    using FluentDate;
+
 	/// <summary>
     /// Static class containing Fluent <see cref="DateTimeOffset"/> extension methods.
 	/// </summary>

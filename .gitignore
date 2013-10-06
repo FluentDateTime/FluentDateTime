@@ -32,7 +32,7 @@ local.properties
 .buildpath
 
 
-NuGetBuild
+NuGetBuild*
 
 
 #################

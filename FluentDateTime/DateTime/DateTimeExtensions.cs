@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading;
-using FluentDate;
-
-namespace FluentDateTime
+﻿namespace FluentDateTime
 {
+    using System;
+    using System.Threading;
+    using FluentDate;
+
 	/// <summary>
 	/// Static class containing Fluent <see cref="DateTime"/> extension methods.
 	/// </summary>

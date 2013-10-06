@@ -1,8 +1,10 @@
-﻿using System;
-using FluentDate;
-
-namespace FluentDateTimeOffset
+﻿namespace FluentDateTimeOffset
 {
+
+    using System;
+    using FluentDate;
+
+
 	/// <summary>
 	/// Static class containing Fluent <see cref="TimeSpan"/> extension methods.
 	/// </summary>

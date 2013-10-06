@@ -1,8 +1,7 @@
-using System;
-using System.Runtime.InteropServices;
-
 namespace FluentDate
 {
+    using System;
+    using System.Runtime.InteropServices;
 
     [StructLayout(LayoutKind.Sequential)]
     public struct FluentTimeSpan : IEquatable<FluentTimeSpan>, IComparable<TimeSpan>, IComparable<FluentTimeSpan>
