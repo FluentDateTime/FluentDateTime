@@ -1,3 +1,5 @@
+![Icon](https://raw.github.com/FluentDateTime/FluentDateTime/master/Icons/package_icon.png)
+
 # FluentDateTime
 
 Partially inspired by Ruby DateTime Extensions
@@ -21,13 +23,23 @@ Allows you to write cleaner DateTime expressions and operation. For example your
 
 (See Unit Tests in the project for more details).
 
-## Downloading
+## Nuget
 
-Download the [FluentDateTime Nuget](http://nuget.org/List/Packages/FluentDateTime) 
+There are two nuget packages
 
-The latest build can be found here: [CodeBetter](http://teamcity.codebetter.com/viewLog.html?buildId=lastSuccessful&buildTypeId=bt85&tab=artifacts)
+### The [binary version](http://nuget.org/packages/FluentDateTime/)
 
-Note that these builds, while passing all tests, may not be as stable as those taken from the Downloads page. They will however have all the latest bug fixes and features. 
+This uses the standard approach to constructing a nuget package. It contains a dll which will be added as a reference to your project. You then deploy the binary with your project.
+
+    PM> Install-Package FluentDateTime
+
+### The [code only version](http://nuget.org/packages/FluentDateTime-CodeOnly/)
+
+This is a "code only" package that leverages the [Content Convention](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package#From_a_convention_based_working_directory) of Nuget to inject code files into your project. Note that this is only compatible with C# projects. 
+
+The benefits of this approach are ease of debugging and less files to deploy
+
+    PM> Install-Package FluentDateTime-CodeOnly
 
 ## Icon
 
