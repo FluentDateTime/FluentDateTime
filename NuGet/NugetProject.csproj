@@ -35,9 +35,9 @@
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)Net35\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET35" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl4+wp7+win8" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl5+wp8+win8+wpa81+MonoAndroid16+MonoTouch40" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl5+wp8+win8+wpa81+MonoAndroid16+MonoTouch40" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\portable-net4+sl5+wp8+win8+wpa81+MonoAndroid16+MonoTouch40" />
     <Copy SourceFiles="$(SolutionDir)NuGet\FluentDateTime.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTime\DateTimeExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTime\DateTimeExtensions.cs.pp" />
