@@ -476,12 +476,11 @@
         public static DateTime FirstDayOfWeek(this DateTime dateTime)
         {
             var currentCulture = Thread.CurrentThread.CurrentCulture;
-            var fdow = currentCulture.DateTimeFormat.FirstDayOfWeek;
-            var offset = dateTime.DayOfWeek - fdow < 0 ? 7 : 0;
-            var numberOfDaysSinceBeginningOfTheWeek = dateTime.DayOfWeek + offset - fdow;
+            var firstDayOfWeek = currentCulture.DateTimeFormat.FirstDayOfWeek;
+            var offset = dateTime.DayOfWeek - firstDayOfWeek < 0 ? 7 : 0;
+            var numberOfDaysSinceBeginningOfTheWeek = dateTime.DayOfWeek + offset - firstDayOfWeek;
 
             return dateTime.AddDays(-numberOfDaysSinceBeginningOfTheWeek);
-
         }
 
         /// <summary>

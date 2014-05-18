@@ -96,9 +96,9 @@
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		/// <seealso cref="From(System.TimeSpan,System.DateTime)"/>
+		/// <seealso cref="From(System.TimeSpan,System.DateTimeOffset)"/>
 		/// <remarks>
-		/// Synonym of <see cref="From(System.TimeSpan,System.DateTime)"/> method.
+		/// Synonym of <see cref="From(System.TimeSpan,System.DateTimeOffset)"/> method.
 		/// </remarks>
 		public static DateTimeOffset Since(this TimeSpan from, DateTimeOffset originalValue)
 		{
@@ -108,9 +108,9 @@
 		/// <summary>
 		/// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
 		/// </summary>
-		/// <seealso cref="From(FluentDateTimeOffset.FluentTimeSpan,System.DateTime)"/>
+		/// <seealso cref="From(System.TimeSpan,System.DateTimeOffset)"/>
 		/// <remarks>
-		/// Synonym of <see cref="From(FluentDateTimeOffset.FluentTimeSpan,System.DateTime)"/> method.
+		/// Synonym of <see cref="From(System.TimeSpan,System.DateTimeOffset)"/> method.
 		/// </remarks>
 		public static DateTimeOffset Since(this FluentTimeSpan from, DateTimeOffset originalValue)
 		{
