@@ -247,10 +247,10 @@ namespace FluentDateTimeTests
         public void Next_ReturnsPreviousFridayProperly()
         {
             var friday = new DateTime(2009, 7, 17, 1, 0, 0, 0, DateTimeKind.Local);
-            var reallyPrevFriday = new DateTime(2009, 7, 10, 1, 0, 0, 0, DateTimeKind.Local);
-            var prevFriday = friday.Previous(DayOfWeek.Friday);
+            var reallyPreviousFriday = new DateTime(2009, 7, 10, 1, 0, 0, 0, DateTimeKind.Local);
+            var previousFriday = friday.Previous(DayOfWeek.Friday);
 
-            DateAssert.AreEqual(reallyPrevFriday, prevFriday);
+            DateAssert.AreEqual(reallyPreviousFriday, previousFriday);
         }
 
         [Test]
