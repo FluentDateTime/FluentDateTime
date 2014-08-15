@@ -346,9 +346,10 @@
         public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
         {
             int currQuarter = (current.Month - 1) / 3 + 1;
-            DateTime dtFirstDay = new DateTime(current.Year, 3 * currQuarter - 2, 1);
+            //DateTimeOffset dtFirstDay = new DateTimeOffset(current.Year, 3 * currQuarter - 2, 1);
+            DateTimeOffset dtFirstDay = current.SetDate(current.Year, 3 * currQuarter - 2, 1);
 
-            return current.SetDate(dtFirstDay.Year, dtFirstDay.Month, dtFirstDay.Day);
+            return dtFirstDay;
         }
 
 		/// <summary>
@@ -370,9 +371,10 @@
         public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
         {
             int currQuarter = (current.Month - 1) / 3 + 1;
-            DateTime dtLastDay = new DateTime(current.Year, 3 * currQuarter + 1, 1).AddDays(-1);
+            DateTimeOffset dtFirstDay = current.SetDate(current.Year, 3 * currQuarter - 2, 1);
+            DateTimeOffset dtLastDay = dtFirstDay.SetMonth(dtFirstDay.Month + 2).LastDayOfMonth();
 
-            return current.SetDate(dtLastDay.Year, dtLastDay.Month, dtLastDay.Day);
+            return dtLastDay;
         }
 
 		/// <summary>

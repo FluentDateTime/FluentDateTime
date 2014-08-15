@@ -365,6 +365,20 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        public void FirstDayOfQuarter_Q4_SetsDayToFirstDay()
+        {
+            var expected = new DateTime(2002, 10, 1, 7, 8, 9, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 11, 22, 12, 12, 12, DateTimeKind.Local).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_Q4_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTime(2002, 12, 31, 4, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 11, 22, 12, 12, 12, DateTimeKind.Local).LastDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
         public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth()
         {
             var expected = new DateTime(2002, 1, 31, 17, 05, 01, DateTimeKind.Local);

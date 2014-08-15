@@ -349,6 +349,20 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        public void FirstDayOfQuarter_Q4_SetsDayToFirstDay()
+        {
+            var expected = new DateTimeOffset(2002, 10, 1, 7, 8, 9, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 11, 22, 12, 12, 12, TimeSpan.Zero).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_Q4_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTimeOffset(2002, 12, 31, 4, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 11, 22, 12, 12, 12, TimeSpan.Zero).LastDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
         public void FirstDayOfMonth_SetsTheDayToOne()
         {
             Assert.AreEqual(new DateTimeOffset(2002, 12, 1, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).FirstDayOfMonth());
