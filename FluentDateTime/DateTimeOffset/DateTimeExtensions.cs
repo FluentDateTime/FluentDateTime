@@ -337,8 +337,19 @@
             return current.SetTime(hour, minute, second, milliseconds);
         }
 
+        /// <summary>
+        /// Sets the day of the <see cref="DateTimeOffset"/> to the first day in that calendar quarter.
+        /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in the quarter.</returns>
+        public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
+        {
+            int currQuarter = (current.Month - 1) / 3 + 1;
+            DateTime dtFirstDay = new DateTime(current.Year, 3 * currQuarter - 2, 1);
 
-
+            return current.SetDate(dtFirstDay.Year, dtFirstDay.Month, dtFirstDay.Day);
+        }
 
 		/// <summary>
 		/// Sets the day of the <see cref="DateTimeOffset"/> to the first day in that month.
@@ -349,6 +360,20 @@
 		{
 			return current.SetDay(1);
 		}
+
+        /// <summary>
+        /// Sets the day of the <see cref="DateTimeOffset"/> to the last day in that calendar quarter.
+        /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in the quarter.</returns>
+        public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
+        {
+            int currQuarter = (current.Month - 1) / 3 + 1;
+            DateTime dtLastDay = new DateTime(current.Year, 3 * currQuarter + 1, 1).AddDays(-1);
+
+            return current.SetDate(dtLastDay.Year, dtLastDay.Month, dtLastDay.Day);
+        }
 
 		/// <summary>
 		/// Sets the day of the <see cref="DateTimeOffset"/> to the last day in that month.
