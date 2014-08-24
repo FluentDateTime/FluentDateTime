@@ -321,6 +321,62 @@ namespace FluentDateTimeTests
             var expected = new DateTime(2002, 12, 1, 17, 05, 01, DateTimeKind.Local);
             DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).FirstDayOfMonth());
         }
+       
+        [Test]
+        public void PreviousQuarter_FirstDay_SetsTheDayToOne()
+        {
+            var expected = new DateTime(2001, 10, 1, 3, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), 1.Quarters().Ago(new DateTime(2002, 1, 10, 4, 5, 6, DateTimeKind.Local).FirstDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void PreviousQuarter_LastDay_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTime(2001, 12, 31, 3, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), 1.Quarters().Ago(new DateTime(2002, 1, 10, 4, 5, 6, DateTimeKind.Local).LastDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void NextQuarter_FirstDay_SetsTheDayToOne()
+        {
+            var expected = new DateTime(2002, 4, 1, 3, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), 1.Quarters().From(new DateTime(2002, 1, 10, 4, 5, 6, DateTimeKind.Local).FirstDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void NextQuarter_LastDay_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTime(2002, 6, 30, 3, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), 1.Quarters().From(new DateTime(2002, 1, 10, 4, 5, 6, DateTimeKind.Local).LastDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void FirstDayOfQuarter_SetsTheDayToOne()
+        {
+            var expected = new DateTime(2002, 1, 1, 7, 8, 9, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 3, 22, 12, 12, 12, DateTimeKind.Local).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTime(2002, 3, 31, 4, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 3, 22, 12, 12, 12, DateTimeKind.Local).LastDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void FirstDayOfQuarter_Q4_SetsDayToFirstDay()
+        {
+            var expected = new DateTime(2002, 10, 1, 7, 8, 9, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 11, 22, 12, 12, 12, DateTimeKind.Local).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_Q4_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTime(2002, 12, 31, 4, 5, 6, DateTimeKind.Local);
+            DateAssert.AreEqual(expected.BeginningOfDay(), new DateTime(2002, 11, 22, 12, 12, 12, DateTimeKind.Local).LastDayOfQuarter().BeginningOfDay());
+        }
 
         [Test]
         public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth()

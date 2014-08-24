@@ -18,6 +18,16 @@
         }
 
         /// <summary>
+        /// Generates <see cref="TimeSpan"/> value for given number of Quarters.
+        /// </summary>
+        /// <param name="quarters"></param>
+        /// <returns></returns>
+        public static FluentTimeSpan Quarters(this int quarters)
+        {
+            return new FluentTimeSpan { Months = quarters * 3 };
+        }
+
+        /// <summary>
         /// Returns <see cref="TimeSpan"/> value for given number of Months.
         /// </summary>
         public static FluentTimeSpan Months(this int months)

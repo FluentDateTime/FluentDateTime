@@ -306,6 +306,61 @@ namespace FluentDateTimeTests
             Assert.AreEqual(new DateTimeOffset(2002, 12, 17, 18, 06, 02, 03, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02, 03));
         }
 
+        [Test]
+        public void PreviousQuarter_FirstDay_SetsTheDayToOne()
+        {
+            var expected = new DateTimeOffset(2001, 10, 1, 3, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), 1.Quarters().Ago(new DateTimeOffset(2002, 1, 10, 4, 5, 6, TimeSpan.Zero).FirstDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void PreviousQuarter_LastDay_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTimeOffset(2001, 12, 31, 3, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), 1.Quarters().Ago(new DateTimeOffset(2002, 1, 10, 4, 5, 6, TimeSpan.Zero).LastDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void NextQuarter_FirstDay_SetsTheDayToOne()
+        {
+            var expected = new DateTimeOffset(2002, 4, 1, 3, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), 1.Quarters().From(new DateTimeOffset(2002, 1, 10, 4, 5, 6, TimeSpan.Zero).FirstDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void NextQuarter_LastDay_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTimeOffset(2002, 6, 30, 3, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), 1.Quarters().From(new DateTimeOffset(2002, 1, 10, 4, 5, 6, TimeSpan.Zero).LastDayOfQuarter().BeginningOfDay()));
+        }
+
+        [Test]
+        public void FirstDayOfQuarter_SetsTheDayToOne()
+        {
+            var expected = new DateTimeOffset(2002, 1, 1, 6, 3, 0, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 3, 22, 12, 12, 12, TimeSpan.Zero).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_SetsTheDayToLastDayInThatQuarter()
+        {
+            var expected = new DateTimeOffset(2002, 3, 31, 6, 3, 0, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 3, 22, 12, 12, 12, TimeSpan.Zero).LastDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void FirstDayOfQuarter_Q4_SetsDayToFirstDay()
+        {
+            var expected = new DateTimeOffset(2002, 10, 1, 7, 8, 9, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 11, 22, 12, 12, 12, TimeSpan.Zero).FirstDayOfQuarter().BeginningOfDay());
+        }
+
+        [Test]
+        public void LastDayOfQuarter_Q4_SetsTheDayToLastDayOfQuarter()
+        {
+            var expected = new DateTimeOffset(2002, 12, 31, 4, 5, 6, TimeSpan.Zero);
+            Assert.AreEqual(expected.BeginningOfDay(), new DateTimeOffset(2002, 11, 22, 12, 12, 12, TimeSpan.Zero).LastDayOfQuarter().BeginningOfDay());
+        }
 
         [Test]
         public void FirstDayOfMonth_SetsTheDayToOne()
