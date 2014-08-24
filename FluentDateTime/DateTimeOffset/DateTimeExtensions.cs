@@ -24,8 +24,7 @@
 		{
             return new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, date.Offset);
 		}
-
-
+        
 		/// <summary>
 		/// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year. 
 		/// If that day does not exist in next year in same month, number of missing days is added to the last day in same month next year.
@@ -105,8 +104,7 @@
 
 			return start;
 		}
-
-
+        
 		/// <summary>
 		/// Increases supplied <see cref="DateTimeOffset"/> for 7 days ie returns the Next Week.
 		/// </summary>
@@ -122,8 +120,7 @@
 		{
 			return start - 1.Weeks();
 		}
-
-
+        
 		/// <summary>
 		/// Increases the <see cref="DateTimeOffset"/> object with given <see cref="TimeSpan"/> value.
 		/// </summary>
@@ -320,9 +317,7 @@
 		{
 			return current.SetTime(hour, minute, second);
 		}
-
-
-
+        
         /// <summary>
         /// Returns the given <see cref="DateTimeOffset"/> with hour and minutes and seconds and milliseconds set At given values.
         /// </summary>
@@ -345,11 +340,8 @@
         /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in the quarter.</returns>
         public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
         {
-            int currQuarter = (current.Month - 1) / 3 + 1;
-            //DateTimeOffset dtFirstDay = new DateTimeOffset(current.Year, 3 * currQuarter - 2, 1);
-            DateTimeOffset dtFirstDay = current.SetDate(current.Year, 3 * currQuarter - 2, 1);
-
-            return dtFirstDay;
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            return current.SetDate(current.Year, 3 * currentQuarter - 2, 1);
         }
 
 		/// <summary>
@@ -370,11 +362,9 @@
         /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in the quarter.</returns>
         public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
         {
-            int currQuarter = (current.Month - 1) / 3 + 1;
-            DateTimeOffset dtFirstDay = current.SetDate(current.Year, 3 * currQuarter - 2, 1);
-            DateTimeOffset dtLastDay = dtFirstDay.SetMonth(dtFirstDay.Month + 2).LastDayOfMonth();
-
-            return dtLastDay;
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            var firstDay = current.SetDate(current.Year, 3 * currentQuarter - 2, 1);
+            return firstDay.SetMonth(firstDay.Month + 2).LastDayOfMonth();
         }
 
 		/// <summary>

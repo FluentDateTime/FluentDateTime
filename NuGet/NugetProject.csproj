@@ -12,6 +12,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <NuGetPackageImportStamp>763c9223</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <ConfigurationName>Debug</ConfigurationName>
@@ -28,7 +29,6 @@
   </Target>
   <Target Name="Build" DependsOnTargets="NuGetBuild" />
   <Target Name="ReBuild" DependsOnTargets="NuGetBuild" />
-  <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="$(SolutionDir)Tools\MSBuild.Community.Tasks.dll" />
   <Target Name="NuGetBuild" DependsOnTargets="Clean">
     <MakeDir Directories="$(SolutionDir)NuGetBuild" />
@@ -57,6 +57,7 @@
   <ItemGroup>
     <None Include="FluentDateTime-CodeOnly.nuspec" />
     <None Include="FluentDateTime.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)FluentDateTime\FluentDateTimeNet35.csproj">
@@ -66,4 +67,11 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\packages\PepitaPackage.1.21.2\build\PepitaPackage.targets" Condition="Exists('..\packages\PepitaPackage.1.21.2\build\PepitaPackage.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\PepitaPackage.1.21.2\build\PepitaPackage.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PepitaPackage.1.21.2\build\PepitaPackage.targets'))" />
+  </Target>
 </Project>

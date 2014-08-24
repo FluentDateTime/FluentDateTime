@@ -345,10 +345,10 @@
         /// <returns>given <see cref="DateTime"/> with the day part set to the first day in the quarter.</returns>
         public static DateTime FirstDayOfQuarter(this DateTime current)
         {
-            int currQuarter = (current.Month - 1) / 3 + 1;
-            DateTime dtFirstDay = new DateTime(current.Year, 3 * currQuarter - 2, 1);
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            var firstDay = new DateTime(current.Year, 3 * currentQuarter - 2, 1);
 
-            return current.SetDate(dtFirstDay.Year, dtFirstDay.Month, dtFirstDay.Day);
+            return current.SetDate(firstDay.Year, firstDay.Month, firstDay.Day);
         }
 
 		/// <summary>
@@ -369,11 +369,9 @@
         /// <returns>given <see cref="DateTime"/> with the day part set to the last day in the quarter.</returns>
         public static DateTime LastDayOfQuarter(this DateTime current)
         {
-            int currQuarter = (current.Month - 1) / 3 + 1;
-            DateTime dtFirstDay = current.SetDate(current.Year, 3 * currQuarter - 2, 1);
-            DateTime dtLastDay = dtFirstDay.SetMonth(dtFirstDay.Month + 2).LastDayOfMonth();
-
-            return dtLastDay;
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            var firstDay = current.SetDate(current.Year, 3 * currentQuarter - 2, 1);
+            return firstDay.SetMonth(firstDay.Month + 2).LastDayOfMonth();
         }
 
 		/// <summary>

@@ -1,17 +1,16 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace FluentDateTimeTests
+
+public class DateAssert
 {
-    public class DateAssert
+    public static void AreEqual(DateTime expected, DateTime actual, string message)
     {
-        public static void AreEqual(DateTime expected, DateTime actual, string message)
-        {
-            Assert.That(actual == expected && actual.Kind == expected.Kind, Is.True, message, null);
-        }
-        public static void AreEqual(DateTime expected, DateTime actual)
-        {
-            AreEqual(expected, actual, null);
-        }
+        Assert.That(actual == expected && actual.Kind == expected.Kind, Is.True, message, null);
+    }
+
+    public static void AreEqual(DateTime expected, DateTime actual)
+    {
+        AreEqual(expected, actual, null);
     }
 }
