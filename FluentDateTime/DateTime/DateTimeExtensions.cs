@@ -12,19 +12,36 @@
 		/// <summary>
 		/// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
 		/// </summary>
-		public static DateTime EndOfDay(this DateTime date)
-		{
+        public static DateTime EndOfDay(this DateTime date)
+        {
             return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind);
-		}
+        }
+
+        /// <summary>
+        /// Returns the timezone-adjusted very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
+        /// </summary>
+        public static DateTime EndOfDay(this DateTime date, int timeZoneOffset)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind)
+                .AddHours(timeZoneOffset);
+        }
 
 		/// <summary>
 		/// Returns the Start of the given day (the first millisecond of the given <see cref="DateTime"/>).
 		/// </summary>
-		public static DateTime BeginningOfDay(this DateTime date)
+        public static DateTime BeginningOfDay(this DateTime date)
 		{
             return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind);
 		}
 
+        /// <summary>
+        /// Returns the timezone-adjusted Start of the given day (the first millisecond of the given <see cref="DateTime"/>).
+        /// </summary>
+        public static DateTime BeginningOfDay(this DateTime date, int timezoneOffset)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind)
+                .AddHours(timezoneOffset);
+        }
 
 		/// <summary>
 		/// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year. 

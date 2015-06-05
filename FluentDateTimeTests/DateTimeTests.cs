@@ -144,6 +144,35 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        public void TimeZoneTests()
+        {
+            /* story:
+             * 1. a web client submits a request to the server for "today",
+             * 2. a developer uses :BeginningOfDay and :EndOfDay to perform clamping server-side.
+             * 
+             * expected:
+             * 3. user expects a timezone-correct utc responses from the server, 
+             * 
+             * actual:
+             * 4. user receives a utc response that is too early (:BeginningOfDay), or
+             * 5. user receives a utc response that is too late (:EndOfDay)
+             */
+            for (int i = -11; i <= 12; i++)
+            {
+                var beginningOfDayUTC = new DateTime(2015, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                var actualDayStart = beginningOfDayUTC.BeginningOfDay(i);
+                var actualDayEnd = beginningOfDayUTC.EndOfDay(i);
+                var expectedDayStart = beginningOfDayUTC
+                    .AddHours(i);
+                var expectedDayEnd = beginningOfDayUTC
+                    .SetHour(23).SetMinute(59).SetSecond(59).SetMillisecond(999)
+                    .AddHours(i);
+                DateAssert.AreEqual(expectedDayStart, actualDayStart);
+                DateAssert.AreEqual(expectedDayEnd, actualDayEnd);
+            }
+        }
+
+        [Test]
         public void BasicTests()
         {
             var now = DateTime.Now;
