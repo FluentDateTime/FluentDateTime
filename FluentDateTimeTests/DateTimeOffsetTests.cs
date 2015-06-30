@@ -9,7 +9,7 @@ using System.Threading;
 [TestFixture]
 public class DateTimeOffsetTests
 {
-    const int DAYS_PER_WEEK = 7;
+    const int DaysPerWeek = 7;
 
     [Test]
     [TestCase(1)]
@@ -26,7 +26,7 @@ public class DateTimeOffsetTests
 
         Assert.AreEqual(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
         Assert.AreEqual(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
-        Assert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue*DAYS_PER_WEEK));
+        Assert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue*DaysPerWeek));
         Assert.AreEqual(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
 
         Assert.AreEqual(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
@@ -69,7 +69,7 @@ public class DateTimeOffsetTests
 
         Assert.AreEqual(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
         Assert.AreEqual(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
-        Assert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value*DAYS_PER_WEEK));
+        Assert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value*DaysPerWeek));
         Assert.AreEqual(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
 
         Assert.AreEqual(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
@@ -184,7 +184,7 @@ public class DateTimeOffsetTests
 
         var tomorrow = DateTimeOffset.UtcNow + 1.Days();
         var yesterday = DateTimeOffset.UtcNow - 1.Days();
-        var changedHourTo14h = DateTimeOffset.UtcNow.SetHour(14);
+        var changedHourTo14H = DateTimeOffset.UtcNow.SetHour(14);
         var todayNoon = DateTimeOffset.UtcNow.Noon();
         var tomorrowNoon = DateTimeOffset.UtcNow.NextDay().Noon();
         var fiveDaysAgo = TimeSpanOffsetExtensions.Ago(5.Days());

@@ -10,7 +10,7 @@ namespace FluentDateTimeTests
     [TestFixture]
     public class DateTimeTests
     {
-        const int DAYS_PER_WEEK = 7;
+        const int DaysPerWeek = 7;
 
         [Test]
         [TestCase(1)]
@@ -27,7 +27,7 @@ namespace FluentDateTimeTests
 
             DateAssert.AreEqual(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
             DateAssert.AreEqual(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
-            DateAssert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * DAYS_PER_WEEK));
+            DateAssert.AreEqual(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * DaysPerWeek));
             DateAssert.AreEqual(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
 
             DateAssert.AreEqual(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
@@ -69,7 +69,7 @@ namespace FluentDateTimeTests
 
             DateAssert.AreEqual(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
             DateAssert.AreEqual(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
-            DateAssert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * DAYS_PER_WEEK));
+            DateAssert.AreEqual(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * DaysPerWeek));
             DateAssert.AreEqual(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
 
             DateAssert.AreEqual(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
@@ -157,14 +157,14 @@ namespace FluentDateTimeTests
              * 4. user receives a utc response that is too early (:BeginningOfDay), or
              * 5. user receives a utc response that is too late (:EndOfDay)
              */
-            for (int i = -11; i <= 12; i++)
+            for (var i = -11; i <= 12; i++)
             {
-                var beginningOfDayUTC = new DateTime(2015, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                var actualDayStart = beginningOfDayUTC.BeginningOfDay(i);
-                var actualDayEnd = beginningOfDayUTC.EndOfDay(i);
-                var expectedDayStart = beginningOfDayUTC
+                var beginningOfDayUtc = new DateTime(2015, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                var actualDayStart = beginningOfDayUtc.BeginningOfDay(i);
+                var actualDayEnd = beginningOfDayUtc.EndOfDay(i);
+                var expectedDayStart = beginningOfDayUtc
                     .AddHours(i);
-                var expectedDayEnd = beginningOfDayUTC
+                var expectedDayEnd = beginningOfDayUtc
                     .SetHour(23).SetMinute(59).SetSecond(59).SetMillisecond(999)
                     .AddHours(i);
                 DateAssert.AreEqual(expectedDayStart, actualDayStart);
@@ -213,7 +213,7 @@ namespace FluentDateTimeTests
 
             var tomorrow = DateTime.Now + 1.Days();
             var yesterday = DateTime.Now - 1.Days();
-            var changedHourTo14h = DateTime.Now.SetHour(14);
+            var changedHourTo14H = DateTime.Now.SetHour(14);
             var todayNoon = DateTime.Now.Noon();
             var tomorrowNoon = DateTime.Now.NextDay().Noon();
             var fiveDaysAgo = 5.Days().Ago();
