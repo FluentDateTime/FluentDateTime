@@ -572,9 +572,76 @@ namespace FluentDateTimeTests
             var expected = new DateTime(2013, 2, 28, 06, 40, 20, 5, DateTimeKind.Local);
             DateAssert.AreEqual(expected, new DateTime(2013, 1, 31, 06, 40, 20, 5, DateTimeKind.Local).NextMonth());
         }
+
+        [Test]
+        [TestCase("2015-11-25T00:00:00.000")]
+        [TestCase("2015-12-25T00:00:00.000")]
+        [TestCase("2015-10-25T00:00:00.000")]
+        public void SameYear_Y(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsTrue(date.SameYear(other));
+        }
+
+        [Test]
+        [TestCase("2014-11-25T00:00:00.000")]
+        [TestCase("2013-11-25T00:00:00.000")]
+        [TestCase("1995-11-25T00:00:00.000")]
+        public void SameYear_N(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsFalse(date.SameYear(other));
+        }
+
+        [Test]
+        [TestCase("2015-11-25T00:00:00.000")]
+        [TestCase("2015-11-01T00:00:00.000")]
+        [TestCase("2015-11-15T00:00:00.000")]
+        public void SameMonth_Y(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsTrue(date.SameMonth(other));
+        }
+
+        [Test]
+        [TestCase("2016-11-25T00:00:00.000")]
+        [TestCase("2014-11-01T12:00:00.000")]
+        [TestCase("2015-10-15T18:00:00.000")]
+        public void SameMonth_N(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsFalse(date.SameMonth(other));
+        }
+
+        [Test]
+        [TestCase("2015-11-25T12:25:00.000")]
+        [TestCase("2015-11-25T23:59:59.999")]
+        public void SameDay_Y(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsTrue(date.SameDay(other));
+        }
+
+        [Test]
+        [TestCase("2014-11-25T12:25:00.000")]
+        [TestCase("2015-12-25T23:59:59.999")]
+        [TestCase("2015-10-25T23:59:59.999")]
+        public void SameDay_N(string dateValue)
+        {
+            var other = DateTime.Parse(dateValue);
+            var date = new DateTime(2015, 11, 25);
+
+            Assert.IsFalse(date.SameDay(other));
+        }
     }
-
-
-
-
 }

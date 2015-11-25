@@ -588,6 +588,43 @@
             return firstDayOfNextMonth.SetDay(day);
         }
 
+        /// <summary>
+        /// Determines whether the specified <see cref="DateTimeOffset"/> value is exactly the same day (day + month + year) then current
+        /// </summary>
+        /// <param name="current">The current value</param>
+        /// <param name="date">Value to compare with</param>
+        /// <returns>
+		/// 	<c>true</c> if the specified date is exactly the same year then current; otherwise, <c>false</c>.
+		/// </returns>
+        public static bool SameDay(this DateTimeOffset current, DateTimeOffset date)
+        {
+            return current.Date == date.Date;
+        }
 
-	}
+        /// <summary>
+        /// Determines whether the specified <see cref="DateTimeOffset"/> value is exactly the same month (month + year) then current. Eg, 2015-12-01 and 2014-12-01 => False 
+        /// </summary>
+        /// <param name="current">The current value</param>
+        /// <param name="date">Value to compare with</param>
+        /// <returns>
+		/// 	<c>true</c> if the specified date is exactly the same month and year then current; otherwise, <c>false</c>.
+		/// </returns>
+        public static bool SameMonth(this DateTimeOffset current, DateTimeOffset date)
+        {
+            return current.Month == date.Month && current.Year == date.Year;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="DateTimeOffset"/> value is exactly the same year then current. Eg, 2015-12-01 and 2015-01-01 => True
+        /// </summary>
+        /// <param name="current">The current value</param>
+        /// <param name="date">Value to compare with</param>
+        /// <returns>
+		/// 	<c>true</c> if the specified date is exactly the same date then current; otherwise, <c>false</c>.
+		/// </returns>
+        public static bool SameYear(this DateTimeOffset current, DateTimeOffset date)
+        {
+            return current.Year == date.Year;
+        }
+    }
 }
