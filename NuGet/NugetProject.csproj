@@ -4,15 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D0C113B0-6DB4-4018-AFFA-603151840372}</ProjectGuid>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
-    <NuGetPackageImportStamp>875bdf58</NuGetPackageImportStamp>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <ConfigurationName>Debug</ConfigurationName>
@@ -55,7 +47,9 @@
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)NuGetBuildCodeOnly" MetadataAssembly="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" />
   </Target>
   <ItemGroup>
-    <None Include="FluentDateTime-CodeOnly.nuspec" />
+    <None Include="FluentDateTime-CodeOnly.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="FluentDateTime.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
