@@ -289,83 +289,24 @@ namespace FluentDate
         /// <summary>
         /// Gets the number of ticks that represent the value of the current <see cref="TimeSpan"/> structure.
         /// </summary>
-        public long Ticks
-        {
-            get
-            {
-                return ((TimeSpan)this).Ticks;
-            }
-        }
-        public int Days
-        {
-            get
-            {
-                return ((TimeSpan)this).Days;
-            }
-        }
-        public int Hours
-        {
-            get
-            {
-                return ((TimeSpan)this).Hours;
-            }
-        }
-        public int Milliseconds
-        {
-            get
-            {
-                return ((TimeSpan)this).Milliseconds;
-            }
-        }
-        public int Minutes
-        {
-            get
-            {
-                return ((TimeSpan)this).Minutes;
-            }
-        }
-        public int Seconds
-        {
-            get
-            {
-                return ((TimeSpan)this).Seconds;
-            }
-        }
-        public double TotalDays
-        {
-            get
-            {
-                return ((TimeSpan)this).TotalDays;
-            }
-        }
-        public double TotalHours
-        {
-            get
-            {
-                return ((TimeSpan)this).TotalHours;
-            }
-        }
-        public double TotalMilliseconds
-        {
-            get
-            {
-                return ((TimeSpan)this).TotalMilliseconds;
-            }
-        }
-        public double TotalMinutes
-        {
-            get
-            {
-                return ((TimeSpan)this).TotalMinutes;
-            }
-        }
-        public double TotalSeconds
-        {
-            get
-            {
-                return ((TimeSpan)this).TotalSeconds;
-            }
-        }
+        public long Ticks => ((TimeSpan)this).Ticks;
+
+        public int Days => ((TimeSpan)this).Days;
+
+        public int Hours => ((TimeSpan)this).Hours;
+
+        public int Milliseconds => ((TimeSpan)this).Milliseconds;
+
+        public int Minutes => ((TimeSpan)this).Minutes;
+
+        public int Seconds => ((TimeSpan)this).Seconds;
+
+        public double TotalDays => ((TimeSpan)this).TotalDays;
+        public double TotalHours => ((TimeSpan)this).TotalHours;
+        public double TotalMilliseconds => ((TimeSpan)this).TotalMilliseconds;
+        public double TotalMinutes => ((TimeSpan)this).TotalMinutes;
+        public double TotalSeconds => ((TimeSpan)this).TotalSeconds;
+
         public int CompareTo(TimeSpan other)
         {
             return ((TimeSpan)this).CompareTo(other);

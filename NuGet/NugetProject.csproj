@@ -42,7 +42,7 @@
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(SolutionDir)FluentDateTime\bin\$(ConfigurationName)PCL\FluentDateTime.dll" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTime\DateTimeExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTime\DateTimeExtensions.cs.pp" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTime\TimeSpanExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTime\TimeSpanExtensions.cs.pp" />
-    <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTimeOffset\DateTimeExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTimeOffset\DateTimeExtensions.cs.pp" />
+    <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTimeOffset\DateTimeOffsetExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTimeOffset\DateTimeOffsetExtensions.cs.pp" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\DateTimeOffset\TimeSpanExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\DateTimeOffset\TimeSpanExtensions.cs.pp" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\FluentTimeSpan.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\FluentTimeSpan.cs.pp" />
     <Copy SourceFiles="$(SolutionDir)FluentDateTime\NumberExtensions.cs" DestinationFiles="$(SolutionDir)NuGetBuildCodeOnly\Content\FluentDateTime\NumberExtensions.cs.pp" />

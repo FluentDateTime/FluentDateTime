@@ -136,23 +136,23 @@
 			if (timeSpan.TotalDays > 1)
 			{
 				var round = timeSpan.Round(RoundTo.Hour);
-				return string.Format("{0} days and {1} hours", round.Days, round.Hours );
+				return $"{round.Days} days and {round.Hours} hours";
 			}
 			if (timeSpan.TotalHours > 1)
 			{
 				var round = timeSpan.Round(RoundTo.Minute);
-				return string.Format("{0} hours and {1} minutes", round.Hours, round.Minutes);
+				return $"{round.Hours} hours and {round.Minutes} minutes";
 			}
 			if (timeSpan.TotalMinutes > 1)
 			{
 				var round = timeSpan.Round(RoundTo.Second);
-				return string.Format("{0} minutes and {1} seconds", round.Minutes, round.Seconds);
+				return $"{round.Minutes} minutes and {round.Seconds} seconds";
 			}
 			if (timeSpan.TotalSeconds > 1)
 			{
-				return string.Format("{0} seconds", timeSpan.TotalSeconds);
+				return $"{timeSpan.TotalSeconds} seconds";
 			}
-			return string.Format("{0} milliseconds", timeSpan.Milliseconds);
+			return $"{timeSpan.Milliseconds} milliseconds";
 		}
 
       

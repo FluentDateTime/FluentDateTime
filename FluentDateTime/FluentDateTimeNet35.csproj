@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="DateTimeOffset\DateTimeExtensions.cs" />
+    <Compile Include="DateTimeOffset\DateTimeOffsetExtensions.cs" />
     <Compile Include="DateTimeOffset\TimeSpanExtensions.cs" />
     <Compile Include="DateTime\DateTimeExtensions.cs" />
     <Compile Include="NumberExtensions.cs" />
