@@ -422,10 +422,33 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        public void AddBusinessDays_AdsDaysProperlyWhenThereIsPartialWeekendAhead()
+        {
+            var expected = new DateTime(2009, 7, 20, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2009, 7, 17, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(2, DateTimeExtensions.WeekEnd.Sunday));
+        }
+
+        [Test]
         public void AddBusinessDays_Negative()
         {
             var expected = new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local);
             DateAssert.AreEqual(expected, new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(-2));
+        }
+
+        [Test]
+        public void AddBusinessDays_AdsDaysProperlyWhenThereIsHolidaysAhead()
+        {
+            var expected = new DateTime(2016, 9, 23, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2016, 9, 19, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(2, 
+                new [] { new DateTime(2016, 9, 20, 0, 0, 0, DateTimeKind.Local), new DateTime(2016, 9, 21, 0, 0, 0, DateTimeKind.Local) }));
+        }
+
+        [Test]
+        public void AddBusinessDays_AdsDaysProperlyWhenThereIsHolidaysAndWeekendAhead()
+        {
+            var expected = new DateTime(2016, 9, 22, 0, 0, 0, DateTimeKind.Local);
+            DateAssert.AreEqual(expected, new DateTime(2016, 9, 16, 0, 0, 0, DateTimeKind.Local).AddBusinessDays(2,
+                new[] { new DateTime(2016, 9, 20, 0, 0, 0, DateTimeKind.Local), new DateTime(2016, 9, 21, 0, 0, 0, DateTimeKind.Local) }));
         }
 
         [Test]
@@ -434,6 +457,7 @@ namespace FluentDateTimeTests
             var expected = new DateTime(2009, 7, 9, 0, 0, 0, DateTimeKind.Local);
             DateAssert.AreEqual(expected, new DateTime(2009, 7, 13, 0, 0, 0, DateTimeKind.Local).SubtractBusinessDays(2));
         }
+
 
         [Test]
         public void SubtractBusinessDays_Negative()

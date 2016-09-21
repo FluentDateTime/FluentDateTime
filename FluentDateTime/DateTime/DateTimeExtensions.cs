@@ -1,4 +1,7 @@
-﻿namespace FluentDateTime
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace FluentDateTime
 {
     using System;
     using System.Threading;
@@ -9,6 +12,26 @@
     /// </summary>
     public static class DateTimeExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        [Flags]
+        public enum WeekEnd
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            None,
+            /// <summary>
+            /// 
+            /// </summary>
+            Saturday,
+            /// <summary>
+            /// 
+            /// </summary>
+            Sunday
+        }
+
         /// <summary>
         /// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
         /// </summary>
@@ -399,6 +422,55 @@
             return current.SetDay(DateTime.DaysInMonth(current.Year, current.Month));
         }
 
+        /// <summary>
+        /// Adds the given number of business days to the <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="current">The date to be changed.</param>
+        /// <param name="days">Number of business days to be added.</param>
+        /// <param name="holidays">Days to exclude by holidays</param>
+        /// <param name="excludeWeekEnd">Exclude Weekend days.</param>
+        /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
+        public static DateTime AddBusinessDays(this DateTime current, int days, DateTime[] holidays, WeekEnd excludeWeekEnd)
+        {
+            var sign = Math.Sign(days);
+            var unsignedDays = Math.Abs(days);
+            for (int i = 0; i < unsignedDays; i++)
+            {
+                do
+                {
+                    current = current.AddDays(sign);
+                }
+                while ((current.DayOfWeek == DayOfWeek.Saturday && (excludeWeekEnd & WeekEnd.Saturday) == WeekEnd.Saturday) 
+                    || (current.DayOfWeek == DayOfWeek.Sunday && (excludeWeekEnd & WeekEnd.Sunday) == WeekEnd.Sunday)
+                    || (holidays != null && holidays.Contains(current)));
+            }
+
+            return current;
+        }
+
+        /// <summary>
+        /// Adds the given number of business days to the <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="current">The date to be changed.</param>
+        /// <param name="days">Number of business days to be added.</param>
+        /// <param name="holidays">Days to exclude by holidays</param>
+        /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
+        public static DateTime AddBusinessDays(this DateTime current, int days, DateTime[] holidays)
+        {
+            return AddBusinessDays(current, days, holidays, WeekEnd.Saturday | WeekEnd.Sunday);
+        }
+
+        /// <summary>
+        /// Adds the given number of business days to the <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="current">The date to be changed.</param>
+        /// <param name="days">Number of business days to be added.</param>
+        /// <param name="excludeWeekEnd">Exclude Weekend days.</param>
+        /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
+        public static DateTime AddBusinessDays(this DateTime current, int days, WeekEnd excludeWeekEnd)
+        {
+            return AddBusinessDays(current, days, null, excludeWeekEnd);
+        }
 
         /// <summary>
         /// Adds the given number of business days to the <see cref="DateTime"/>.
@@ -408,17 +480,7 @@
         /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
         public static DateTime AddBusinessDays(this DateTime current, int days)
         {
-            var sign = Math.Sign(days);
-            var unsignedDays = Math.Abs(days);
-            for (var i = 0; i < unsignedDays; i++)
-            {
-                do
-                {
-                    current = current.AddDays(sign);
-                } while (current.DayOfWeek == DayOfWeek.Saturday ||
-                         current.DayOfWeek == DayOfWeek.Sunday);
-            }
-            return current;
+            return AddBusinessDays(current, days, null, WeekEnd.Saturday | WeekEnd.Sunday);
         }
 
         /// <summary>
