@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion =  14.0.22823.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 14.0.22823.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimeTests", "FluentDateTimeTests\FluentDateTimeTests.csproj", "{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimeNet35", "FluentDateTime\FluentDateTimeNet35.csproj", "{E999EA36-1B17-4EDA-A536-82D519F94C3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTimePCL", "FluentDateTime\FluentDateTimePCL.csproj", "{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTimeNetStandart", "FluentDateTime\FluentDateTimeNetStandart.csproj", "{D31AB307-F3A1-4F77-AC42-7077D822ED72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,18 @@ Global
 		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F1D8A4DB-B141-4E34-A24B-BA3650B54B0A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Debug|x86.Build.0 = Debug|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|x86.ActiveCfg = Release|Any CPU
+		{D31AB307-F3A1-4F77-AC42-7077D822ED72}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
