@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.10
-MinimumVisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 15.0.26730.10
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{3ECB8653-5EE6-46AF-8BF3-35E2473A1A92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTime", "FluentDateTime\FluentDateTime.csproj", "{D31AB307-F3A1-4F77-AC42-7077D822ED72}"
