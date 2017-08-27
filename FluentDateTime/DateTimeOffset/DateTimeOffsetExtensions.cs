@@ -1,4 +1,6 @@
-﻿namespace FluentDateTimeOffset
+﻿using System.Globalization;
+
+namespace FluentDateTimeOffset
 {
     using System;
     using System.Threading;
@@ -338,8 +340,8 @@
         /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in the quarter.</returns>
         public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
         {
-            var currentQuarter = (current.Month - 1)/3 + 1;
-            return current.SetDate(current.Year, 3*currentQuarter - 2, 1);
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            return current.SetDate(current.Year, 3 * currentQuarter - 2, 1);
         }
 
         /// <summary>
@@ -360,8 +362,8 @@
         /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in the quarter.</returns>
         public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
         {
-            var currentQuarter = (current.Month - 1)/3 + 1;
-            var firstDay = current.SetDate(current.Year, 3*currentQuarter - 2, 1);
+            var currentQuarter = (current.Month - 1) / 3 + 1;
+            var firstDay = current.SetDate(current.Year, 3 * currentQuarter - 2, 1);
             return firstDay.SetMonth(firstDay.Month + 2).LastDayOfMonth();
         }
 
@@ -437,45 +439,45 @@
             switch (rt)
             {
                 case RoundTo.Second:
-                {
-                    rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Offset);
-                    if (dateTime.Millisecond >= 500)
                     {
-                        rounded = rounded.AddSeconds(1);
+                        rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, dateTime.Offset);
+                        if (dateTime.Millisecond >= 500)
+                        {
+                            rounded = rounded.AddSeconds(1);
+                        }
+                        break;
                     }
-                    break;
-                }
                 case RoundTo.Minute:
-                {
-                    rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0, dateTime.Offset);
-                    if (dateTime.Second >= 30)
                     {
-                        rounded = rounded.AddMinutes(1);
+                        rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0, dateTime.Offset);
+                        if (dateTime.Second >= 30)
+                        {
+                            rounded = rounded.AddMinutes(1);
+                        }
+                        break;
                     }
-                    break;
-                }
                 case RoundTo.Hour:
-                {
-                    rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0, dateTime.Offset);
-                    if (dateTime.Minute >= 30)
                     {
-                        rounded = rounded.AddHours(1);
+                        rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0, dateTime.Offset);
+                        if (dateTime.Minute >= 30)
+                        {
+                            rounded = rounded.AddHours(1);
+                        }
+                        break;
                     }
-                    break;
-                }
                 case RoundTo.Day:
-                {
-                    rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, dateTime.Offset);
-                    if (dateTime.Hour >= 12)
                     {
-                        rounded = rounded.AddDays(1);
+                        rounded = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, dateTime.Offset);
+                        if (dateTime.Hour >= 12)
+                        {
+                            rounded = rounded.AddDays(1);
+                        }
+                        break;
                     }
-                    break;
-                }
                 default:
-                {
-                    throw new ArgumentOutOfRangeException("rt");
-                }
+                    {
+                        throw new ArgumentOutOfRangeException("rt");
+                    }
             }
 
             return rounded;
@@ -489,7 +491,11 @@
         /// <remarks>the beginning of the week is controlled by the current Culture</remarks>
         public static DateTimeOffset FirstDayOfWeek(this DateTimeOffset dateTime)
         {
+#if NETSTANDARD1_4
+            var currentCulture = CultureInfo.CurrentCulture;
+#else
             var currentCulture = Thread.CurrentThread.CurrentCulture;
+#endif
             var firstDayOfWeek = currentCulture.DateTimeFormat.FirstDayOfWeek;
             var offset = dateTime.DayOfWeek - firstDayOfWeek < 0 ? 7 : 0;
             var numberOfDaysSinceBeginningOfTheWeek = dateTime.DayOfWeek + offset - firstDayOfWeek;
