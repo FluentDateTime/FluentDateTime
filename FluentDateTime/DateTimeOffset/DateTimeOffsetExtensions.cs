@@ -1,10 +1,9 @@
 ﻿using System.Globalization;
+using System;
+using FluentDate;
 
 namespace FluentDateTimeOffset
 {
-    using System;
-    using System.Threading;
-    using FluentDate;
 
     /// <summary>
     /// Static class containing Fluent <see cref="DateTimeOffset"/> extension methods.
@@ -28,7 +27,7 @@ namespace FluentDateTimeOffset
         }
 
         /// <summary>
-        /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year. 
+        /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year.
         /// If that day does not exist in next year in same month, number of missing days is added to the last day in same month next year.
         /// </summary>
         public static DateTimeOffset NextYear(this DateTimeOffset start)
@@ -377,7 +376,6 @@ namespace FluentDateTimeOffset
             return current.SetDay(DateTime.DaysInMonth(current.Year, current.Month));
         }
 
-
         /// <summary>
         /// Adds the given number of business days to the <see cref="DateTimeOffset"/>.
         /// </summary>
@@ -421,7 +419,6 @@ namespace FluentDateTimeOffset
             return dateTime > DateTimeOffset.Now;
         }
 
-
         /// <summary>
         /// Determine if a <see cref="DateTimeOffset"/> is in the past.
         /// </summary>
@@ -432,6 +429,10 @@ namespace FluentDateTimeOffset
             return dateTime < DateTimeOffset.Now;
         }
 
+        /// <summary>
+        /// Rounds <paramref name="dateTime"/> to the newarest <see cref="RoundTo"/>.
+        /// </summary>
+        /// <returns>The rounded <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Round(this DateTimeOffset dateTime, RoundTo rt)
         {
             DateTimeOffset rounded;
@@ -491,17 +492,12 @@ namespace FluentDateTimeOffset
         /// <remarks>the beginning of the week is controlled by the current Culture</remarks>
         public static DateTimeOffset FirstDayOfWeek(this DateTimeOffset dateTime)
         {
-#if NETSTANDARD1_4
             var currentCulture = CultureInfo.CurrentCulture;
-#else
-            var currentCulture = Thread.CurrentThread.CurrentCulture;
-#endif
             var firstDayOfWeek = currentCulture.DateTimeFormat.FirstDayOfWeek;
             var offset = dateTime.DayOfWeek - firstDayOfWeek < 0 ? 7 : 0;
             var numberOfDaysSinceBeginningOfTheWeek = dateTime.DayOfWeek + offset - firstDayOfWeek;
 
             return dateTime.AddDays(-numberOfDaysSinceBeginningOfTheWeek);
-
         }
 
         /// <summary>
@@ -605,7 +601,7 @@ namespace FluentDateTimeOffset
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="DateTimeOffset"/> value is exactly the same month (month + year) then current. Eg, 2015-12-01 and 2014-12-01 => False 
+        /// Determines whether the specified <see cref="DateTimeOffset"/> value is exactly the same month (month + year) then current. Eg, 2015-12-01 and 2014-12-01 => False
         /// </summary>
         /// <param name="current">The current value</param>
         /// <param name="date">Value to compare with</param>

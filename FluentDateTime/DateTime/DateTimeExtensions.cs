@@ -1,10 +1,9 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
+using FluentDate;
 
 namespace FluentDateTime
 {
-    using System;
-    using System.Threading;
-    using FluentDate;
 
     /// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.
@@ -222,7 +221,7 @@ namespace FluentDateTime
         }
 
         /// <summary>
-        /// Returns original <see cref="DateTime"/> value with time part set to midnight (alias for <see cref="BeginningOfDay"/> method).
+        /// Returns original <see cref="DateTime"/> value with time part set to midnight (alias for <see cref="BeginningOfDay(System.DateTime)"/> method).
         /// </summary>
         public static DateTime Midnight(this DateTime value)
         {
@@ -456,6 +455,10 @@ namespace FluentDateTime
             return dateTime < DateTime.Now;
         }
 
+        /// <summary>
+        /// Rounds <paramref name="dateTime"/> to the newarest <see cref="RoundTo"/>.
+        /// </summary>
+        /// <returns>The rounded <see cref="DateTime"/>.</returns>
         public static DateTime Round(this DateTime dateTime, RoundTo rt)
         {
             DateTime rounded;
@@ -515,11 +518,7 @@ namespace FluentDateTime
         /// <remarks>the beginning of the week is controlled by the current Culture</remarks>
         public static DateTime FirstDayOfWeek(this DateTime dateTime)
         {
-#if NETSTANDARD1_4
             var currentCulture = CultureInfo.CurrentCulture;
-#else
-            var currentCulture = Thread.CurrentThread.CurrentCulture;
-#endif
             var firstDayOfWeek = currentCulture.DateTimeFormat.FirstDayOfWeek;
             var offset = dateTime.DayOfWeek - firstDayOfWeek < 0 ? 7 : 0;
             var numberOfDaysSinceBeginningOfTheWeek = dateTime.DayOfWeek + offset - firstDayOfWeek;

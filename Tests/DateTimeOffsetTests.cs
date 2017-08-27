@@ -79,11 +79,7 @@ public class DateTimeOffsetTests
         Assert.AreEqual(value.Ticks().From(originalPointInTime), originalPointInTime.AddTicks(value));
     }
 
-
-
     [Test]
-    [TestCase(24, ExpectedException = typeof (ArgumentOutOfRangeException))]
-    [TestCase(-1, ExpectedException = typeof (ArgumentOutOfRangeException))]
     [TestCase(0)]
     [TestCase(1)]
     [TestCase(23)]
@@ -97,13 +93,23 @@ public class DateTimeOffsetTests
         Assert.AreEqual(expected, result);
     }
 
+    [Test]
+    [TestCase(24)]
+    [TestCase(-1)]
+    public void ChangeTime_Hour_SimpleTests_Arg_Checks(int value)
+    {
+        var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            toChange.SetTime(value);
+        });
+    }
 
     [Test]
     [TestCase(0)]
     [TestCase(16)]
     [TestCase(59)]
-    [TestCase(-1, ExpectedException = typeof (ArgumentOutOfRangeException))]
-    [TestCase(60, ExpectedException = typeof (ArgumentOutOfRangeException))]
     public void ChangeTime_Minute_SimpleTests(int value)
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
@@ -112,11 +118,22 @@ public class DateTimeOffsetTests
     }
 
     [Test]
+    [TestCase(-1)]
+    [TestCase(60)]
+    public void ChangeTime_Minute_SimpleTests_Arg_Checks(int value)
+    {
+        var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            toChange.SetTime(0, value);
+        });
+    }
+
+    [Test]
     [TestCase(0)]
     [TestCase(16)]
     [TestCase(59)]
-    [TestCase(-1, ExpectedException = typeof (ArgumentOutOfRangeException))]
-    [TestCase(60, ExpectedException = typeof (ArgumentOutOfRangeException))]
     public void ChangeTime_Second_SimpleTests(int value)
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
@@ -130,16 +147,39 @@ public class DateTimeOffsetTests
     }
 
     [Test]
+    [TestCase(-1)]
+    [TestCase(60)]
+    public void ChangeTime_Second_SimpleTests_Arg_Checks(int value)
+    {
+        var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            toChange.SetTime(0, 0, value);
+        });
+    }
+
+    [Test]
     [TestCase(0)]
     [TestCase(100)]
     [TestCase(999)]
-    [TestCase(-1, ExpectedException = typeof (ArgumentOutOfRangeException))]
-    [TestCase(1000, ExpectedException = typeof (ArgumentOutOfRangeException))]
     public void ChangeTime_Millisecond_SimpleTests(int value)
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
         Assert.AreEqual(new DateTimeOffset(2008, 10, 25, 0, 0, 0, value, TimeSpan.Zero), toChange.SetTime(0, 0, 0, value));
+    }
+
+    [Test]
+    [TestCase(-1)]
+    [TestCase(1000)]
+    public void ChangeTime_Millisecond_SimpleTests_Arg_Checks(int value)
+    {
+        var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            toChange.SetTime(0, 0, 0, value);
+        });
     }
 
     [Test]
@@ -192,7 +232,6 @@ public class DateTimeOffsetTests
         var nextYearSameDateAsTodayNoon = TimeSpanOffsetExtensions.FromNow(1.Years()).Noon();
 
         var twoWeeksFromNow = TimeSpanOffsetExtensions.FromNow(2.Weeks());
-
     }
 
     [Test]
@@ -210,7 +249,6 @@ public class DateTimeOffsetTests
         var previousYear = birthday.PreviousYear();
         Assert.AreEqual(new DateTimeOffset(1975, 12, 31, 17, 0, 0, 0, TimeSpan.Zero), previousYear);
     }
-
 
     [Test]
     public void NextYear_IfNextYearDoesNotHaveTheSameDayInTheSameMonthThenCalculateHowManyDaysIsMissingAndAddThatToTheLastDayInTheSameMonthNextYear()
@@ -513,7 +551,6 @@ public class DateTimeOffsetTests
     {
         Assert.AreEqual(new DateTimeOffset(2009, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2009, 3, 31, 06, 40, 20, 5, TimeSpan.Zero).PreviousMonth());
     }
-
 
     [Test]
     public void NextMonth_BasicTest()

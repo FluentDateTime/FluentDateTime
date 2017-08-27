@@ -2,19 +2,18 @@
 {
     using System;
 
-	/// <summary>
+    /// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.
     /// </summary>
     public static class NumberExtensions
     {
-
 
         /// <summary>
         /// Generates <see cref="TimeSpan"/> value for given number of Years.
         /// </summary>
         public static FluentTimeSpan Years(this int years)
         {
-            return new FluentTimeSpan { Years = years };
+            return new FluentTimeSpan {Years = years};
         }
 
         /// <summary>
@@ -24,7 +23,7 @@
         /// <returns></returns>
         public static FluentTimeSpan Quarters(this int quarters)
         {
-            return new FluentTimeSpan { Months = quarters * 3 };
+            return new FluentTimeSpan {Months = quarters * 3};
         }
 
         /// <summary>
@@ -32,7 +31,7 @@
         /// </summary>
         public static FluentTimeSpan Months(this int months)
         {
-            return new FluentTimeSpan { Months = months };
+            return new FluentTimeSpan {Months = months};
         }
 
         /// <summary>
@@ -40,7 +39,7 @@
         /// </summary>
         public static FluentTimeSpan Weeks(this int weeks)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(weeks * 7) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromDays(weeks * 7)};
         }
 
         /// <summary>
@@ -48,7 +47,7 @@
         /// </summary>
         public static FluentTimeSpan Weeks(this double weeks)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(weeks * 7) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromDays(weeks * 7)};
         }
 
         /// <summary>
@@ -56,7 +55,7 @@
         /// </summary>
         public static FluentTimeSpan Days(this int days)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(days) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromDays(days)};
         }
 
         /// <summary>
@@ -64,7 +63,7 @@
         /// </summary>
         public static FluentTimeSpan Days(this double days)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromDays(days) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromDays(days)};
         }
 
         /// <summary>
@@ -72,7 +71,7 @@
         /// </summary>
         public static FluentTimeSpan Hours(this int hours)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromHours(hours) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromHours(hours)};
         }
 
         /// <summary>
@@ -80,7 +79,7 @@
         /// </summary>
         public static FluentTimeSpan Hours(this double hours)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromHours(hours) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromHours(hours)};
         }
 
         /// <summary>
@@ -88,7 +87,7 @@
         /// </summary>
         public static FluentTimeSpan Minutes(this int minutes)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromMinutes(minutes) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromMinutes(minutes)};
         }
 
         /// <summary>
@@ -96,7 +95,7 @@
         /// </summary>
         public static FluentTimeSpan Minutes(this double minutes)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromMinutes(minutes) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromMinutes(minutes)};
         }
 
         /// <summary>
@@ -104,7 +103,7 @@
         /// </summary>
         public static FluentTimeSpan Seconds(this int seconds)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromSeconds(seconds) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromSeconds(seconds)};
         }
 
         /// <summary>
@@ -112,7 +111,7 @@
         /// </summary>
         public static FluentTimeSpan Seconds(this double seconds)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromSeconds(seconds) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromSeconds(seconds)};
         }
 
         /// <summary>
@@ -120,7 +119,7 @@
         /// </summary>
         public static FluentTimeSpan Milliseconds(this int milliseconds)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromMilliseconds(milliseconds) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromMilliseconds(milliseconds)};
         }
 
         /// <summary>
@@ -128,25 +127,24 @@
         /// </summary>
         public static FluentTimeSpan Milliseconds(this double milliseconds)
         {
-            return new FluentTimeSpan { TimeSpan = TimeSpan.FromMilliseconds(milliseconds) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromMilliseconds(milliseconds)};
         }
 
         /// <summary>
-		/// Returns <see cref="TimeSpan"/> for given number of ticks.
+        /// Returns <see cref="TimeSpan"/> for given number of ticks.
         /// </summary>
-		public static FluentTimeSpan Ticks(this int ticks)
+        public static FluentTimeSpan Ticks(this int ticks)
         {
-			return new FluentTimeSpan { TimeSpan = TimeSpan.FromTicks(ticks) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromTicks(ticks)};
         }
 
         /// <summary>
-		/// Returns <see cref="TimeSpan"/> for given number of ticks.
+        /// Returns <see cref="TimeSpan"/> for given number of ticks.
         /// </summary>
-		public static FluentTimeSpan Ticks(this long ticks)
+        public static FluentTimeSpan Ticks(this long ticks)
         {
-			return new FluentTimeSpan { TimeSpan = TimeSpan.FromTicks(ticks) };
+            return new FluentTimeSpan {TimeSpan = TimeSpan.FromTicks(ticks)};
         }
-        
 
     }
 }

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
+    <PackageReference Include="NUnit3TestAdapter" Version="*" />
+    <ProjectReference Include="..\FluentDateTime\FluentDateTime.csproj" />
+  </ItemGroup>
+</Project>

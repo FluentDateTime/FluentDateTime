@@ -7,8 +7,6 @@ using NUnit.Framework;
 public class FluentTimeSpanTests
 {
 
-
-
     [Test]
     [TestCase(1)]
     [TestCase(32)]

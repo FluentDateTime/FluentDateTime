@@ -79,11 +79,7 @@ namespace FluentDateTimeTests
             DateAssert.AreEqual(value.Ticks().From(originalPointInTime), originalPointInTime.AddTicks(value));
         }
 
-
-
         [Test]
-        [TestCase(24, ExpectedException = typeof(ArgumentOutOfRangeException))]
-        [TestCase(-1, ExpectedException = typeof(ArgumentOutOfRangeException))]
         [TestCase(0)]
         [TestCase(1)]
         [TestCase(23)]
@@ -97,13 +93,23 @@ namespace FluentDateTimeTests
             DateAssert.AreEqual(expected, result);
         }
 
+        [Test]
+        [TestCase(24)]
+        [TestCase(-1)]
+        public void ChangeTime_Hour_SimpleTests_Arg_Checks(int value)
+        {
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                toChange.SetTime(value);
+            });
+        }
 
         [Test]
         [TestCase(0)]
         [TestCase(16)]
         [TestCase(59)]
-        [TestCase(-1, ExpectedException = typeof(ArgumentOutOfRangeException))]
-        [TestCase(60, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Minute_SimpleTests(int value)
         {
             var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
@@ -113,11 +119,21 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        [TestCase(-1)]
+        [TestCase(60)]
+        public void ChangeTime_Minute_SimpleTests_Arg_Checks(int value)
+        {
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                toChange.SetTime(0, value);
+            });
+        }
+
+        [Test]
         [TestCase(0)]
         [TestCase(16)]
         [TestCase(59)]
-        [TestCase(-1, ExpectedException = typeof(ArgumentOutOfRangeException))]
-        [TestCase(60, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Second_SimpleTests(int value)
         {
             var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
@@ -130,11 +146,22 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        [TestCase(-1)]
+        [TestCase(60)]
+        public void ChangeTime_Second_SimpleTests_Arg_Checks(int value)
+        {
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                toChange.SetTime(0, 0, value);
+            });
+        }
+
+        [Test]
         [TestCase(0)]
         [TestCase(100)]
         [TestCase(999)]
-        [TestCase(-1, ExpectedException = typeof(ArgumentOutOfRangeException))]
-        [TestCase(1000, ExpectedException = typeof(ArgumentOutOfRangeException))]
         public void ChangeTime_Millisecond_SimpleTests(int value)
         {
             var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
@@ -144,15 +171,27 @@ namespace FluentDateTimeTests
         }
 
         [Test]
+        [TestCase(-1)]
+        [TestCase(1000)]
+        public void ChangeTime_Millisecond_SimpleTests_Arg_Check(int value)
+        {
+            var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                toChange.SetTime(0, 0, 0, value);
+            });
+        }
+
+        [Test]
         public void TimeZoneTests()
         {
             /* story:
              * 1. a web client submits a request to the server for "today",
              * 2. a developer uses :BeginningOfDay and :EndOfDay to perform clamping server-side.
-             * 
+             *
              * expected:
-             * 3. user expects a timezone-correct utc responses from the server, 
-             * 
+             * 3. user expects a timezone-correct utc responses from the server,
+             *
              * actual:
              * 4. user receives a utc response that is too early (:BeginningOfDay), or
              * 5. user receives a utc response that is too late (:EndOfDay)
@@ -242,7 +281,6 @@ namespace FluentDateTimeTests
             var expected = new DateTime(1975, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
             DateAssert.AreEqual(expected, previousYear);
         }
-
 
         [Test]
         public void NextYear_IfNextYearDoesNotHaveTheSameDayInTheSameMonthThenCalculateHowManyDaysIsMissingAndAddThatToTheLastDayInTheSameMonthNextYear()
@@ -350,7 +388,7 @@ namespace FluentDateTimeTests
             var expected = new DateTime(2002, 12, 1, 17, 05, 01, DateTimeKind.Local);
             DateAssert.AreEqual(expected, new DateTime(2002, 12, 17, 17, 05, 01, DateTimeKind.Local).FirstDayOfMonth());
         }
-       
+
         [Test]
         public void PreviousQuarter_FirstDay_SetsTheDayToOne()
         {
