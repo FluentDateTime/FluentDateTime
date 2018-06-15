@@ -33,14 +33,6 @@ This uses the standard approach to constructing a nuget package. It contains a d
 
     PM> Install-Package FluentDateTime
 
-### The [code only version](http://nuget.org/packages/FluentDateTime-CodeOnly/)
-
-This is a "code only" package that leverages the [Content Convention](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package#From_a_convention_based_working_directory) of Nuget to inject code files into your project. Note that this is only compatible with C# projects. 
-
-The benefits of this approach are ease of debugging and less files to deploy
-
-    PM> Install-Package FluentDateTime-CodeOnly
-
 ## Icon
 
 <a href="http://thenounproject.com/noun/calendar/#icon-No404" target="_blank">Calendar</a>  from The Noun Project
