@@ -25,12 +25,6 @@ Allows you to write cleaner DateTime expressions and operation. For example your
 
 ## Nuget
 
-There are two nuget packages
-
-### The [binary version](http://nuget.org/packages/FluentDateTime/)
-
-This uses the standard approach to constructing a nuget package. It contains a dll which will be added as a reference to your project. You then deploy the binary with your project.
-
     PM> Install-Package FluentDateTime
 
 ## Icon
