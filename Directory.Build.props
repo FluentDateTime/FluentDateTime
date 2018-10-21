@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
-    <Version>1.14.1</Version>
+    <Version>1.15.0</Version>
     <AssemblyInformationalVersion>$(Version)</AssemblyInformationalVersion>
     <Authors>https://github.com/FluentDateTime/FluentDateTime/graphs/contributors</Authors>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
