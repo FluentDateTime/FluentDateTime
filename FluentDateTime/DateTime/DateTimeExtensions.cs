@@ -447,7 +447,6 @@ namespace FluentDateTime
             return AddBusinessDays(current, -days);
         }
 
-
         /// <summary>
         /// Determine if a <see cref="DateTime"/> is in the future.
         /// </summary>
@@ -457,7 +456,6 @@ namespace FluentDateTime
         {
             return dateTime > DateTime.Now;
         }
-
 
         /// <summary>
         /// Determine if a <see cref="DateTime"/> is in the past.
@@ -571,7 +569,6 @@ namespace FluentDateTime
             return current.FirstDayOfWeek().AddDays(6);
         }
 
-
         /// <summary>
         /// Returns the last day of the year keeping the time component intact. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T06:40:20.005
         /// </summary>
@@ -581,7 +578,6 @@ namespace FluentDateTime
         {
             return current.SetDate(current.Year, 12, 31);
         }
-
 
         /// <summary>
         /// Returns the previous month keeping the time component intact. Eg, 2010-01-20T06:40:20.005 => 2009-12-20T06:40:20.005
@@ -603,7 +599,6 @@ namespace FluentDateTime
 
             return firstDayOfPreviousMonth.SetDay(day);
         }
-
 
         /// <summary>
         /// Returns the next month keeping the time component intact. Eg, 2012-12-05T06:40:20.005 => 2013-01-05T06:40:20.005
