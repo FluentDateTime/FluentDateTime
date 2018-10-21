@@ -313,9 +313,9 @@ namespace FluentDate
 
         public int CompareTo(object value)
         {
-            if (value is TimeSpan)
+            if (value is TimeSpan timeSpan)
             {
-                return ((TimeSpan) this).CompareTo((TimeSpan) value);
+                return ((TimeSpan) this).CompareTo(timeSpan);
             }
             throw new ArgumentException("Value must be a TimeSpan", "value");
         }

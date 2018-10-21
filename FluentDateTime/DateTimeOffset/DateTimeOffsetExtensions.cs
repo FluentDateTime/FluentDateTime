@@ -430,7 +430,7 @@ namespace FluentDateTimeOffset
         }
 
         /// <summary>
-        /// Rounds <paramref name="dateTime"/> to the newarest <see cref="RoundTo"/>.
+        /// Rounds <paramref name="dateTime"/> to the nearest <see cref="RoundTo"/>.
         /// </summary>
         /// <returns>The rounded <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Round(this DateTimeOffset dateTime, RoundTo rt)

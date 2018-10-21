@@ -1,423 +1,414 @@
 using System;
 using FluentDate;
 using FluentDateTime;
-using NUnit.Framework;
+using Xunit;
 
-[TestFixture]
 public class FluentTimeSpanTests
 {
-
-    [Test]
-    [TestCase(1)]
-    [TestCase(32)]
-    [TestCase(100)]
-    [TestCase(1000)]
-    [TestCase(-1)]
-    [TestCase(-100)]
-    [TestCase(0)]
+    [Theory]
+    [InlineData(1)]
+    [InlineData(32)]
+    [InlineData(100)]
+    [InlineData(1000)]
+    [InlineData(-1)]
+    [InlineData(-100)]
+    [InlineData(0)]
     public void Years_Months_Weeks_Days_Hours_Minutes_Seconds_Milliseconds_SimpleTests(int value)
     {
-        Assert.AreEqual(value.Years(), new FluentTimeSpan
+        Assert.Equal(value.Years(), new FluentTimeSpan
         {
             Years = value
         });
-        Assert.AreEqual(value.Months(), new FluentTimeSpan
+        Assert.Equal(value.Months(), new FluentTimeSpan
         {
             Months = value
         });
-        Assert.AreEqual(value.Weeks(), new FluentTimeSpan
+        Assert.Equal(value.Weeks(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromDays(value*7)
         });
-        Assert.AreEqual(value.Days(), new FluentTimeSpan
+        Assert.Equal(value.Days(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromDays(value)
         });
 
-        Assert.AreEqual(value.Hours(), new FluentTimeSpan
+        Assert.Equal(value.Hours(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromHours(value)
         });
-        Assert.AreEqual(value.Minutes(), new FluentTimeSpan
+        Assert.Equal(value.Minutes(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromMinutes(value)
         });
-        Assert.AreEqual(value.Seconds(), new FluentTimeSpan
+        Assert.Equal(value.Seconds(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromSeconds(value)
         });
-        Assert.AreEqual(value.Milliseconds(), new FluentTimeSpan
+        Assert.Equal(value.Milliseconds(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromMilliseconds(value)
         });
-        Assert.AreEqual(value.Ticks(), new FluentTimeSpan
+        Assert.Equal(value.Ticks(), new FluentTimeSpan
         {
             TimeSpan = TimeSpan.FromTicks(value)
         });
     }
 
-    [Test]
+    [Fact]
     public void Subtract()
     {
-        Assert.AreEqual(3, 3.5.Days().Subtract(.5.Days()).Days);
+        Assert.Equal(3, 3.5.Days().Subtract(.5.Days()).Days);
     }
 
-    [Test]
+    [Fact]
     public void GetHashCodeTest()
     {
-        Assert.AreEqual(343024320, 3.5.Days().GetHashCode());
+        Assert.Equal(343024320, 3.5.Days().GetHashCode());
     }
 
-    [Test]
+    [Fact]
     public void CompareToFluentTimeSpan()
     {
-        Assert.AreEqual(0, 3.Days().CompareTo(3.Days()));
-        Assert.AreEqual(-1, 3.Days().CompareTo(4.Days()));
-        Assert.AreEqual(1, 4.Days().CompareTo(3.Days()));
+        Assert.Equal(0, 3.Days().CompareTo(3.Days()));
+        Assert.Equal(-1, 3.Days().CompareTo(4.Days()));
+        Assert.Equal(1, 4.Days().CompareTo(3.Days()));
     }
 
-    [Test]
+    [Fact]
     public void CompareToTimeSpan()
     {
-        Assert.AreEqual(0, 3.Days().CompareTo(TimeSpan.FromDays(3)));
-        Assert.AreEqual(-1, 3.Days().CompareTo(TimeSpan.FromDays(4)));
-        Assert.AreEqual(1, 4.Days().CompareTo(TimeSpan.FromDays(3)));
+        Assert.Equal(0, 3.Days().CompareTo(TimeSpan.FromDays(3)));
+        Assert.Equal(-1, 3.Days().CompareTo(TimeSpan.FromDays(4)));
+        Assert.Equal(1, 4.Days().CompareTo(TimeSpan.FromDays(3)));
     }
 
-    [Test]
+    [Fact]
     public void CompareToObject()
     {
-        Assert.AreEqual(0, 3.Days().CompareTo((object) TimeSpan.FromDays(3)));
-        Assert.AreEqual(-1, 3.Days().CompareTo((object) TimeSpan.FromDays(4)));
-        Assert.AreEqual(1, 4.Days().CompareTo((object) TimeSpan.FromDays(3)));
+        Assert.Equal(0, 3.Days().CompareTo((object) TimeSpan.FromDays(3)));
+        Assert.Equal(-1, 3.Days().CompareTo((object) TimeSpan.FromDays(4)));
+        Assert.Equal(1, 4.Days().CompareTo((object) TimeSpan.FromDays(3)));
     }
 
-    [Test]
+    [Fact]
     public void EqualsFluentTimeSpan()
     {
-        Assert.IsTrue(3.Days().Equals(3.Days()));
-        Assert.IsFalse(4.Days().Equals(3.Days()));
+        Assert.True(3.Days().Equals(3.Days()));
+        Assert.False(4.Days().Equals(3.Days()));
     }
 
-    [Test]
+    [Fact]
     public void EqualsTimeSpan()
     {
-        Assert.IsTrue(3.Days().Equals(TimeSpan.FromDays(3)));
-        Assert.IsFalse(4.Days().Equals(TimeSpan.FromDays(3)));
+        Assert.True(3.Days().Equals(TimeSpan.FromDays(3)));
+        Assert.False(4.Days().Equals(TimeSpan.FromDays(3)));
     }
 
-    [Test]
-    public void Equals()
+    [Fact]
+    public void AreEquals()
     {
-        Assert.IsFalse(3.Days().Equals(null));
+        Assert.False(3.Days().Equals(null));
     }
 
-    [Test]
+    [Fact]
     public void EqualsTimeSpanAsObject()
     {
-        Assert.IsTrue(3.Days().Equals((object) TimeSpan.FromDays(3)));
+        Assert.True(3.Days().Equals((object) TimeSpan.FromDays(3)));
     }
 
-    [Test]
+    [Fact]
     public void EqualsObject()
     {
-        Assert.IsFalse(3.Days().Equals(1));
+        Assert.False(3.Days().Equals(1));
     }
 
-    [Test]
+    [Fact]
     public void Add()
     {
-        Assert.AreEqual(4, 3.5.Days().Add(.5.Days()).Days);
+        Assert.Equal(4, 3.5.Days().Add(.5.Days()).Days);
     }
 
-    [Test]
+    [Fact]
     public void ToStringTest()
     {
-        Assert.AreEqual("3.12:00:00", 3.5.Days().ToString());
+        Assert.Equal("3.12:00:00", 3.5.Days().ToString());
     }
 
-    [Test]
+    [Fact]
     public void Clone()
     {
         var timeSpan = 3.Milliseconds();
         var clone = timeSpan.Clone();
-        Assert.AreNotSame(timeSpan, clone);
-        Assert.AreEqual(timeSpan, clone);
+        Assert.Equal(timeSpan, clone);
     }
 
-    [Test]
+    [Fact]
     public void Ticks()
     {
-        Assert.AreEqual(30000, 3.Milliseconds().Ticks);
+        Assert.Equal(30000, 3.Milliseconds().Ticks);
     }
 
-    [Test]
+    [Fact]
     public void Milliseconds()
     {
-        Assert.AreEqual(100, 1100.Milliseconds().Milliseconds);
+        Assert.Equal(100, 1100.Milliseconds().Milliseconds);
     }
 
-    [Test]
+    [Fact]
     public void TotalMilliseconds()
     {
-        Assert.AreEqual(1100, 1100.Milliseconds().TotalMilliseconds);
+        Assert.Equal(1100, 1100.Milliseconds().TotalMilliseconds);
     }
 
-    [Test]
+    [Fact]
     public void Seconds()
     {
-        Assert.AreEqual(1, 61.Seconds().Seconds);
+        Assert.Equal(1, 61.Seconds().Seconds);
     }
 
-    [Test]
+    [Fact]
     public void TotalSeconds()
     {
-        Assert.AreEqual(61, 61.Seconds().TotalSeconds);
+        Assert.Equal(61, 61.Seconds().TotalSeconds);
     }
 
-    [Test]
+    [Fact]
     public void Minutes()
     {
-        Assert.AreEqual(1, 61.Minutes().Minutes);
+        Assert.Equal(1, 61.Minutes().Minutes);
     }
 
-    [Test]
+    [Fact]
     public void TotalMinutes()
     {
-        Assert.AreEqual(61, 61.Minutes().TotalMinutes);
+        Assert.Equal(61, 61.Minutes().TotalMinutes);
     }
 
-    [Test]
+    [Fact]
     public void Hours()
     {
-        Assert.AreEqual(1, 25.Hours().Hours);
+        Assert.Equal(1, 25.Hours().Hours);
     }
 
-    [Test]
+    [Fact]
     public void TotalHours()
     {
-        Assert.AreEqual(25, 25.Hours().TotalHours);
+        Assert.Equal(25, 25.Hours().TotalHours);
     }
 
-    [Test]
+    [Fact]
     public void Days()
     {
-        Assert.AreEqual(366, 366.Days().Days);
+        Assert.Equal(366, 366.Days().Days);
     }
 
-    [Test]
+    [Fact]
     public void TotalDays()
     {
-        Assert.AreEqual(366, 366.Days().TotalDays);
+        Assert.Equal(366, 366.Days().TotalDays);
     }
 
-    [Test]
+    [Fact]
     public void Years()
     {
         var fluentTimeSpan = 3.Years();
-        Assert.AreEqual(3, fluentTimeSpan.Years);
+        Assert.Equal(3, fluentTimeSpan.Years);
     }
 
-    [Test]
+    [Fact]
     public void EnsureWhenConvertedIsCorrect()
     {
         TimeSpan timeSpan = 10.Years();
-        Assert.AreEqual(3650d, timeSpan.TotalDays);
+        Assert.Equal(3650d, timeSpan.TotalDays);
     }
 
-    [TestFixture]
     public class OperatorOverloads
     {
-        [Test]
+        [Fact]
         public void LessThan()
         {
-            Assert.IsTrue(1.Seconds() < 2.Seconds());
-            Assert.IsTrue(1.Seconds() < TimeSpan.FromSeconds(2));
-            Assert.IsTrue(TimeSpan.FromSeconds(1) < 2.Seconds());
+            Assert.True(1.Seconds() < 2.Seconds());
+            Assert.True(1.Seconds() < TimeSpan.FromSeconds(2));
+            Assert.True(TimeSpan.FromSeconds(1) < 2.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void LessThanOrEqualTo()
         {
-            Assert.IsTrue(1.Seconds() <= 2.Seconds());
-            Assert.IsTrue(1.Seconds() <= TimeSpan.FromSeconds(2));
-            Assert.IsTrue(TimeSpan.FromSeconds(1) <= 2.Seconds());
+            Assert.True(1.Seconds() <= 2.Seconds());
+            Assert.True(1.Seconds() <= TimeSpan.FromSeconds(2));
+            Assert.True(TimeSpan.FromSeconds(1) <= 2.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void GreaterThan()
         {
-            Assert.IsTrue(2.Seconds() > 1.Seconds());
-            Assert.IsTrue(2.Seconds() > TimeSpan.FromSeconds(1));
-            Assert.IsTrue(TimeSpan.FromSeconds(2) > 1.Seconds());
+            Assert.True(2.Seconds() > 1.Seconds());
+            Assert.True(2.Seconds() > TimeSpan.FromSeconds(1));
+            Assert.True(TimeSpan.FromSeconds(2) > 1.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void GreaterThanOrEqualTo()
         {
-            Assert.IsTrue(2.Seconds() >= 1.Seconds());
-            Assert.IsTrue(2.Seconds() >= TimeSpan.FromSeconds(1));
-            Assert.IsTrue(TimeSpan.FromSeconds(2) >= 1.Seconds());
+            Assert.True(2.Seconds() >= 1.Seconds());
+            Assert.True(2.Seconds() >= TimeSpan.FromSeconds(1));
+            Assert.True(TimeSpan.FromSeconds(2) >= 1.Seconds());
         }
 
-        [Test]
-        public void Equals()
+        [Fact]
+        public void AreEquals()
         {
-            Assert.IsTrue(2.Seconds() == 2.Seconds());
-            Assert.IsTrue(2.Seconds() == TimeSpan.FromSeconds(2));
-            Assert.IsTrue(TimeSpan.FromSeconds(2) == 2.Seconds());
+            Assert.True(2.Seconds() == 2.Seconds());
+            Assert.True(2.Seconds() == TimeSpan.FromSeconds(2));
+            Assert.True(TimeSpan.FromSeconds(2) == 2.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void NotEquals()
         {
-            Assert.IsTrue(2.Seconds() != 1.Seconds());
-            Assert.IsTrue(2.Seconds() != TimeSpan.FromSeconds(1));
-            Assert.IsTrue(TimeSpan.FromSeconds(2) != 1.Seconds());
+            Assert.True(2.Seconds() != 1.Seconds());
+            Assert.True(2.Seconds() != TimeSpan.FromSeconds(1));
+            Assert.True(TimeSpan.FromSeconds(2) != 1.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void Add()
         {
-            Assert.AreEqual(1.Seconds() + 2.Seconds(), 3.Seconds());
-            Assert.AreEqual(1.Seconds() + TimeSpan.FromSeconds(2), 3.Seconds());
-            Assert.AreEqual(TimeSpan.FromSeconds(1) + 2.Seconds(), 3.Seconds());
+            Assert.Equal(1.Seconds() + 2.Seconds(), 3.Seconds());
+            Assert.Equal(1.Seconds() + TimeSpan.FromSeconds(2), 3.Seconds());
+            Assert.Equal(TimeSpan.FromSeconds(1) + 2.Seconds(), 3.Seconds());
         }
 
-        [Test]
+        [Fact]
         public void Subtract()
         {
-            Assert.AreEqual(1.Seconds() - 2.Seconds(), -1.Seconds());
-            Assert.AreEqual(1.Seconds() - TimeSpan.FromSeconds(2), -1.Seconds());
-            Assert.AreEqual(TimeSpan.FromSeconds(1) - 2.Seconds(), -1.Seconds());
+            Assert.Equal(1.Seconds() - 2.Seconds(), -1.Seconds());
+            Assert.Equal(1.Seconds() - TimeSpan.FromSeconds(2), -1.Seconds());
+            Assert.Equal(TimeSpan.FromSeconds(1) - 2.Seconds(), -1.Seconds());
         }
     }
 
-    [TestFixture]
     public class ToDisplayStringTests
     {
-
-        [Test]
+        [Fact]
         public void DaysHours()
         {
             var timeSpan = 2.Days() + 3.Hours();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 days and 3 hours", displayString);
+            Assert.Equal("2 days and 3 hours", displayString);
         }
 
-        [Test]
+        [Fact]
         public void DaysHoursRoundUp()
         {
             var timeSpan = 2.Days() + 3.Hours() + 30.Minutes();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 days and 4 hours", displayString);
+            Assert.Equal("2 days and 4 hours", displayString);
         }
 
-        [Test]
+        [Fact]
         public void DaysHoursRoundDown()
         {
             var timeSpan = 2.Days() + 3.Hours() + 9.Minutes();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 days and 3 hours", displayString);
+            Assert.Equal("2 days and 3 hours", displayString);
         }
 
-        [Test]
+        [Fact]
         public void HoursMinutes()
         {
             var timeSpan = 2.Hours() + 9.Minutes();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 hours and 9 minutes", displayString);
+            Assert.Equal("2 hours and 9 minutes", displayString);
         }
 
-        [Test]
+        [Fact]
         public void HoursMinutesRoundUp()
         {
             var timeSpan = 2.Hours() + 9.Minutes() + 30.Seconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 hours and 10 minutes", displayString);
+            Assert.Equal("2 hours and 10 minutes", displayString);
         }
 
-        [Test]
+        [Fact]
         public void HoursMinutesRoundDown()
         {
             var timeSpan = 2.Hours() + 9.Minutes() + 10.Seconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("2 hours and 9 minutes", displayString);
+            Assert.Equal("2 hours and 9 minutes", displayString);
         }
 
-        [Test]
+        [Fact]
         public void MinutesSeconds()
         {
             var timeSpan = 9.Minutes();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("9 minutes and 0 seconds", displayString);
+            Assert.Equal("9 minutes and 0 seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void MinutesSecondsRoundUp()
         {
             var timeSpan = 9.Minutes() + 30.5.Seconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("9 minutes and 31 seconds", displayString);
+            Assert.Equal("9 minutes and 31 seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void MinutesSecondsRoundDown()
         {
             var timeSpan = 9.Minutes() + 30.4.Seconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("9 minutes and 30 seconds", displayString);
+            Assert.Equal("9 minutes and 30 seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void SecondsMilliseconds()
         {
             var timeSpan = 9.Seconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("9 seconds", displayString);
+            Assert.Equal("9 seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void SecondsMillisecondsRoundUp()
         {
             var timeSpan = 9.Seconds() + 500.Milliseconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual(9.5 + " seconds", displayString);
+            Assert.Equal(9.5 + " seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void SecondsMillisecondsRoundDown()
         {
             var timeSpan = 9.Seconds() + 300.Milliseconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual(9.3 + " seconds", displayString);
+            Assert.Equal(9.3 + " seconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void Milliseconds()
         {
             var timeSpan = 9.Milliseconds();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("9 milliseconds", displayString);
+            Assert.Equal("9 milliseconds", displayString);
         }
 
-        [Test]
+        [Fact]
         public void ABitOverADay()
         {
             var timeSpan = 46.2.Hours();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("1 days and 22 hours", displayString);
+            Assert.Equal("1 days and 22 hours", displayString);
         }
 
-        [Test]
+        [Fact]
         public void ABitOverADay2()
         {
             var timeSpan = 46.9.Hours();
             var displayString = timeSpan.ToDisplayString();
-            Assert.AreEqual("1 days and 23 hours", displayString);
+            Assert.Equal("1 days and 23 hours", displayString);
         }
-
-
-
     }
 }

@@ -154,7 +154,7 @@ namespace FluentDateTimeOffset
         }
 
         /// <summary>
-        /// Rounds <paramref name="timeSpan"/> to the newarest <see cref="RoundTo"/>.
+        /// Rounds <paramref name="timeSpan"/> to the nearest <see cref="RoundTo"/>.
         /// </summary>
         /// <returns>The rounded <see cref="TimeSpan"/>.</returns>
         public static TimeSpan Round(this TimeSpan timeSpan, RoundTo rt)

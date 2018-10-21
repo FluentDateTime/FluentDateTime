@@ -45,7 +45,7 @@ namespace FluentDateTime
         }
 
         /// <summary>
-        /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year. 
+        /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year.
         /// If that day does not exist in next year in same month, number of missing days is added to the last day in same month next year.
         /// </summary>
         public static DateTime NextYear(this DateTime start)
@@ -456,7 +456,7 @@ namespace FluentDateTime
         }
 
         /// <summary>
-        /// Rounds <paramref name="dateTime"/> to the newarest <see cref="RoundTo"/>.
+        /// Rounds <paramref name="dateTime"/> to the nearest <see cref="RoundTo"/>.
         /// </summary>
         /// <returns>The rounded <see cref="DateTime"/>.</returns>
         public static DateTime Round(this DateTime dateTime, RoundTo rt)
@@ -627,7 +627,7 @@ namespace FluentDateTime
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="DateTime"/> value is exactly the same month (month + year) then current. Eg, 2015-12-01 and 2014-12-01 => False 
+        /// Determines whether the specified <see cref="DateTime"/> value is exactly the same month (month + year) then current. Eg, 2015-12-01 and 2014-12-01 => False
         /// </summary>
         /// <param name="current">The current value</param>
         /// <param name="date">Value to compare with</param>

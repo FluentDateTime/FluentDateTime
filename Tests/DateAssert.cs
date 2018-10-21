@@ -1,16 +1,15 @@
 ﻿using System;
-using NUnit.Framework;
-
+using Xunit;
 
 public class DateAssert
 {
-    public static void AreEqual(DateTime expected, DateTime actual, string message)
+    public static void Equal(DateTime expected, DateTime actual, string message)
     {
-        Assert.That(actual == expected && actual.Kind == expected.Kind, Is.True, message, null);
+        Assert.True(actual == expected && actual.Kind == expected.Kind, message);
     }
 
-    public static void AreEqual(DateTime expected, DateTime actual)
+    public static void Equal(DateTime expected, DateTime actual)
     {
-        AreEqual(expected, actual, null);
+        Equal(expected, actual, null);
     }
 }
