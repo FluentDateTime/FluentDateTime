@@ -3,13 +3,11 @@ using FluentDate;
 
 namespace FluentDateTimeOffset
 {
-
     /// <summary>
     /// Static class containing Fluent <see cref="TimeSpan"/> extension methods.
     /// </summary>
     public static class TimeSpanOffsetExtensions
     {
-
         /// <summary>
         /// Subtracts given <see cref="TimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
         /// </summary>
@@ -207,7 +205,6 @@ namespace FluentDateTimeOffset
 
             return rounded;
         }
-
 
         //TODO: equality tests: DateIsEqual() TimeIsEqual()
     }

@@ -1,14 +1,13 @@
-﻿namespace FluentDateTime
-{
-    using System;
-    using FluentDate;
+﻿using System;
+using FluentDate;
 
+namespace FluentDateTime
+{
     /// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.
     /// </summary>
     public static class TimeSpanExtensions
     {
-
         /// <summary>
         /// Subtracts given <see cref="TimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
         /// </summary>
@@ -24,7 +23,6 @@
         {
             return from.Before(DateTime.Now);
         }
-
 
         /// <summary>
         /// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
@@ -57,7 +55,6 @@
         {
             return originalValue.AddMonths(-from.Months).AddYears(-from.Years).Add(-from.TimeSpan);
         }
-
 
         /// <summary>
         /// Adds given <see cref="TimeSpan"/> to current <see cref="DateTime.Now"/> and returns resulting <see cref="DateTime"/> in the future.
@@ -114,7 +111,6 @@
         {
             return From(from, originalValue);
         }
-
 
         /// <summary>
         /// Convert a <see cref="TimeSpan"/> to a human readable string.
@@ -205,7 +201,6 @@
 
             return rounded;
         }
-
 
         //TODO: equality tests: DateIsEqual() TimeIsEqual()
     }

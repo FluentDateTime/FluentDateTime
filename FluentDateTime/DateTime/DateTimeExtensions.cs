@@ -4,7 +4,6 @@ using FluentDate;
 
 namespace FluentDateTime
 {
-
     /// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.
     /// </summary>
@@ -122,7 +121,6 @@ namespace FluentDateTime
             return start;
         }
 
-
         /// <summary>
         /// Increases supplied <see cref="DateTime"/> for 7 days ie returns the Next Week.
         /// </summary>
@@ -138,7 +136,6 @@ namespace FluentDateTime
         {
             return start - 1.Weeks();
         }
-
 
         /// <summary>
         /// Increases the <see cref="DateTime"/> object with given <see cref="TimeSpan"/> value.
@@ -337,8 +334,6 @@ namespace FluentDateTime
             return current.SetTime(hour, minute, second);
         }
 
-
-
         /// <summary>
         /// Returns the given <see cref="DateTime"/> with hour and minutes and seconds and milliseconds set At given values.
         /// </summary>
@@ -399,7 +394,6 @@ namespace FluentDateTime
         {
             return current.SetDay(DateTime.DaysInMonth(current.Year, current.Month));
         }
-
 
         /// <summary>
         /// Adds the given number of business days to the <see cref="DateTime"/>.

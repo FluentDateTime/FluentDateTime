@@ -52,7 +52,6 @@ public class DateTimeTests
         DateAssert.Equal(1.Years().From(originalPointInTime), new DateTime(2005, 2, 28, 0, 0, 0, DateTimeKind.Local));
     }
 
-
     [Theory]
     [InlineData(1)]
     [InlineData(32)]

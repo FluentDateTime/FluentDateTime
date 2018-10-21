@@ -1,13 +1,12 @@
-﻿namespace FluentDate
-{
-    using System;
+﻿using System;
 
+namespace FluentDate
+{
     /// <summary>
     /// Static class containing Fluent <see cref="DateTime"/> extension methods.
     /// </summary>
     public static class NumberExtensions
     {
-
         /// <summary>
         /// Generates <see cref="TimeSpan"/> value for given number of Years.
         /// </summary>
@@ -145,6 +144,5 @@
         {
             return new FluentTimeSpan {TimeSpan = TimeSpan.FromTicks(ticks)};
         }
-
     }
 }
