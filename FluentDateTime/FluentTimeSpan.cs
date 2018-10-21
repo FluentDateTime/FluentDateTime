@@ -37,7 +37,7 @@ namespace FluentDate
         }
 
         /// <summary>
-        /// Subtracts the number according -.
+        /// Subtracts the number according operator -.
         /// </summary>
         /// <param name="fluentTimeSpan">The matrix to subtract from this fluentTimeSpan.</param>
         /// <returns>The result of the subtraction.</returns>
