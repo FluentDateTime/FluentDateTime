@@ -57,7 +57,12 @@ public class FluentTimeSpanTests
     [Fact]
     public void Subtract()
     {
-        Assert.Equal(3, 3.5.Days().Subtract(.5.Days()).Days);
+        var halfDay = .5.Days();
+        Assert.Equal(3, 3.5.Days().Subtract(halfDay).Days);
+        var timeSpan = new TimeSpan(3, 12, 0, 0);
+        Assert.Equal(3, timeSpan.SubtractFluentTimeSpan(halfDay).Days);
+        Assert.Equal(3, (timeSpan - halfDay).Days);
+        Assert.Equal(-3, (halfDay - timeSpan).Days);
     }
 
     [Fact]
@@ -125,7 +130,12 @@ public class FluentTimeSpanTests
     [Fact]
     public void Add()
     {
-        Assert.Equal(4, 3.5.Days().Add(.5.Days()).Days);
+        var halfDay = .5.Days();
+        Assert.Equal(4, 3.5.Days().Add(halfDay).Days);
+        var timeSpan = new TimeSpan(3,12,0,0);
+        Assert.Equal(4, timeSpan.AddFluentTimeSpan(halfDay).Days);
+        Assert.Equal(4, (timeSpan + halfDay).Days);
+        Assert.Equal(4, (halfDay + timeSpan).Days);
     }
 
     [Fact]

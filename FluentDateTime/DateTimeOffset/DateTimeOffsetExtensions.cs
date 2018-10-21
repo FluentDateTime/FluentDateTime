@@ -10,6 +10,26 @@ namespace FluentDateTimeOffset
     public static class DateTimeOffsetExtensions
     {
         /// <summary>
+        /// Returns a new <see cref="DateTime"/> that adds the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
+        /// </summary>
+        public static DateTimeOffset AddFluentTimeSpan(this DateTimeOffset dateTimeOffset, FluentTimeSpan timeSpan)
+        {
+            return dateTimeOffset.AddMonths(timeSpan.Months)
+                .AddYears(timeSpan.Years)
+                .Add(timeSpan.TimeSpan);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="DateTime"/> that subtracts the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
+        /// </summary>
+        public static DateTimeOffset SubtractFluentTimeSpan(this DateTimeOffset dateTimeOffset, FluentTimeSpan timeSpan)
+        {
+            return dateTimeOffset.AddMonths(-timeSpan.Months)
+                .AddYears(-timeSpan.Years)
+                .Subtract(timeSpan.TimeSpan);
+        }
+
+        /// <summary>
         /// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTimeOffset"/>).
         /// </summary>
         public static DateTimeOffset EndOfDay(this DateTimeOffset date)

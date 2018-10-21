@@ -2,6 +2,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;net472</TargetFrameworks>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xunit" Version="2.4.0" />

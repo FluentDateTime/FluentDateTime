@@ -30,10 +30,20 @@ namespace FluentDate
         /// Adds two <see cref="FluentTimeSpan"/> according operator +.
         /// </summary>
         /// <param name="number">The number to add to this <see cref="FluentTimeSpan"/>.</param>
-        /// <returns>The result of the addition operation.</returns>
+        /// <returns>The result of the addition.</returns>
         public FluentTimeSpan Add(FluentTimeSpan number)
         {
             return AddInternal(this, number);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="FluentTimeSpan"/> that adds the value of the specified <see cref="TimeSpan"/> to the value of this instance.
+        /// </summary>
+        /// <param name="timeSpan">The <see cref="TimeSpan"/> to add to this <see cref="FluentTimeSpan"/>.</param>
+        /// <returns>The result of the addition.</returns>
+        public FluentTimeSpan Add(TimeSpan timeSpan)
+        {
+            return AddInternal(this, timeSpan);
         }
 
         /// <summary>
@@ -44,6 +54,16 @@ namespace FluentDate
         public FluentTimeSpan Subtract(FluentTimeSpan fluentTimeSpan)
         {
             return SubtractInternal(this, fluentTimeSpan);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="FluentTimeSpan"/> that subtracts the value of the specified <see cref="TimeSpan"/> to the value of this instance.
+        /// </summary>
+        /// <param name="timeSpan">The <see cref="TimeSpan"/> to subtract from this <see cref="FluentTimeSpan"/>.</param>
+        /// <returns>The result of the subtraction.</returns>
+        public FluentTimeSpan Subtract(TimeSpan timeSpan)
+        {
+            return SubtractInternal(this, timeSpan);
         }
 
         /// <summary>
@@ -265,6 +285,36 @@ namespace FluentDate
         public override int GetHashCode()
         {
             return Months.GetHashCode() ^ Years.GetHashCode() ^ TimeSpan.GetHashCode();
+        }
+
+        static FluentTimeSpan AddInternal(FluentTimeSpan left, TimeSpan right)
+        {
+            return new FluentTimeSpan
+            {
+                Months = left.Months,
+                Years = left.Years,
+                TimeSpan = left.TimeSpan + right
+            };
+        }
+
+        static FluentTimeSpan SubtractInternal(FluentTimeSpan left, TimeSpan right)
+        {
+            return new FluentTimeSpan
+            {
+                Months = left.Months,
+                Years = left.Years,
+                TimeSpan = left.TimeSpan - right
+            };
+        }
+
+       internal static FluentTimeSpan SubtractInternal(TimeSpan left, FluentTimeSpan right)
+        {
+            return new FluentTimeSpan
+            {
+                Months = -right.Months,
+                Years = -right.Years,
+                TimeSpan = left - right.TimeSpan
+            };
         }
 
         static FluentTimeSpan AddInternal(FluentTimeSpan left, FluentTimeSpan right)

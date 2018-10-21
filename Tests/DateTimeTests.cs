@@ -44,6 +44,22 @@ public class DateTimeTests
     }
 
     [Fact]
+    public void AddFluentTimeSpan()
+    {
+        var originalPointInTime = new DateTime(1976, 1, 1, 0, 0, 0, DateTimeKind.Local);
+        FluentTimeSpan fluentTimeSpan = 1.Months();
+        Assert.Equal(new DateTime(1976, 2, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
+    }
+
+    [Fact]
+    public void SubtractFluentTimeSpan()
+    {
+        var originalPointInTime = new DateTime(1976, 2, 1, 0, 0, 0, DateTimeKind.Local);
+        FluentTimeSpan fluentTimeSpan = 1.Months();
+        Assert.Equal(new DateTime(1976, 1, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
+    }
+
+    [Fact]
     public void Ago_FromOneYearLeap()
     {
         var originalPointInTime = new DateTime(2004, 2, 29, 0, 0, 0, DateTimeKind.Local);

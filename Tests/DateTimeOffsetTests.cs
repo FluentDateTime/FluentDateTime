@@ -10,6 +10,23 @@ public class DateTimeOffsetTests
 {
     const int DaysPerWeek = 7;
 
+    [Fact]
+    public void AddFluentTimeSpan()
+    {
+        var originalPointInTime = new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        FluentTimeSpan fluentTimeSpan = 1.Months();
+        Assert.Equal(new DateTimeOffset(1976, 2, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
+    }
+
+    [Fact]
+    public void SubtractFluentTimeSpan()
+    {
+        var originalPointInTime = new DateTimeOffset(1976, 2, 1, 0, 0, 0, TimeSpan.Zero);
+        FluentTimeSpan fluentTimeSpan = 1.Months();
+        Assert.Equal(new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
+    }
+
+
     [Theory]
     [InlineData(1)]
     [InlineData(32)]

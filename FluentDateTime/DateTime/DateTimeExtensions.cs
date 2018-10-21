@@ -10,6 +10,26 @@ namespace FluentDateTime
     public static class DateTimeExtensions
     {
         /// <summary>
+        /// Returns a new <see cref="DateTime"/> that adds the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
+        /// </summary>
+        public static DateTime AddFluentTimeSpan(this DateTime dateTime, FluentTimeSpan timeSpan)
+        {
+            return dateTime.AddMonths(timeSpan.Months)
+                .AddYears(timeSpan.Years)
+                .Add(timeSpan.TimeSpan);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="DateTime"/> that subtracts the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
+        /// </summary>
+        public static DateTime SubtractFluentTimeSpan(this DateTime dateTime, FluentTimeSpan timeSpan)
+        {
+            return dateTime.AddMonths(-timeSpan.Months)
+                .AddYears(-timeSpan.Years)
+                .Subtract(timeSpan.TimeSpan);
+        }
+
+        /// <summary>
         /// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
         /// </summary>
         public static DateTime EndOfDay(this DateTime date)
