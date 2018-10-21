@@ -27,9 +27,9 @@ namespace FluentDate
         }
 
         /// <summary>
-        /// Adds two fluentTimeSpan according operator +.
+        /// Adds two <see cref="FluentTimeSpan"/> according operator +.
         /// </summary>
-        /// <param name="number">The number to add to this fluentTimeSpan.</param>
+        /// <param name="number">The number to add to this <see cref="FluentTimeSpan"/>.</param>
         /// <returns>The result of the addition operation.</returns>
         public FluentTimeSpan Add(FluentTimeSpan number)
         {
@@ -39,7 +39,7 @@ namespace FluentDate
         /// <summary>
         /// Subtracts the number according operator -.
         /// </summary>
-        /// <param name="fluentTimeSpan">The matrix to subtract from this fluentTimeSpan.</param>
+        /// <param name="fluentTimeSpan">The matrix to subtract from this <see cref="FluentTimeSpan"/>.</param>
         /// <returns>The result of the subtraction.</returns>
         public FluentTimeSpan Subtract(FluentTimeSpan fluentTimeSpan)
         {
@@ -49,8 +49,8 @@ namespace FluentDate
         /// <summary>
         /// Overload of the operator +
         /// </summary>
-        /// <param name="left">The left hand fluentTimeSpan.</param>
-        /// <param name="right">The right hand fluentTimeSpan.</param>
+        /// <param name="left">The left hand <see cref="FluentTimeSpan"/>.</param>
+        /// <param name="right">The right hand <see cref="FluentTimeSpan"/>.</param>
         /// <returns>The result of the addition.</returns>
         public static FluentTimeSpan operator +(FluentTimeSpan left, FluentTimeSpan right)
         {
@@ -70,8 +70,8 @@ namespace FluentDate
         /// <summary>
         /// Overload of the operator -
         /// </summary>
-        /// <param name="left">The left hand fluentTimeSpan.</param>
-        /// <param name="right">The right hand fluentTimeSpan.</param>
+        /// <param name="left">The left hand <see cref="FluentTimeSpan"/>.</param>
+        /// <param name="right">The right hand <see cref="FluentTimeSpan"/>.</param>
         /// <returns>The result of the subtraction.</returns>
         public static FluentTimeSpan operator -(FluentTimeSpan left, FluentTimeSpan right)
         {
