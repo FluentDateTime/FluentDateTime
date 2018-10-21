@@ -4,7 +4,10 @@ using System.Runtime.InteropServices;
 namespace FluentDate
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct FluentTimeSpan : IEquatable<FluentTimeSpan>, IComparable<TimeSpan>, IComparable<FluentTimeSpan>
+    public struct FluentTimeSpan :
+        IEquatable<FluentTimeSpan>,
+        IComparable<TimeSpan>,
+        IComparable<FluentTimeSpan>
     {
         public const int daysPerYear = 365;
         public int Months { get; set; }
@@ -93,7 +96,9 @@ namespace FluentDate
         /// <returns><c>true</c> is <paramref name="left"/> is equal to <paramref name="right"/>; otherwise <c>false</c>.</returns>
         public static bool operator ==(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return (left.Years == right.Years) && (left.Months == right.Months) && (left.TimeSpan == right.TimeSpan);
+            return left.Years == right.Years &&
+                   left.Months == right.Months &&
+                   left.TimeSpan == right.TimeSpan;
         }
 
         public static bool operator ==(TimeSpan left, FluentTimeSpan right)
@@ -105,8 +110,6 @@ namespace FluentDate
         {
             return left == (FluentTimeSpan) right;
         }
-
-
 
         /// <summary>
         /// Not Equals operator.
@@ -129,7 +132,6 @@ namespace FluentDate
             return !(left == right);
         }
 
-
         public static FluentTimeSpan operator -(FluentTimeSpan value)
         {
             return value.Negate();
@@ -137,62 +139,62 @@ namespace FluentDate
 
         public static bool operator <(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return ((TimeSpan) left < (TimeSpan) right);
+            return (TimeSpan) left < (TimeSpan) right;
         }
 
         public static bool operator <(FluentTimeSpan left, TimeSpan right)
         {
-            return ((TimeSpan) left < right);
+            return (TimeSpan) left < right;
         }
 
         public static bool operator <(TimeSpan left, FluentTimeSpan right)
         {
-            return (left < (TimeSpan) right);
+            return left < (TimeSpan) right;
         }
 
         public static bool operator <=(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return ((TimeSpan) left <= (TimeSpan) right);
+            return (TimeSpan) left <= (TimeSpan) right;
         }
 
         public static bool operator <=(FluentTimeSpan left, TimeSpan right)
         {
-            return ((TimeSpan) left <= right);
+            return (TimeSpan) left <= right;
         }
 
         public static bool operator <=(TimeSpan left, FluentTimeSpan right)
         {
-            return (left <= (TimeSpan) right);
+            return left <= (TimeSpan) right;
         }
 
         public static bool operator >(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return ((TimeSpan) left > (TimeSpan) right);
+            return (TimeSpan) left > (TimeSpan) right;
         }
 
         public static bool operator >(FluentTimeSpan left, TimeSpan right)
         {
-            return ((TimeSpan) left > right);
+            return (TimeSpan) left > right;
         }
 
         public static bool operator >(TimeSpan left, FluentTimeSpan right)
         {
-            return (left > (TimeSpan) right);
+            return left > (TimeSpan) right;
         }
 
         public static bool operator >=(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return ((TimeSpan) left >= (TimeSpan) right);
+            return (TimeSpan) left >= (TimeSpan) right;
         }
 
         public static bool operator >=(FluentTimeSpan left, TimeSpan right)
         {
-            return ((TimeSpan) left >= right);
+            return (TimeSpan) left >= right;
         }
 
         public static bool operator >=(TimeSpan left, FluentTimeSpan right)
         {
-            return (left >= (TimeSpan) right);
+            return left >= (TimeSpan) right;
         }
 
         /// <summary>
@@ -334,7 +336,5 @@ namespace FluentDate
                 Years = -Years
             };
         }
-
-
     }
 }
