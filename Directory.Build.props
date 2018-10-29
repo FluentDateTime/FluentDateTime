@@ -5,24 +5,17 @@
     <LangVersion>latest</LangVersion>
     <Version>1.15.0</Version>
     <AssemblyInformationalVersion>$(Version)</AssemblyInformationalVersion>
-    <Authors>https://github.com/FluentDateTime/FluentDateTime/graphs/contributors</Authors>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)). All rights reserved</Copyright>
     <PackageIconUrl>https://raw.github.com/FluentDateTime/FluentDateTime/master/Icons/package_icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/FluentDateTime/FluentDateTime</PackageProjectUrl>
     <PackageTags>DateTime</PackageTags>
     <Description>Extract code snippets from any language to be used when building documentation</Description>
     <PackageOutputPath>..\nugets</PackageOutputPath>
-    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AssemblyOriginatorKeyFile>$(SolutionDir)Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <Target Name="IncludePDBsInPackage" Condition="'$(IncludeBuildOutput)' != 'false'">
-    <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutputPath)\$(AssemblyName).pdb" PackagePath="lib/$(TargetFramework)" />
-    </ItemGroup>
-  </Target>
 </Project>
