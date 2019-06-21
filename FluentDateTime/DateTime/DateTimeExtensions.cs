@@ -45,6 +45,70 @@ namespace FluentDateTime
             return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind)
                 .AddHours(timeZoneOffset);
         }
+        
+        /// <summary>
+        /// Returns the last day of the week changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfWeek(this DateTime date)
+        {
+            return date.LastDayOfWeek().EndOfDay();
+        }
+        
+        /// <summary>
+        /// Returns the last day of the week changing the time to the very end of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfWeek(this DateTime date, int timeZoneOffset)
+        {
+            return date.LastDayOfWeek().EndOfDay(timeZoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the last day of the month changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfMonth(this DateTime date)
+        {
+            return date.LastDayOfMonth().EndOfDay();
+        }
+        
+        /// <summary>
+        /// Returns the last day of the month changing the time to the very end of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfMonth(this DateTime date, int timeZoneOffset)
+        {
+            return date.LastDayOfMonth().EndOfDay(timeZoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the last day of the quarter changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfQuarter(this DateTime date)
+        {
+            return date.LastDayOfQuarter().EndOfDay();
+        }
+        
+        /// <summary>
+        /// Returns the last day of the quarter changing the time to the very end of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfQuarter(this DateTime date, int timeZoneOffset)
+        {
+            return date.LastDayOfQuarter().EndOfDay(timeZoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the last day of the year changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfYear(this DateTime date)
+        {
+            return date.LastDayOfYear().EndOfDay();
+        }
+        
+        /// <summary>
+        /// Returns the last day of the year changing the time to the very end of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
+        /// </summary>
+        public static DateTime EndOfYear(this DateTime date, int timeZoneOffset)
+        {
+            return date.LastDayOfYear().EndOfDay(timeZoneOffset);
+        }
 
         /// <summary>
         /// Returns the Start of the given day (the first millisecond of the given <see cref="DateTime"/>).
@@ -61,6 +125,70 @@ namespace FluentDateTime
         {
             return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind)
                 .AddHours(timezoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the Start day of the week changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-19T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfWeek(this DateTime date)
+        {
+            return date.FirstDayOfWeek().BeginningOfDay();
+        }
+
+        /// <summary>
+        /// Returns the Start day of the week changing the time to the very start of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-19T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfWeek(this DateTime date, int timezoneOffset)
+        {
+            return date.FirstDayOfWeek().BeginningOfDay(timezoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the Start day of the month changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfMonth(this DateTime date)
+        {
+            return date.FirstDayOfMonth().BeginningOfDay();
+        }
+
+        /// <summary>
+        /// Returns the Start day of the month changing the time to the very start of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfMonth(this DateTime date, int timezoneOffset)
+        {
+            return date.FirstDayOfMonth().BeginningOfDay(timezoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the Start day of the quarter changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-10-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfQuarter(this DateTime date)
+        {
+            return date.FirstDayOfQuarter().BeginningOfDay();
+        }
+
+        /// <summary>
+        /// Returns the Start day of the quarter changing the time to the very start of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-10-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfQuarter(this DateTime date, int timezoneOffset)
+        {
+            return date.FirstDayOfQuarter().BeginningOfDay(timezoneOffset);
+        }
+        
+        /// <summary>
+        /// Returns the Start day of the year changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-01-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfYear(this DateTime date)
+        {
+            return date.FirstDayOfYear().BeginningOfDay();
+        }
+
+        /// <summary>
+        /// Returns the Start day of the year changing the time to the very start of the day with timezone-ajusted. Eg, 2011-12-24T06:40:20.005 => 2011-01-01T00:00:00.000. <see cref="DateTime"/>
+        /// </summary>
+        public static DateTime BeginningOfYear(this DateTime date, int timezoneOffset)
+        {
+            return date.FirstDayOfYear().BeginningOfDay(timezoneOffset);
         }
 
         /// <summary>
