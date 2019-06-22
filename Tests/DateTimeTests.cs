@@ -680,4 +680,194 @@ public class DateTimeTests
 
         Assert.False(date.SameDay(other));
     }
+    
+    [Theory]
+    [InlineData("2011-12-19T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void BeginningOfWeekMonday_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 19, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-19T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void EndOfWeekMonday_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 25, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void BeginningOfWeekSunday_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Sunday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 18, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void EndOfWeekSunday_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Sunday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 24, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-19T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void BeginningOfMonth_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfMonth());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void EndOfMonth_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfMonth());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void BeginningOfQuarter_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 10, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfQuarter());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void EndOfQuarter_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfQuarter());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void BeginningOfYear_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 01, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfYear());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
+    
+    [Theory]
+    [InlineData("2011-12-18T06:40:20.005")]
+    [InlineData("2011-12-20T06:40:20.005")]
+    [InlineData("2011-12-24T06:40:20.005")]
+    public void EndOfYear_BasicTest(string value)
+    {
+        var ci = Thread.CurrentThread.CurrentCulture;
+        var currentCulture = new CultureInfo("en-AU")
+        {
+            DateTimeFormat =
+            {
+                FirstDayOfWeek = DayOfWeek.Monday
+            }
+        };
+        Thread.CurrentThread.CurrentCulture = currentCulture;
+        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfYear());
+        Thread.CurrentThread.CurrentCulture = ci;
+    }
 }
