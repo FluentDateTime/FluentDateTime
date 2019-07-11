@@ -23,10 +23,12 @@ Allows you to write cleaner DateTime expressions and operation. For example your
 
 (See Unit Tests in the project for more details).
 
-## Nuget
 
-    PM> Install-Package FluentDateTime
+## The NuGet package [![NuGet Status](https://img.shields.io/nuget/v/FluentDateTime.svg)](https://www.nuget.org/packages/FluentDateTime/)
+
+https://nuget.org/packages/FluentDateTime/
+
 
 ## Icon
 
-<a href="http://thenounproject.com/noun/calendar/#icon-No404" target="_blank">Calendar</a>  from The Noun Project
+[Calendar](http://thenounproject.com/noun/calendar/#icon-No404) from The Noun Project
