@@ -1,5 +1,5 @@
 image: Visual Studio 2019 Preview
 build_script:
-- cmd: dotnet build --configuration Release
+- cmd: dotnet build src --configuration Release
 artifacts:
 - path: nugets\*.nupkg
