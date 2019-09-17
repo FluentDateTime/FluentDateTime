@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;net472</TargetFrameworks>
-    <DebugType>full</DebugType>
-    <DebugSymbols>True</DebugSymbols>
-    <Optimize>False</Optimize>
+    <TargetFrameworks>netcoreapp2.2;net472</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <ProjectReference Include="..\FluentDateTime\FluentDateTime.csproj" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.24" PrivateAssets="All" />
   </ItemGroup>
 </Project>

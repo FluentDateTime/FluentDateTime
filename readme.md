@@ -1,13 +1,14 @@
-![Icon](https://raw.github.com/FluentDateTime/FluentDateTime/master/Icons/package_icon.png)
+# <img src="/src/icon.png" height="30px"> FluentDateTime
 
-# FluentDateTime
+[![Build status](https://ci.appveyor.com/api/projects/status/me89rbu5iv976k2q/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/fluentdatetime)
+[![NuGet Status](https://img.shields.io/nuget/v/FluentDateTime.svg?label=FluentDateTime&cacheSeconds=86400)](https://www.nuget.org/packages/FluentDateTime/)
 
-Partially inspired by Ruby DateTime Extensions
+Inspired by Ruby DateTime Extensions
 
  * [Extensions To Datetime](http://edgeguides.rubyonrails.org/active_support_core_extensions.html#extensions-to-datetime)
  * [Extensions To Time](http://edgeguides.rubyonrails.org/active_support_core_extensions.html#extensions-to-time)
 
-Allows you to write cleaner DateTime expressions and operation. For example your code can look like this:
+Allows cleaner DateTime expressions and operations. For example:
 
 * DateTime.Now  - 1.Weeks() - 3.Days() + 14.Minutes();
 * DateTime.Now  + 5.Years();
@@ -22,11 +23,6 @@ Allows you to write cleaner DateTime expressions and operation. For example your
 * DateTime.Now.SetTime(11, 55, 0);
 
 (See Unit Tests in the project for more details).
-
-
-## The NuGet package [![NuGet Status](https://img.shields.io/nuget/v/FluentDateTime.svg)](https://www.nuget.org/packages/FluentDateTime/)
-
-https://nuget.org/packages/FluentDateTime/
 
 
 ## Icon
