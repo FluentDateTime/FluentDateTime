@@ -91,9 +91,9 @@ namespace FluentDateTime
         /// <summary>
         /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
         /// </summary>
-        /// <seealso cref="From(System.TimeSpan,System.DateTime)"/>
+        /// <seealso cref="From(TimeSpan, DateTime)"/>
         /// <remarks>
-        /// Synonym of <see cref="From(System.TimeSpan,System.DateTime)"/> method.
+        /// Synonym of <see cref="From(TimeSpan, DateTime)"/> method.
         /// </remarks>
         public static DateTime Since(this TimeSpan from, DateTime originalValue)
         {
@@ -103,9 +103,9 @@ namespace FluentDateTime
         /// <summary>
         /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
         /// </summary>
-        /// <seealso cref="From(FluentTimeSpan,System.DateTime)"/>
+        /// <seealso cref="From(FluentTimeSpan, DateTime)"/>
         /// <remarks>
-        /// Synonym of <see cref="From(FluentTimeSpan,System.DateTime)"/> method.
+        /// Synonym of <see cref="From(FluentTimeSpan, DateTime)"/> method.
         /// </remarks>
         public static DateTime Since(this FluentTimeSpan from, DateTime originalValue)
         {

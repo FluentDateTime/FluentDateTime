@@ -26,7 +26,6 @@ public class DateTimeOffsetTests
         Assert.Equal(new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
     }
 
-
     [Theory]
     [InlineData(1)]
     [InlineData(32)]
@@ -69,7 +68,6 @@ public class DateTimeOffsetTests
         Assert.Equal(1.Years().Before(originalPointInTime), new DateTimeOffset(2003, 2, 28, 0, 0, 0, TimeSpan.Zero));
         Assert.Equal(1.Years().From(originalPointInTime), new DateTimeOffset(2005, 2, 28, 0, 0, 0, TimeSpan.Zero));
     }
-
 
     [Theory]
     [InlineData(1)]

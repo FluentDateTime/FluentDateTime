@@ -91,9 +91,9 @@ namespace FluentDateTimeOffset
         /// <summary>
         /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
         /// </summary>
-        /// <seealso cref="From(System.TimeSpan,System.DateTimeOffset)"/>
+        /// <seealso cref="From(TimeSpan, DateTimeOffset)"/>
         /// <remarks>
-        /// Synonym of <see cref="From(System.TimeSpan,System.DateTimeOffset)"/> method.
+        /// Synonym of <see cref="From(TimeSpan, DateTimeOffset)"/> method.
         /// </remarks>
         public static DateTimeOffset Since(this TimeSpan from, DateTimeOffset originalValue)
         {
@@ -103,9 +103,9 @@ namespace FluentDateTimeOffset
         /// <summary>
         /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
         /// </summary>
-        /// <seealso cref="From(System.TimeSpan,System.DateTimeOffset)"/>
+        /// <seealso cref="From(TimeSpan, DateTimeOffset)"/>
         /// <remarks>
-        /// Synonym of <see cref="From(System.TimeSpan,System.DateTimeOffset)"/> method.
+        /// Synonym of <see cref="From(TimeSpan, DateTimeOffset)"/> method.
         /// </remarks>
         public static DateTimeOffset Since(this FluentTimeSpan from, DateTimeOffset originalValue)
         {
@@ -134,20 +134,24 @@ namespace FluentDateTimeOffset
                 var round = timeSpan.Round(RoundTo.Hour);
                 return $"{round.Days} days and {round.Hours} hours";
             }
+
             if (timeSpan.TotalHours > 1)
             {
                 var round = timeSpan.Round(RoundTo.Minute);
                 return $"{round.Hours} hours and {round.Minutes} minutes";
             }
+
             if (timeSpan.TotalMinutes > 1)
             {
                 var round = timeSpan.Round(RoundTo.Second);
                 return $"{round.Minutes} minutes and {round.Seconds} seconds";
             }
+
             if (timeSpan.TotalSeconds > 1)
             {
                 return $"{timeSpan.TotalSeconds} seconds";
             }
+
             return $"{timeSpan.Milliseconds} milliseconds";
         }
 
@@ -168,6 +172,7 @@ namespace FluentDateTimeOffset
                     {
                         rounded = rounded + 1.Seconds();
                     }
+
                     break;
                 }
                 case RoundTo.Minute:
@@ -177,6 +182,7 @@ namespace FluentDateTimeOffset
                     {
                         rounded = rounded + 1.Minutes();
                     }
+
                     break;
                 }
                 case RoundTo.Hour:
@@ -186,6 +192,7 @@ namespace FluentDateTimeOffset
                     {
                         rounded = rounded + 1.Hours();
                     }
+
                     break;
                 }
                 case RoundTo.Day:
@@ -195,6 +202,7 @@ namespace FluentDateTimeOffset
                     {
                         rounded = rounded + 1.Days();
                     }
+
                     break;
                 }
                 default:
