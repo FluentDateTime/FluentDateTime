@@ -10,6 +10,6 @@ public class DateAssert
 
     public static void Equal(DateTime expected, DateTime actual)
     {
-        Equal(expected, actual, null);
+        Assert.True(actual == expected && actual.Kind == expected.Kind);
     }
 }
