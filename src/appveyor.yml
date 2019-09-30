@@ -1,6 +1,4 @@
-image: Visual Studio 2019 Preview
-install:
-- cmd: choco install dotnetcore-sdk --pre
+image: Visual Studio 2019
 build_script:
 - cmd: dotnet build src --configuration Release
 artifacts:
