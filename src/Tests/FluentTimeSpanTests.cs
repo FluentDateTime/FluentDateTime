@@ -115,7 +115,7 @@ public class FluentTimeSpanTests
         // Cannot convert null literal to non-nullable reference type.
 #pragma warning disable CS8625
         Assert.False(3.Days().Equals(null));
-#pragma warning restore CS8625 
+#pragma warning restore CS8625
     }
 
     [Fact]

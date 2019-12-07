@@ -6,6 +6,6 @@
     <Description>Allows cleaner DateTime expressions and operations</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ProjectDefaults" Version="1.0.35" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.36" PrivateAssets="All" />
   </ItemGroup>
 </Project>
