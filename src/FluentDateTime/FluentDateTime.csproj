@@ -6,8 +6,8 @@
     <Description>Allows cleaner DateTime expressions and operations</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ProjectDefaults" Version="1.0.39" PrivateAssets="All" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.39" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.40" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.40" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
   </ItemGroup>
 </Project>
