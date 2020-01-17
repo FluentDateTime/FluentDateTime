@@ -44,6 +44,11 @@ DateTime.Now.SetTime(11, 55, 0)
 _See [Unit Tests](https://github.com/FluentDateTime/FluentDateTime/tree/master/src/Tests) in the project for more details._
 
 
+## Security contact information
+
+To report a security vulnerability, please use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
+
+
 ## Icon
 
 [Calendar](http://thenounproject.com/noun/calendar/#icon-No404) from The Noun Project
