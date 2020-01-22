@@ -9,6 +9,5 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
     <ProjectReference Include="..\FluentDateTime\FluentDateTime.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.40" PrivateAssets="All" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.40" PrivateAssets="All" />
   </ItemGroup>
 </Project>
