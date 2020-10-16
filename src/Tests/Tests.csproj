@@ -8,6 +8,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <ProjectReference Include="..\FluentDateTime\FluentDateTime.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.46" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.47" PrivateAssets="All" />
   </ItemGroup>
 </Project>
