@@ -28,7 +28,7 @@ Here is some examples of use cases
 DateTime.Now  - 1.Weeks() - 3.Days() + 14.Minutes()
 DateTime.Now  + 5.Years()
 
-// Relative DateTime evalutations
+// Relative DateTime evaluations
 3.Days().Ago()
 2.Days().Since(DateTime.Now)
 
