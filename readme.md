@@ -25,8 +25,8 @@ Here is some examples of use cases
 
 ```csharp
 // DateTime operations
-DateTime.Now  - 1.Weeks() - 3.Days() + 14.Minutes()
-DateTime.Now  + 5.Years()
+DateTime.Now - 1.Weeks() - 3.Days() + 14.Minutes()
+DateTime.Now + 5.Years()
 
 // Relative DateTime evaluations
 3.Days().Ago()
