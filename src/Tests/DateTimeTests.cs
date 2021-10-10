@@ -1,8 +1,6 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using FluentDate;
 using FluentDateTime;
-using System.Threading;
 using Xunit;
 
 public class DateTimeTests
@@ -39,24 +37,24 @@ public class DateTimeTests
     {
         var originalPointInTime = new DateTime(1976, 4, 30, 0, 0, 0, DateTimeKind.Local);
 
-        DateAssert.Equal(1.Months().Before(originalPointInTime), new DateTime(1976, 3, 30, 0, 0, 0, DateTimeKind.Local));
-        DateAssert.Equal(1.Months().From(originalPointInTime), new DateTime(1976, 5, 30, 0, 0, 0, DateTimeKind.Local));
+        DateAssert.Equal(1.Months().Before(originalPointInTime), new(1976, 3, 30, 0, 0, 0, DateTimeKind.Local));
+        DateAssert.Equal(1.Months().From(originalPointInTime), new(1976, 5, 30, 0, 0, 0, DateTimeKind.Local));
     }
 
     [Fact]
     public void AddFluentTimeSpan()
     {
         var originalPointInTime = new DateTime(1976, 1, 1, 0, 0, 0, DateTimeKind.Local);
-        FluentTimeSpan fluentTimeSpan = 1.Months();
-        Assert.Equal(new DateTime(1976, 2, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
+        var fluentTimeSpan = 1.Months();
+        Assert.Equal(new(1976, 2, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
     }
 
     [Fact]
     public void SubtractFluentTimeSpan()
     {
         var originalPointInTime = new DateTime(1976, 2, 1, 0, 0, 0, DateTimeKind.Local);
-        FluentTimeSpan fluentTimeSpan = 1.Months();
-        Assert.Equal(new DateTime(1976, 1, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
+        var fluentTimeSpan = 1.Months();
+        Assert.Equal(new(1976, 1, 1, 0, 0, 0, DateTimeKind.Local), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
     }
 
     [Fact]
@@ -64,8 +62,8 @@ public class DateTimeTests
     {
         var originalPointInTime = new DateTime(2004, 2, 29, 0, 0, 0, DateTimeKind.Local);
 
-        DateAssert.Equal(1.Years().Before(originalPointInTime), new DateTime(2003, 2, 28, 0, 0, 0, DateTimeKind.Local));
-        DateAssert.Equal(1.Years().From(originalPointInTime), new DateTime(2005, 2, 28, 0, 0, 0, DateTimeKind.Local));
+        DateAssert.Equal(1.Years().Before(originalPointInTime), new(2003, 2, 28, 0, 0, 0, DateTimeKind.Local));
+        DateAssert.Equal(1.Years().From(originalPointInTime), new(2005, 2, 28, 0, 0, 0, DateTimeKind.Local));
     }
 
     [Theory]
@@ -216,8 +214,8 @@ public class DateTimeTests
     public void BasicTests()
     {
         var now = DateTime.Now;
-        DateAssert.Equal(new DateTime(now.Year, now.Month, now.Day, 23, 59, 59, 999, DateTimeKind.Local), DateTime.Now.EndOfDay(), " End of the day wrong");
-        DateAssert.Equal(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0, DateTimeKind.Local), DateTime.Now.BeginningOfDay(), "Start of the day wrong");
+        DateAssert.Equal(new(now.Year, now.Month, now.Day, 23, 59, 59, 999, DateTimeKind.Local), DateTime.Now.EndOfDay(), " End of the day wrong");
+        DateAssert.Equal(new(now.Year, now.Month, now.Day, 0, 0, 0, 0, DateTimeKind.Local), DateTime.Now.BeginningOfDay(), "Start of the day wrong");
 
         var firstBirthDay = new DateTime(1977, 12, 31, 17, 0, 0, 0, DateTimeKind.Local);
         DateAssert.Equal(firstBirthDay + new TimeSpan(1, 0, 5, 0, 0), firstBirthDay + 1.Days() + 5.Minutes());
@@ -228,25 +226,25 @@ public class DateTimeTests
         DateAssert.Equal(now + TimeSpan.FromDays(7), now.WeekAfter());
         DateAssert.Equal(now - TimeSpan.FromDays(7), now.WeekEarlier());
 
-        Assert.Equal(new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2008, 12, 31, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
-        Assert.Equal(new DateTime(2009, 1, 2, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
+        Assert.Equal(new(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2008, 12, 31, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
+        Assert.Equal(new(2009, 1, 2, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local).Add(1.Days()));
 
         var sampleDate = new DateTime(2009, 1, 1, 13, 0, 0, 0, DateTimeKind.Local);
-        DateAssert.Equal(new DateTime(2009, 1, 1, 12, 0, 0, 0, DateTimeKind.Local), sampleDate.Noon());
-        DateAssert.Equal(new DateTime(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), sampleDate.Midnight());
+        DateAssert.Equal(new(2009, 1, 1, 12, 0, 0, 0, DateTimeKind.Local), sampleDate.Noon());
+        DateAssert.Equal(new(2009, 1, 1, 0, 0, 0, 0, DateTimeKind.Local), sampleDate.Midnight());
 
         Assert.Equal(3.Days() + 3.Days(), 6.Days());
         Assert.Equal(102.Days() - 3.Days(), 99.Days());
 
         Assert.Equal(24.Hours(), 1.Days());
 
-        sampleDate = new DateTime(2008, 1, 1, 0, 0, 0, 0, DateTimeKind.Local);
+        sampleDate = new(2008, 1, 1, 0, 0, 0, 0, DateTimeKind.Local);
         DateAssert.Equal(3.Days().Since(sampleDate), sampleDate + 3.Days());
 
         var saturday = new DateTime(2008, 10, 25, 12, 0, 0, DateTimeKind.Local);
-        DateAssert.Equal(new DateTime(2008, 11, 1, 12, 0, 0, DateTimeKind.Local), saturday.Next(DayOfWeek.Saturday));
+        DateAssert.Equal(new(2008, 11, 1, 12, 0, 0, DateTimeKind.Local), saturday.Next(DayOfWeek.Saturday));
 
-        DateAssert.Equal(new DateTime(2008, 10, 18, 12, 0, 0, DateTimeKind.Local), saturday.Previous(DayOfWeek.Saturday));
+        DateAssert.Equal(new(2008, 10, 18, 12, 0, 0, DateTimeKind.Local), saturday.Previous(DayOfWeek.Saturday));
 
         // ReSharper disable UnusedVariable
         var nextWeek = DateTime.Now + 1.Weeks();
@@ -551,7 +549,7 @@ public class DateTimeTests
     [InlineData("2011-01-01T06:40:20.005")]
     public void FirstDayOfYear_BasicTest(string value)
     {
-        Assert.Equal(new DateTime(2011, 1, 1, 6, 40, 20, 5), DateTime.Parse(value).FirstDayOfYear());
+        Assert.Equal(new(2011, 1, 1, 6, 40, 20, 5), DateTime.Parse(value).FirstDayOfYear());
     }
 
     [Theory]
@@ -569,7 +567,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 25, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfWeek());
+        Assert.Equal(new(2011, 12, 25, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
 
@@ -579,7 +577,7 @@ public class DateTimeTests
     [InlineData("2011-12-31T06:40:20.005")]
     public void LastDayOfYear_BasicTest(string value)
     {
-        Assert.Equal(new DateTime(2011, 12, 31, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfYear());
+        Assert.Equal(new(2011, 12, 31, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfYear());
     }
 
     [Fact]
@@ -696,7 +694,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 19, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
+        Assert.Equal(new(2011, 12, 19, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -715,7 +713,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 25, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
+        Assert.Equal(new(2011, 12, 25, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -734,7 +732,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 18, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
+        Assert.Equal(new(2011, 12, 18, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -753,7 +751,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 24, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
+        Assert.Equal(new(2011, 12, 24, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -772,7 +770,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfMonth());
+        Assert.Equal(new(2011, 12, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfMonth());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -791,7 +789,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfMonth());
+        Assert.Equal(new(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfMonth());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -810,7 +808,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 10, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfQuarter());
+        Assert.Equal(new(2011, 10, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfQuarter());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -829,7 +827,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfQuarter());
+        Assert.Equal(new(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfQuarter());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -848,7 +846,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 01, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfYear());
+        Assert.Equal(new(2011, 01, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfYear());
         Thread.CurrentThread.CurrentCulture = ci;
     }
     
@@ -867,7 +865,7 @@ public class DateTimeTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTime(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfYear());
+        Assert.Equal(new(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfYear());
         Thread.CurrentThread.CurrentCulture = ci;
     }
 }

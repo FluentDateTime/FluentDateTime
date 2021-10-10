@@ -1,9 +1,7 @@
 ﻿// ReSharper disable InvokeAsExtensionMethod
-using System;
 using System.Globalization;
 using FluentDate;
 using FluentDateTimeOffset;
-using System.Threading;
 using Xunit;
 
 public class DateTimeOffsetTests
@@ -14,16 +12,16 @@ public class DateTimeOffsetTests
     public void AddFluentTimeSpan()
     {
         var originalPointInTime = new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero);
-        FluentTimeSpan fluentTimeSpan = 1.Months();
-        Assert.Equal(new DateTimeOffset(1976, 2, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
+        var fluentTimeSpan = 1.Months();
+        Assert.Equal(new(1976, 2, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
     }
 
     [Fact]
     public void SubtractFluentTimeSpan()
     {
         var originalPointInTime = new DateTimeOffset(1976, 2, 1, 0, 0, 0, TimeSpan.Zero);
-        FluentTimeSpan fluentTimeSpan = 1.Months();
-        Assert.Equal(new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
+        var fluentTimeSpan = 1.Months();
+        Assert.Equal(new(1976, 1, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.SubtractFluentTimeSpan(fluentTimeSpan));
     }
 
     [Theory]
@@ -56,8 +54,8 @@ public class DateTimeOffsetTests
     {
         var originalPointInTime = new DateTimeOffset(1976, 4, 30, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Equal(1.Months().Before(originalPointInTime), new DateTimeOffset(1976, 3, 30, 0, 0, 0, TimeSpan.Zero));
-        Assert.Equal(1.Months().From(originalPointInTime), new DateTimeOffset(1976, 5, 30, 0, 0, 0, TimeSpan.Zero));
+        Assert.Equal(1.Months().Before(originalPointInTime), new(1976, 3, 30, 0, 0, 0, TimeSpan.Zero));
+        Assert.Equal(1.Months().From(originalPointInTime), new(1976, 5, 30, 0, 0, 0, TimeSpan.Zero));
     }
 
     [Fact]
@@ -65,8 +63,8 @@ public class DateTimeOffsetTests
     {
         var originalPointInTime = new DateTimeOffset(2004, 2, 29, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Equal(1.Years().Before(originalPointInTime), new DateTimeOffset(2003, 2, 28, 0, 0, 0, TimeSpan.Zero));
-        Assert.Equal(1.Years().From(originalPointInTime), new DateTimeOffset(2005, 2, 28, 0, 0, 0, TimeSpan.Zero));
+        Assert.Equal(1.Years().Before(originalPointInTime), new(2003, 2, 28, 0, 0, 0, TimeSpan.Zero));
+        Assert.Equal(1.Years().From(originalPointInTime), new(2005, 2, 28, 0, 0, 0, TimeSpan.Zero));
     }
 
     [Theory]
@@ -128,7 +126,7 @@ public class DateTimeOffsetTests
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Equal(new DateTimeOffset(2008, 10, 25, 0, value, 0, 0, TimeSpan.Zero), toChange.SetTime(0, value));
+        Assert.Equal(new(2008, 10, 25, 0, value, 0, 0, TimeSpan.Zero), toChange.SetTime(0, value));
     }
 
     [Theory]
@@ -181,7 +179,7 @@ public class DateTimeOffsetTests
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Equal(new DateTimeOffset(2008, 10, 25, 0, 0, 0, value, TimeSpan.Zero), toChange.SetTime(0, 0, 0, value));
+        Assert.Equal(new(2008, 10, 25, 0, 0, 0, value, TimeSpan.Zero), toChange.SetTime(0, 0, 0, value));
     }
 
     [Theory]
@@ -203,7 +201,7 @@ public class DateTimeOffsetTests
         var expected = new DateTimeOffset(now.Year, now.Month, now.Day, 23, 59, 59, 999, TimeSpan.Zero);
         var actual = now.EndOfDay();
         Assert.Equal(expected, actual);
-        Assert.Equal(new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, 0, TimeSpan.Zero), now.BeginningOfDay());
+        Assert.Equal(new(now.Year, now.Month, now.Day, 0, 0, 0, 0, TimeSpan.Zero), now.BeginningOfDay());
 
         var firstBirthDay = new DateTimeOffset(1977, 12, 31, 17, 0, 0, 0, TimeSpan.Zero);
         Assert.Equal(firstBirthDay + new TimeSpan(1, 0, 5, 0, 0), firstBirthDay + 1.Days() + 5.Minutes());
@@ -214,25 +212,25 @@ public class DateTimeOffsetTests
         Assert.Equal(now + TimeSpan.FromDays(7), now.WeekAfter());
         Assert.Equal(now - TimeSpan.FromDays(7), now.WeekEarlier());
 
-        Assert.Equal(new DateTimeOffset(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2008, 12, 31, 0, 0, 0, TimeSpan.Zero).Add(1.Days()));
-        Assert.Equal(new DateTimeOffset(2009, 1, 2, 0, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).Add(1.Days()));
+        Assert.Equal(new(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2008, 12, 31, 0, 0, 0, TimeSpan.Zero).Add(1.Days()));
+        Assert.Equal(new(2009, 1, 2, 0, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).Add(1.Days()));
 
         var sampleDate = new DateTimeOffset(2009, 1, 1, 13, 0, 0, 0, TimeSpan.Zero);
-        Assert.Equal(new DateTimeOffset(2009, 1, 1, 12, 0, 0, 0, TimeSpan.Zero), sampleDate.Noon());
-        Assert.Equal(new DateTimeOffset(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero), sampleDate.Midnight());
+        Assert.Equal(new(2009, 1, 1, 12, 0, 0, 0, TimeSpan.Zero), sampleDate.Noon());
+        Assert.Equal(new(2009, 1, 1, 0, 0, 0, 0, TimeSpan.Zero), sampleDate.Midnight());
 
         Assert.Equal(3.Days() + 3.Days(), 6.Days());
         Assert.Equal(102.Days() - 3.Days(), 99.Days());
 
         Assert.Equal(24.Hours(), 1.Days());
 
-        sampleDate = new DateTimeOffset(2008, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
+        sampleDate = new(2008, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
         Assert.Equal(3.Days().Since(sampleDate), sampleDate + 3.Days());
 
         var saturday = new DateTimeOffset(2008, 10, 25, 12, 0, 0, TimeSpan.Zero);
-        Assert.Equal(new DateTimeOffset(2008, 11, 1, 12, 0, 0, TimeSpan.Zero), saturday.Next(DayOfWeek.Saturday));
+        Assert.Equal(new(2008, 11, 1, 12, 0, 0, TimeSpan.Zero), saturday.Next(DayOfWeek.Saturday));
 
-        Assert.Equal(new DateTimeOffset(2008, 10, 18, 12, 0, 0, TimeSpan.Zero), saturday.Previous(DayOfWeek.Saturday));
+        Assert.Equal(new(2008, 10, 18, 12, 0, 0, TimeSpan.Zero), saturday.Previous(DayOfWeek.Saturday));
 
         var nextWeek = DateTimeOffset.UtcNow + 1.Weeks();
 
@@ -253,7 +251,7 @@ public class DateTimeOffsetTests
     {
         var birthday = new DateTimeOffset(1976, 12, 31, 17, 0, 0, 0, TimeSpan.Zero);
         var nextYear = birthday.NextYear();
-        Assert.Equal(new DateTimeOffset(1977, 12, 31, 17, 0, 0, 0, TimeSpan.Zero), nextYear);
+        Assert.Equal(new(1977, 12, 31, 17, 0, 0, 0, TimeSpan.Zero), nextYear);
     }
 
     [Fact]
@@ -261,7 +259,7 @@ public class DateTimeOffsetTests
     {
         var birthday = new DateTimeOffset(1976, 12, 31, 17, 0, 0, 0, TimeSpan.Zero);
         var previousYear = birthday.PreviousYear();
-        Assert.Equal(new DateTimeOffset(1975, 12, 31, 17, 0, 0, 0, TimeSpan.Zero), previousYear);
+        Assert.Equal(new(1975, 12, 31, 17, 0, 0, 0, TimeSpan.Zero), previousYear);
     }
 
     [Fact]
@@ -269,7 +267,7 @@ public class DateTimeOffsetTests
     {
         var someBirthday = new DateTimeOffset(2008, 2, 29, 17, 0, 0, 0, TimeSpan.Zero);
         var nextYear = someBirthday.NextYear();
-        Assert.Equal(new DateTimeOffset(2009, 3, 1, 17, 0, 0, 0, TimeSpan.Zero), nextYear);
+        Assert.Equal(new(2009, 3, 1, 17, 0, 0, 0, TimeSpan.Zero), nextYear);
     }
 
     [Fact]
@@ -277,7 +275,7 @@ public class DateTimeOffsetTests
     {
         var someBirthday = new DateTimeOffset(2012, 2, 29, 17, 0, 0, 0, TimeSpan.Zero);
         var previousYear = someBirthday.PreviousYear();
-        Assert.Equal(new DateTimeOffset(2011, 3, 1, 17, 0, 0, 0, TimeSpan.Zero), previousYear);
+        Assert.Equal(new(2011, 3, 1, 17, 0, 0, 0, TimeSpan.Zero), previousYear);
     }
 
     [Fact]
@@ -343,19 +341,19 @@ public class DateTimeOffsetTests
     [Fact]
     public void At_SetsHourAndMinutesProperly()
     {
-        Assert.Equal(new DateTimeOffset(2002, 12, 17, 18, 06, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06));
+        Assert.Equal(new(2002, 12, 17, 18, 06, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06));
     }
 
     [Fact]
     public void At_SetsHourAndMinutesAndSecondsProperly()
     {
-        Assert.Equal(new DateTimeOffset(2002, 12, 17, 18, 06, 02, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02));
+        Assert.Equal(new(2002, 12, 17, 18, 06, 02, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02));
     }
 
     [Fact]
     public void At_SetsHourAndMinutesAndMillisecondsProperly()
     {
-        Assert.Equal(new DateTimeOffset(2002, 12, 17, 18, 06, 02, 03, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02, 03));
+        Assert.Equal(new(2002, 12, 17, 18, 06, 02, 03, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02, 03));
     }
 
     [Fact]
@@ -417,37 +415,37 @@ public class DateTimeOffsetTests
     [Fact]
     public void FirstDayOfMonth_SetsTheDayToOne()
     {
-        Assert.Equal(new DateTimeOffset(2002, 12, 1, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).FirstDayOfMonth());
+        Assert.Equal(new(2002, 12, 1, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).FirstDayOfMonth());
     }
 
     [Fact]
     public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth()
     {
-        Assert.Equal(new DateTimeOffset(2002, 1, 31, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 1, 1, 17, 05, 01, TimeSpan.Zero).LastDayOfMonth());
+        Assert.Equal(new(2002, 1, 31, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 1, 1, 17, 05, 01, TimeSpan.Zero).LastDayOfMonth());
     }
 
     [Fact]
     public void AddBusinessDays_AdsDaysProperlyWhenThereIsWeekendAhead()
     {
-        Assert.Equal(new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(2));
+        Assert.Equal(new(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(2));
     }
 
     [Fact]
     public void AddBusinessDays_Negative()
     {
-        Assert.Equal(new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(-2));
+        Assert.Equal(new(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(-2));
     }
 
     [Fact]
     public void SubtractBusinessDays_SubtractsDaysProperlyWhenThereIsWeekend()
     {
-        Assert.Equal(new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(2));
+        Assert.Equal(new(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(2));
     }
 
     [Fact]
     public void SubtractBusinessDays_Negative()
     {
-        Assert.Equal(new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(-2));
+        Assert.Equal(new(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(-2));
     }
 
     [Fact]
@@ -486,7 +484,7 @@ public class DateTimeOffsetTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTimeOffset(2011, 1, 24, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
+        Assert.Equal(new(2011, 1, 24, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
 
@@ -509,7 +507,7 @@ public class DateTimeOffsetTests
             }
         };
         Thread.CurrentThread.CurrentCulture = currentCulture;
-        Assert.Equal(new DateTimeOffset(2011, 1, 23, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
+        Assert.Equal(new(2011, 1, 23, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2011, 1, value, 0, 0, 0, TimeSpan.Zero).FirstDayOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
 
@@ -563,18 +561,18 @@ public class DateTimeOffsetTests
     [Fact]
     public void PreviousMonth_PreviousMonthDoesntHaveThatManyDays()
     {
-        Assert.Equal(new DateTimeOffset(2009, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2009, 3, 31, 06, 40, 20, 5, TimeSpan.Zero).PreviousMonth());
+        Assert.Equal(new(2009, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2009, 3, 31, 06, 40, 20, 5, TimeSpan.Zero).PreviousMonth());
     }
 
     [Fact]
     public void NextMonth_BasicTest()
     {
-        Assert.Equal(new DateTimeOffset(2013, 1, 5, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2012, 12, 5, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
+        Assert.Equal(new(2013, 1, 5, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2012, 12, 5, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
     }
 
     [Fact]
     public void PreviousMonth_NextMonthDoesntHaveThatManyDays()
     {
-        Assert.Equal(new DateTimeOffset(2013, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2013, 1, 31, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
+        Assert.Equal(new(2013, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2013, 1, 31, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
     }
 }

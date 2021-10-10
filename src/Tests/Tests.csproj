@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>
+    <TargetFrameworks>net6;net48</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <ProjectReference Include="..\FluentDateTime\FluentDateTime.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.58" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.59" PrivateAssets="All" />
   </ItemGroup>
 </Project>

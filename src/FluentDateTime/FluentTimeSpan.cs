@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.InteropServices;
 
 namespace FluentDate
@@ -237,7 +236,7 @@ namespace FluentDate
         /// <returns>The result of the conversion.</returns>
         public static implicit operator FluentTimeSpan(TimeSpan timeSpan)
         {
-            return new FluentTimeSpan {TimeSpan = timeSpan};
+            return new() {TimeSpan = timeSpan};
         }
 
         /// <summary>
@@ -263,7 +262,7 @@ namespace FluentDate
         }
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null)
             {
@@ -289,7 +288,7 @@ namespace FluentDate
 
         static FluentTimeSpan AddInternal(FluentTimeSpan left, TimeSpan right)
         {
-            return new FluentTimeSpan
+            return new()
             {
                 Months = left.Months,
                 Years = left.Years,
@@ -299,7 +298,7 @@ namespace FluentDate
 
         static FluentTimeSpan SubtractInternal(FluentTimeSpan left, TimeSpan right)
         {
-            return new FluentTimeSpan
+            return new()
             {
                 Months = left.Months,
                 Years = left.Years,
@@ -309,7 +308,7 @@ namespace FluentDate
 
        internal static FluentTimeSpan SubtractInternal(TimeSpan left, FluentTimeSpan right)
         {
-            return new FluentTimeSpan
+            return new()
             {
                 Months = -right.Months,
                 Years = -right.Years,
@@ -319,7 +318,7 @@ namespace FluentDate
 
         static FluentTimeSpan AddInternal(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return new FluentTimeSpan
+            return new()
             {
                 Years = left.Years + right.Years,
                 Months = left.Months + right.Months,
@@ -329,7 +328,7 @@ namespace FluentDate
 
         static FluentTimeSpan SubtractInternal(FluentTimeSpan left, FluentTimeSpan right)
         {
-            return new FluentTimeSpan
+            return new()
             {
                 Years = left.Years - right.Years,
                 Months = left.Months - right.Months,
