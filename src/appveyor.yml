@@ -9,4 +9,4 @@ build_script:
 - dotnet test src --configuration Release --no-build --no-restore
 test: off
 artifacts:
-- path: nugets\**\*.nupkg
+- path: nugets\*.nupkg
