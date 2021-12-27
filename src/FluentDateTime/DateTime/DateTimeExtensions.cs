@@ -44,7 +44,7 @@ public static class DateTimeExtensions
         return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind)
             .AddHours(timeZoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the last day of the week changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
     /// </summary>
@@ -52,7 +52,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfWeek().EndOfDay();
     }
-        
+
     /// <summary>
     /// Returns the last day of the week changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
     /// </summary>
@@ -60,7 +60,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfWeek().EndOfDay(timeZoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the last day of the month changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -68,7 +68,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfMonth().EndOfDay();
     }
-        
+
     /// <summary>
     /// Returns the last day of the month changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -76,7 +76,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfMonth().EndOfDay(timeZoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the last day of the quarter changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -84,7 +84,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfQuarter().EndOfDay();
     }
-        
+
     /// <summary>
     /// Returns the last day of the quarter changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -92,7 +92,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfQuarter().EndOfDay(timeZoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the last day of the year changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -100,7 +100,7 @@ public static class DateTimeExtensions
     {
         return date.LastDayOfYear().EndOfDay();
     }
-        
+
     /// <summary>
     /// Returns the last day of the year changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
@@ -125,7 +125,7 @@ public static class DateTimeExtensions
         return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind)
             .AddHours(timezoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the Start day of the week changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-19T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
@@ -141,7 +141,7 @@ public static class DateTimeExtensions
     {
         return date.FirstDayOfWeek().BeginningOfDay(timezoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the Start day of the month changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
@@ -157,7 +157,7 @@ public static class DateTimeExtensions
     {
         return date.FirstDayOfMonth().BeginningOfDay(timezoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the Start day of the quarter changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-10-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
@@ -173,7 +173,7 @@ public static class DateTimeExtensions
     {
         return date.FirstDayOfQuarter().BeginningOfDay(timezoneOffset);
     }
-        
+
     /// <summary>
     /// Returns the Start day of the year changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-01-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
@@ -557,8 +557,7 @@ public static class DateTimeExtensions
             do
             {
                 current = current.AddDays(sign);
-            } while (current.DayOfWeek == DayOfWeek.Saturday ||
-                     current.DayOfWeek == DayOfWeek.Sunday);
+            } while (current.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday);
         }
         return current;
     }

@@ -59,6 +59,7 @@ public static class DateTimeOffsetExtensions
             var dateTimeOffset = new DateTimeOffset(nextYear, start.Month, numberOfDaysInSameMonthNextYear, start.Hour, start.Minute, start.Second, start.Millisecond, start.Offset);
             return dateTimeOffset + differenceInDays.Days();
         }
+
         return new(nextYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond, start.Offset);
     }
 
@@ -77,6 +78,7 @@ public static class DateTimeOffsetExtensions
             var dateTime = new DateTimeOffset(previousYear, start.Month, numberOfDaysInSameMonthPreviousYear, start.Hour, start.Minute, start.Second, start.Millisecond, start.Offset);
             return dateTime + differenceInDays.Days();
         }
+
         return new(previousYear, start.Month, start.Day, start.Hour, start.Minute, start.Second, start.Millisecond, start.Offset);
     }
 
@@ -409,9 +411,9 @@ public static class DateTimeOffsetExtensions
             do
             {
                 current = current.AddDays(sign);
-            } while (current.DayOfWeek == DayOfWeek.Saturday ||
-                     current.DayOfWeek == DayOfWeek.Sunday);
+            } while (current.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday);
         }
+
         return current;
     }
 
@@ -463,6 +465,7 @@ public static class DateTimeOffsetExtensions
                 {
                     rounded = rounded.AddSeconds(1);
                 }
+
                 break;
             }
             case RoundTo.Minute:
@@ -472,6 +475,7 @@ public static class DateTimeOffsetExtensions
                 {
                     rounded = rounded.AddMinutes(1);
                 }
+
                 break;
             }
             case RoundTo.Hour:
@@ -481,6 +485,7 @@ public static class DateTimeOffsetExtensions
                 {
                     rounded = rounded.AddHours(1);
                 }
+
                 break;
             }
             case RoundTo.Day:
@@ -490,11 +495,12 @@ public static class DateTimeOffsetExtensions
                 {
                     rounded = rounded.AddDays(1);
                 }
+
                 break;
             }
             default:
             {
-                throw new ArgumentOutOfRangeException("rt");
+                throw new ArgumentOutOfRangeException(nameof(rt));
             }
         }
 

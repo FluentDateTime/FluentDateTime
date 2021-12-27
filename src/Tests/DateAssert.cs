@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-public class DateAssert
+public static class DateAssert
 {
     public static void Equal(DateTime expected, DateTime actual, string message)
     {

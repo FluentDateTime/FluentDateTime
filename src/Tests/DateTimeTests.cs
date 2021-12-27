@@ -678,7 +678,7 @@ public class DateTimeTests
 
         Assert.False(date.SameDay(other));
     }
-    
+
     [Theory]
     [InlineData("2011-12-19T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -697,7 +697,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 19, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-19T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -716,7 +716,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 25, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -735,7 +735,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 18, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -754,7 +754,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 24, 23, 59, 59, 999), DateTime.Parse(value).EndOfWeek());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-19T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -773,7 +773,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfMonth());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -792,7 +792,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfMonth());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -811,7 +811,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 10, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfQuarter());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -830,7 +830,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 12, 31, 23, 59, 59, 999), DateTime.Parse(value).EndOfQuarter());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
@@ -849,7 +849,7 @@ public class DateTimeTests
         Assert.Equal(new(2011, 01, 01, 0, 0, 0, 0), DateTime.Parse(value).BeginningOfYear());
         Thread.CurrentThread.CurrentCulture = ci;
     }
-    
+
     [Theory]
     [InlineData("2011-12-18T06:40:20.005")]
     [InlineData("2011-12-20T06:40:20.005")]
