@@ -1,5 +1,4 @@
 using FluentDate;
-using FluentDateTime;
 using Xunit;
 
 public class FluentTimeSpanTests
