@@ -110,5 +110,4 @@ public static class TimeSpanOffsetExtensions
     {
         return From(from, originalValue);
     }
-
 }
