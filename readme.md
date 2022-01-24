@@ -11,9 +11,6 @@ Inspired by Ruby DateTime Extensions
  * [Extensions To Time](http://edgeguides.rubyonrails.org/active_support_core_extensions.html#extensions-to-time)
 
 
-Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-fluentdatetime?utm_source=nuget-fluentdatetime&utm_medium=referral&utm_campaign=enterprise).
-
-
 ## NuGet
 
 https://nuget.org/packages/FluentDateTime/
@@ -45,11 +42,6 @@ DateTime.Now.SetTime(11, 55, 0)
 ```
 
 _See [Unit Tests](https://github.com/FluentDateTime/FluentDateTime/tree/master/src/Tests) in the project for more details._
-
-
-## Security contact information
-
-To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
