@@ -19,7 +19,6 @@ local.properties
 .vs
 .idea
 
-*.DotSettings
 *.ncrunchsolution
 
 # External tool builders
