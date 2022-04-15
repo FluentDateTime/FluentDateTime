@@ -64,10 +64,8 @@ public class FluentTimeSpanTests
     }
 
     [Fact]
-    public void GetHashCodeTest()
-    {
+    public void GetHashCodeTest() =>
         Assert.Equal(343024320, 3.5.Days().GetHashCode());
-    }
 
     [Fact]
     public void CompareToFluentTimeSpan()
@@ -117,16 +115,12 @@ public class FluentTimeSpanTests
     }
 
     [Fact]
-    public void EqualsTimeSpanAsObject()
-    {
+    public void EqualsTimeSpanAsObject() =>
         Assert.True(3.Days().Equals((object) TimeSpan.FromDays(3)));
-    }
 
     [Fact]
-    public void EqualsObject()
-    {
+    public void EqualsObject() =>
         Assert.False(3.Days().Equals(1));
-    }
 
     [Fact]
     public void Add()
@@ -140,10 +134,8 @@ public class FluentTimeSpanTests
     }
 
     [Fact]
-    public void ToStringTest()
-    {
+    public void ToStringTest() =>
         Assert.Equal("3.12:00:00", 3.5.Days().ToString());
-    }
 
     [Fact]
     public void Clone()
@@ -154,70 +146,48 @@ public class FluentTimeSpanTests
     }
 
     [Fact]
-    public void Ticks()
-    {
+    public void Ticks() =>
         Assert.Equal(30000, 3.Milliseconds().Ticks);
-    }
 
     [Fact]
-    public void Milliseconds()
-    {
+    public void Milliseconds() =>
         Assert.Equal(100, 1100.Milliseconds().Milliseconds);
-    }
 
     [Fact]
-    public void TotalMilliseconds()
-    {
+    public void TotalMilliseconds() =>
         Assert.Equal(1100, 1100.Milliseconds().TotalMilliseconds);
-    }
 
     [Fact]
-    public void Seconds()
-    {
+    public void Seconds() =>
         Assert.Equal(1, 61.Seconds().Seconds);
-    }
 
     [Fact]
-    public void TotalSeconds()
-    {
+    public void TotalSeconds() =>
         Assert.Equal(61, 61.Seconds().TotalSeconds);
-    }
 
     [Fact]
-    public void Minutes()
-    {
+    public void Minutes() =>
         Assert.Equal(1, 61.Minutes().Minutes);
-    }
 
     [Fact]
-    public void TotalMinutes()
-    {
+    public void TotalMinutes() =>
         Assert.Equal(61, 61.Minutes().TotalMinutes);
-    }
 
     [Fact]
-    public void Hours()
-    {
+    public void Hours() =>
         Assert.Equal(1, 25.Hours().Hours);
-    }
 
     [Fact]
-    public void TotalHours()
-    {
+    public void TotalHours() =>
         Assert.Equal(25, 25.Hours().TotalHours);
-    }
 
     [Fact]
-    public void Days()
-    {
+    public void Days() =>
         Assert.Equal(366, 366.Days().Days);
-    }
 
     [Fact]
-    public void TotalDays()
-    {
+    public void TotalDays() =>
         Assert.Equal(366, 366.Days().TotalDays);
-    }
 
     [Fact]
     public void Years()

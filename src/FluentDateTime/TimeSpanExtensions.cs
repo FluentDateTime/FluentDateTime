@@ -8,28 +8,22 @@ public static class TimeSpanExtensions
     /// <summary>
     /// Adds the given <see cref="FluentTimeSpan"/> from a <see cref="TimeSpan"/> and returns resulting <see cref="FluentTimeSpan"/>.
     /// </summary>
-    public static FluentTimeSpan AddFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan)
-    {
-        return fluentTimeSpan.Add(timeSpan);
-    }
+    public static FluentTimeSpan AddFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan) =>
+        fluentTimeSpan.Add(timeSpan);
 
     /// <summary>
     /// Subtracts the given <see cref="FluentTimeSpan"/> from a <see cref="TimeSpan"/> and returns resulting <see cref="FluentTimeSpan"/>.
     /// </summary>
-    public static FluentTimeSpan SubtractFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan)
-    {
-        return FluentTimeSpan.SubtractInternal(timeSpan, fluentTimeSpan);
-    }
+    public static FluentTimeSpan SubtractFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan) =>
+        FluentTimeSpan.SubtractInternal(timeSpan, fluentTimeSpan);
 
     /// <summary>
     /// Convert a <see cref="TimeSpan"/> to a human readable string.
     /// </summary>
     /// <param name="timeSpan">The <see cref="TimeSpan"/> to convert</param>
     /// <returns>A human readable string for <paramref name="timeSpan"/></returns>
-    public static string ToDisplayString(this FluentTimeSpan timeSpan)
-    {
-        return ((TimeSpan) timeSpan).ToDisplayString();
-    }
+    public static string ToDisplayString(this FluentTimeSpan timeSpan) =>
+        ((TimeSpan) timeSpan).ToDisplayString();
 
     /// <summary>
     /// Convert a <see cref="TimeSpan"/> to a human readable string.

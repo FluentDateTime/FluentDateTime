@@ -339,22 +339,16 @@ public class DateTimeOffsetTests
     }
 
     [Fact]
-    public void At_SetsHourAndMinutesProperly()
-    {
+    public void At_SetsHourAndMinutesProperly() =>
         Assert.Equal(new(2002, 12, 17, 18, 06, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06));
-    }
 
     [Fact]
-    public void At_SetsHourAndMinutesAndSecondsProperly()
-    {
+    public void At_SetsHourAndMinutesAndSecondsProperly() =>
         Assert.Equal(new(2002, 12, 17, 18, 06, 02, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02));
-    }
 
     [Fact]
-    public void At_SetsHourAndMinutesAndMillisecondsProperly()
-    {
+    public void At_SetsHourAndMinutesAndMillisecondsProperly() =>
         Assert.Equal(new(2002, 12, 17, 18, 06, 02, 03, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).At(18, 06, 02, 03));
-    }
 
     [Fact]
     public void PreviousQuarter_FirstDay_SetsTheDayToOne()
@@ -413,40 +407,28 @@ public class DateTimeOffsetTests
     }
 
     [Fact]
-    public void FirstDayOfMonth_SetsTheDayToOne()
-    {
+    public void FirstDayOfMonth_SetsTheDayToOne() =>
         Assert.Equal(new(2002, 12, 1, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 12, 17, 17, 05, 01, TimeSpan.Zero).FirstDayOfMonth());
-    }
 
     [Fact]
-    public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth()
-    {
+    public void LastDayOfMonth_SetsTheDayToLastDayInThatMonth() =>
         Assert.Equal(new(2002, 1, 31, 17, 05, 01, TimeSpan.Zero), new DateTimeOffset(2002, 1, 1, 17, 05, 01, TimeSpan.Zero).LastDayOfMonth());
-    }
 
     [Fact]
-    public void AddBusinessDays_AdsDaysProperlyWhenThereIsWeekendAhead()
-    {
+    public void AddBusinessDays_AdsDaysProperlyWhenThereIsWeekendAhead() =>
         Assert.Equal(new(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(2));
-    }
 
     [Fact]
-    public void AddBusinessDays_Negative()
-    {
+    public void AddBusinessDays_Negative() =>
         Assert.Equal(new(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).AddBusinessDays(-2));
-    }
 
     [Fact]
-    public void SubtractBusinessDays_SubtractsDaysProperlyWhenThereIsWeekend()
-    {
+    public void SubtractBusinessDays_SubtractsDaysProperlyWhenThereIsWeekend() =>
         Assert.Equal(new(2009, 7, 9, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 13, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(2));
-    }
 
     [Fact]
-    public void SubtractBusinessDays_Negative()
-    {
+    public void SubtractBusinessDays_Negative() =>
         Assert.Equal(new(2009, 7, 13, 0, 0, 0, TimeSpan.Zero), new DateTimeOffset(2009, 7, 9, 0, 0, 0, TimeSpan.Zero).SubtractBusinessDays(-2));
-    }
 
     [Fact]
     public void IsInFuture()
@@ -559,20 +541,14 @@ public class DateTimeOffsetTests
     }
 
     [Fact]
-    public void PreviousMonth_PreviousMonthDoesntHaveThatManyDays()
-    {
+    public void PreviousMonth_PreviousMonthDoesntHaveThatManyDays() =>
         Assert.Equal(new(2009, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2009, 3, 31, 06, 40, 20, 5, TimeSpan.Zero).PreviousMonth());
-    }
 
     [Fact]
-    public void NextMonth_BasicTest()
-    {
+    public void NextMonth_BasicTest() =>
         Assert.Equal(new(2013, 1, 5, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2012, 12, 5, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
-    }
 
     [Fact]
-    public void PreviousMonth_NextMonthDoesntHaveThatManyDays()
-    {
+    public void PreviousMonth_NextMonthDoesntHaveThatManyDays() =>
         Assert.Equal(new(2013, 2, 28, 06, 40, 20, 5, TimeSpan.Zero), new DateTimeOffset(2013, 1, 31, 06, 40, 20, 5, TimeSpan.Zero).NextMonth());
-    }
 }

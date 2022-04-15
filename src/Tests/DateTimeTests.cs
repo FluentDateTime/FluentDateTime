@@ -547,10 +547,8 @@ public class DateTimeTests
     [InlineData("2011-06-22T06:40:20.005")]
     [InlineData("2011-12-31T06:40:20.005")]
     [InlineData("2011-01-01T06:40:20.005")]
-    public void FirstDayOfYear_BasicTest(string value)
-    {
+    public void FirstDayOfYear_BasicTest(string value) =>
         Assert.Equal(new(2011, 1, 1, 6, 40, 20, 5), DateTime.Parse(value).FirstDayOfYear());
-    }
 
     [Theory]
     [InlineData("2011-12-24T06:40:20.005")]
@@ -575,10 +573,8 @@ public class DateTimeTests
     [InlineData("2011-02-13T06:40:20.005")]
     [InlineData("2011-01-01T06:40:20.005")]
     [InlineData("2011-12-31T06:40:20.005")]
-    public void LastDayOfYear_BasicTest(string value)
-    {
+    public void LastDayOfYear_BasicTest(string value) =>
         Assert.Equal(new(2011, 12, 31, 06, 40, 20, 5), DateTime.Parse(value).LastDayOfYear());
-    }
 
     [Fact]
     public void PreviousMonth_BasicTest()
