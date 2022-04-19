@@ -39,7 +39,7 @@ public class FluentDate
     public DateTime Local => AtLocal(0);
 
     /// <summary>
-    /// Returns specified time at the current date.
+    /// Returns specified time at the current date, with an unspecified time zone.
     /// </summary>
     /// <param name="hour">
     /// The hours (0 through 23).
@@ -57,13 +57,13 @@ public class FluentDate
         At(DateTimeKind.Unspecified, hour, minute, second, millisecond);
 
     /// <summary>
-    /// Returns specified time at the current date.
+    /// Returns specified time at the current date in the Coordinated Universal Time (UTC) time zone.
     /// </summary>
     public DateTime AtUtc(int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         At(DateTimeKind.Utc, hour, minute, second, millisecond);
 
     /// <summary>
-    /// Returns specified time at the current date.
+    /// Returns specified time at the current date in the local time zone.
     /// </summary>
     /// <param name="hour">
     /// The hours (0 through 23).
@@ -102,7 +102,7 @@ public class FluentDate
         new(DateTime.Year, DateTime.Month, DateTime.Day, hour, minute, second, millisecond, kind);
 
     /// <summary>
-    /// Returns specified time at the current date.
+    /// Returns specified time at the current date and in a time zone expressed through <paramref name="offset" />.
     /// </summary>
     /// <param name="offset">
     /// The time's offset from Coordinated Universal Time (UTC).
