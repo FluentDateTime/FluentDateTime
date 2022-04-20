@@ -49,13 +49,13 @@ public class FluentDateTests
         var fluentDate = getFluentDate(date.Year, date.Day);
 
         DateAssert.Equal(date.Date, fluentDate, "Implicit unequal");
-        DateAssert.Equal(date.Date, fluentDate.DateTime, "Explicit unequal");
+        DateAssert.Equal(date.Date, fluentDate.Date, "Explicit unequal");
 
         DateAssert.Equal(DateTime.SpecifyKind(date.Date, DateTimeKind.Local), fluentDate.Local, "Local unequal");
         DateAssert.Equal(DateTime.SpecifyKind(date.Date, DateTimeKind.Utc), fluentDate.Utc, "UTC unequal");
 
 #if NET6_0_OR_GREATER
-        Assert.Equal(DateOnly.FromDateTime(date), fluentDate.Date);
+        Assert.Equal(DateOnly.FromDateTime(date), fluentDate.DateOnly);
 #endif
     }
 

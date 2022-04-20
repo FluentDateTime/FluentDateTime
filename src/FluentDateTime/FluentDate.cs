@@ -14,19 +14,19 @@ public class FluentDate
     /// <param name="day">
     /// The day (1 through the number of days in <paramref name="month" />).
     /// </param>
-    public FluentDate(int year, int month, int day) => DateTime = new(year, month, day, 0, 0, 0, DateTimeKind.Unspecified);
+    public FluentDate(int year, int month, int day) => Date = new(year, month, day, 0, 0, 0, DateTimeKind.Unspecified);
 
 #if NET6_0_OR_GREATER
     /// <summary>
     /// Gets the current date.
     /// </summary>
-    public DateOnly Date => new(DateTime.Year, DateTime.Month, DateTime.Day);
+    public DateOnly DateOnly => new(Date.Year, Date.Month, Date.Day);
 #endif
 
     /// <summary>
     /// Gets midnight of the current date, with an unspecified time zone.
     /// </summary>
-    public DateTime DateTime { get; }
+    public DateTime Date { get; }
 
     /// <summary>
     /// Gets midnight of the current date in the Coordinated Universal Time (UTC) time zone.
@@ -99,7 +99,7 @@ public class FluentDate
     /// The milliseconds (0 through 999).
     /// </param>
     public DateTime At(DateTimeKind kind, int hour, int minute = 0, int second = 0, int millisecond = 0) =>
-        new(DateTime.Year, DateTime.Month, DateTime.Day, hour, minute, second, millisecond, kind);
+        new(Date.Year, Date.Month, Date.Day, hour, minute, second, millisecond, kind);
 
     /// <summary>
     /// Returns specified time at the current date and in a time zone expressed through <paramref name="offset" />.
@@ -120,12 +120,12 @@ public class FluentDate
     /// The milliseconds (0 through 999).
     /// </param>
     public DateTimeOffset At(TimeSpan offset, int hour, int minute = 0, int second = 0, int millisecond = 0) =>
-        new(DateTime.Year, DateTime.Month, DateTime.Day, hour, minute, second, millisecond, offset);
+        new(Date.Year, Date.Month, Date.Day, hour, minute, second, millisecond, offset);
 
 #if NET6_0_OR_GREATER
-    public static implicit operator DateOnly(FluentDate date) => date.Date;
+    public static implicit operator DateOnly(FluentDate date) => date.DateOnly;
 #endif
 
-    public static implicit operator DateTime(FluentDate date) => date.DateTime;
+    public static implicit operator DateTime(FluentDate date) => date.Date;
     public static implicit operator DateTimeOffset(FluentDate date) => (DateTime) date;
 }
