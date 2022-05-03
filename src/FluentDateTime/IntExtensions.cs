@@ -11,7 +11,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate January(this int year, int day) => new(year, 1, day);
+    public static FluentDate January(this int year, int day) =>
+        new(year, 1, day);
 
     /// <summary>
     /// Returns the specified day in January of the given year.
@@ -33,7 +34,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 28 in a common year, and 29 in leap years).
     /// </param>
-    public static FluentDate February(this int year, int day) => new(year, 2, day);
+    public static FluentDate February(this int year, int day) =>
+        new(year, 2, day);
 
     /// <summary>
     /// Returns the specified day in February of the given year.
@@ -55,7 +57,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate March(this int year, int day) => new(year, 3, day);
+    public static FluentDate March(this int year, int day) =>
+        new(year, 3, day);
 
     /// <summary>
     /// Returns the specified day in March of the given year.
@@ -77,7 +80,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 30).
     /// </param>
-    public static FluentDate April(this int year, int day) => new(year, 4, day);
+    public static FluentDate April(this int year, int day) =>
+        new(year, 4, day);
 
     /// <summary>
     /// Returns the specified day in April of the given year.
@@ -99,7 +103,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate May(this int year, int day) => new(year, 5, day);
+    public static FluentDate May(this int year, int day) =>
+        new(year, 5, day);
 
     /// <summary>
     /// Returns the specified day in June of the given year.
@@ -110,7 +115,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 30).
     /// </param>
-    public static FluentDate June(this int year, int day) => new(year, 6, day);
+    public static FluentDate June(this int year, int day) =>
+        new(year, 6, day);
 
     /// <summary>
     /// Returns the specified day in June of the given year.
@@ -132,7 +138,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate July(this int year, int day) => new(year, 7, day);
+    public static FluentDate July(this int year, int day) =>
+        new(year, 7, day);
 
     /// <summary>
     /// Returns the specified day in July of the given year.
@@ -154,7 +161,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate August(this int year, int day) => new(year, 8, day);
+    public static FluentDate August(this int year, int day) =>
+        new(year, 8, day);
 
     /// <summary>
     /// Returns the specified day in August of the given year.
@@ -176,7 +184,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 30).
     /// </param>
-    public static FluentDate September(this int year, int day) => new(year, 9, day);
+    public static FluentDate September(this int year, int day) =>
+        new(year, 9, day);
 
     /// <summary>
     /// Returns the specified day in September of the given year.
@@ -198,7 +207,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate October(this int year, int day) => new(year, 10, day);
+    public static FluentDate October(this int year, int day) =>
+        new(year, 10, day);
 
     /// <summary>
     /// Returns the specified day in October of the given year.
@@ -220,7 +230,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 30).
     /// </param>
-    public static FluentDate November(this int year, int day) => new(year, 11, day);
+    public static FluentDate November(this int year, int day) =>
+        new(year, 11, day);
 
     /// <summary>
     /// Returns the specified day in November of the given year.
@@ -242,7 +253,8 @@ public static class IntExtensions
     /// <param name="day">
     /// The day (1 through 31).
     /// </param>
-    public static FluentDate December(this int year, int day) => new(year, 12, day);
+    public static FluentDate December(this int year, int day) =>
+        new(year, 12, day);
 
     /// <summary>
     /// Returns the specified day in December of the given year.

@@ -115,9 +115,9 @@ public class FluentDateTests
         Assert.Equal(date, fluentDate.At(date.Offset, date.Hour, date.Minute, date.Second, date.Millisecond));
     }
 
-    DateTimeOffset GetRandomDateTimeOfMonth(int month)
+    static DateTimeOffset GetRandomDateTimeOfMonth(int month)
     {
-        Random random = new();
+        var random = new Random();
 
         var year = random.Next(1, 10000);
         return new(
