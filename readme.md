@@ -39,6 +39,10 @@ DateTime.Now.Noon()
 
 // Current DateTime manipulation
 DateTime.Now.SetTime(11, 55, 0)
+
+// DateTime expressions
+2022.Mar(23) // (implicitly convertible to DateTime and DateTimeOffset)
+2022.March(23).At(10, 26)
 ```
 
 _See [Unit Tests](https://github.com/FluentDateTime/FluentDateTime/tree/master/src/Tests) in the project for more details._
