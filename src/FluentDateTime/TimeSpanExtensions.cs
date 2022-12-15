@@ -73,7 +73,7 @@ public static class TimeSpanExtensions
                 rounded = new(timeSpan.Days, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
                 if (timeSpan.Milliseconds >= 500)
                 {
-                    rounded = rounded + 1.Seconds();
+                    rounded += 1.Seconds();
                 }
 
                 break;
@@ -83,7 +83,7 @@ public static class TimeSpanExtensions
                 rounded = new(timeSpan.Days, timeSpan.Hours, timeSpan.Minutes, 0);
                 if (timeSpan.Seconds >= 30)
                 {
-                    rounded = rounded + 1.Minutes();
+                    rounded += 1.Minutes();
                 }
 
                 break;
@@ -93,7 +93,7 @@ public static class TimeSpanExtensions
                 rounded = new(timeSpan.Days, timeSpan.Hours, 0, 0);
                 if (timeSpan.Minutes >= 30)
                 {
-                    rounded = rounded + 1.Hours();
+                    rounded += 1.Hours();
                 }
 
                 break;
@@ -103,7 +103,7 @@ public static class TimeSpanExtensions
                 rounded = new(timeSpan.Days, 0, 0, 0);
                 if (timeSpan.Hours >= 12)
                 {
-                    rounded = rounded + 1.Days();
+                    rounded += 1.Days();
                 }
 
                 break;
