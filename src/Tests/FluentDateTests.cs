@@ -55,7 +55,7 @@ public class FluentDateTests
         DateAssert.Equal(DateTime.SpecifyKind(date.Date, DateTimeKind.Utc), fluentDate.Utc, "UTC unequal");
 
 #if NET6_0_OR_GREATER
-        Assert.Equal(Date.FromDateTime(date), fluentDate.DateOnly);
+        Assert.Equal(DateOnly.FromDateTime(date), fluentDate.DateOnly);
 #endif
     }
 
