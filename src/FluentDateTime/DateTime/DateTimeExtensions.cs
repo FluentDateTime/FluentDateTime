@@ -452,10 +452,11 @@ public static class DateTimeExtensions
         var unsignedDays = Math.Abs(days);
         for (var i = 0; i < unsignedDays; i++)
         {
-            do
+            current = current.AddDays(sign);
+            if (current.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday)
             {
-                current = current.AddDays(sign);
-            } while (current.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday);
+                i--;
+            }
         }
         return current;
     }
