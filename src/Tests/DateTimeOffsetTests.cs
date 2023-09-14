@@ -3,6 +3,7 @@ using System.Globalization;
 using FluentDate;
 using FluentDateTimeOffset;
 using Xunit;
+// ReSharper disable UnusedVariable
 
 public class DateTimeOffsetTests
 {

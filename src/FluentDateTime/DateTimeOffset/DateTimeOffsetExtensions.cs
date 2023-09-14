@@ -240,7 +240,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The current value.</param>
     /// <param name="toCompareWith">Value to compare with.</param>
     /// <returns>
-    /// 	<c>true</c> if the specified current is before; otherwise, <c>false</c>.
+    /// <c>true</c> if the specified current is before; otherwise, <c>false</c>.
     /// </returns>
     public static bool IsBefore(this DateTimeOffset current, DateTimeOffset toCompareWith) =>
         current < toCompareWith;
@@ -251,7 +251,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The current value.</param>
     /// <param name="toCompareWith">Value to compare with.</param>
     /// <returns>
-    /// 	<c>true</c> if the specified current is after; otherwise, <c>false</c>.
+    /// <c>true</c> if the specified current is after; otherwise, <c>false</c>.
     /// </returns>
     public static bool IsAfter(this DateTimeOffset current, DateTimeOffset toCompareWith) =>
         current > toCompareWith;
@@ -533,7 +533,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The current value</param>
     /// <param name="date">Value to compare with</param>
     /// <returns>
-    /// 	<c>true</c> if the specified date is exactly the same year then current; otherwise, <c>false</c>.
+    /// <c>true</c> if the specified date is exactly the same year then current; otherwise, <c>false</c>.
     /// </returns>
     public static bool SameDay(this DateTimeOffset current, DateTimeOffset date) =>
         current.Date == date.Date;
@@ -544,7 +544,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The current value</param>
     /// <param name="date">Value to compare with</param>
     /// <returns>
-    /// 	<c>true</c> if the specified date is exactly the same month and year then current; otherwise, <c>false</c>.
+    /// <c>true</c> if the specified date is exactly the same month and year then current; otherwise, <c>false</c>.
     /// </returns>
     public static bool SameMonth(this DateTimeOffset current, DateTimeOffset date) =>
         current.Month == date.Month && current.Year == date.Year;
@@ -555,7 +555,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The current value</param>
     /// <param name="date">Value to compare with</param>
     /// <returns>
-    /// 	<c>true</c> if the specified date is exactly the same date then current; otherwise, <c>false</c>.
+    /// <c>true</c> if the specified date is exactly the same date then current; otherwise, <c>false</c>.
     /// </returns>
     public static bool SameYear(this DateTimeOffset current, DateTimeOffset date) =>
         current.Year == date.Year;
