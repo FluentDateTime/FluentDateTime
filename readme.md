@@ -5,6 +5,8 @@
 
 Allows cleaner DateTime expressions and operations.
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 Inspired by Ruby DateTime Extensions
 
  * [Extensions To Datetime](http://edgeguides.rubyonrails.org/active_support_core_extensions.html#extensions-to-datetime)
