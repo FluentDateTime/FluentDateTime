@@ -20,7 +20,7 @@ public class FluentDate
     /// <summary>
     /// Gets the current date.
     /// </summary>
-    public DateOnly DateOnly => new(Date.Year, Date.Month, Date.Day);
+    public Date DateOnly => new(Date.Year, Date.Month, Date.Day);
 #endif
 
     /// <summary>
@@ -123,7 +123,7 @@ public class FluentDate
         new(Date.Year, Date.Month, Date.Day, hour, minute, second, millisecond, offset);
 
 #if NET6_0_OR_GREATER
-    public static implicit operator DateOnly(FluentDate date) => date.DateOnly;
+    public static implicit operator Date(FluentDate date) => date.DateOnly;
 #endif
 
     public static implicit operator DateTime(FluentDate date) => date.Date;
