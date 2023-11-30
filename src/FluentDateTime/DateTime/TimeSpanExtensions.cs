@@ -10,60 +10,70 @@ public static class TimeSpanExtensions
     /// <summary>
     /// Subtracts given <see cref="TimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Ago(this TimeSpan from) =>
         from.Before(DateTime.Now);
 
     /// <summary>
     /// Subtracts given <see cref="FluentTimeSpan"/> from current date (<see cref="DateTime.Now"/>) and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Ago(this FluentTimeSpan from) =>
         from.Before(DateTime.Now);
 
     /// <summary>
     /// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Ago(this TimeSpan from, DateTime originalValue) =>
         from.Before(originalValue);
 
     /// <summary>
     /// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Ago(this FluentTimeSpan from, DateTime originalValue) =>
         from.Before(originalValue);
 
     /// <summary>
     /// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Before(this TimeSpan from, DateTime originalValue) =>
         originalValue - from;
 
     /// <summary>
     /// Subtracts given <see cref="TimeSpan"/> from <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the past.
     /// </summary>
+    [Pure]
     public static DateTime Before(this FluentTimeSpan from, DateTime originalValue) =>
         originalValue.AddMonths(-from.Months).AddYears(-from.Years).Add(-from.TimeSpan);
 
     /// <summary>
     /// Adds given <see cref="TimeSpan"/> to current <see cref="DateTime.Now"/> and returns resulting <see cref="DateTime"/> in the future.
     /// </summary>
+    [Pure]
     public static DateTime FromNow(this TimeSpan from) =>
         from.From(DateTime.Now);
 
     /// <summary>
     /// Adds given <see cref="TimeSpan"/> to current <see cref="DateTime.Now"/> and returns resulting <see cref="DateTime"/> in the future.
     /// </summary>
+    [Pure]
     public static DateTime FromNow(this FluentTimeSpan from) =>
         from.From(DateTime.Now);
 
     /// <summary>
     /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
     /// </summary>
+    [Pure]
     public static DateTime From(this TimeSpan from, DateTime originalValue) =>
         originalValue + from;
 
     /// <summary>
     /// Adds given <see cref="TimeSpan"/> to supplied <paramref name="originalValue"/> <see cref="DateTime"/> and returns resulting <see cref="DateTime"/> in the future.
     /// </summary>
+    [Pure]
     public static DateTime From(this FluentTimeSpan from, DateTime originalValue) =>
         originalValue.AddMonths(from.Months).AddYears(from.Years).Add(from.TimeSpan);
 
@@ -74,6 +84,7 @@ public static class TimeSpanExtensions
     /// <remarks>
     /// Synonym of <see cref="From(TimeSpan, DateTime)"/> method.
     /// </remarks>
+    [Pure]
     public static DateTime Since(this TimeSpan from, DateTime originalValue) =>
         From(from, originalValue);
 
@@ -84,6 +95,7 @@ public static class TimeSpanExtensions
     /// <remarks>
     /// Synonym of <see cref="From(FluentTimeSpan, DateTime)"/> method.
     /// </remarks>
+    [Pure]
     public static DateTime Since(this FluentTimeSpan from, DateTime originalValue) =>
         From(from, originalValue);
 }

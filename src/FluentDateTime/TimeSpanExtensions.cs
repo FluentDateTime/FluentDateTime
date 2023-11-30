@@ -8,12 +8,14 @@ public static class TimeSpanExtensions
     /// <summary>
     /// Adds the given <see cref="FluentTimeSpan"/> from a <see cref="TimeSpan"/> and returns resulting <see cref="FluentTimeSpan"/>.
     /// </summary>
+    [Pure]
     public static FluentTimeSpan AddFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan) =>
         fluentTimeSpan.Add(timeSpan);
 
     /// <summary>
     /// Subtracts the given <see cref="FluentTimeSpan"/> from a <see cref="TimeSpan"/> and returns resulting <see cref="FluentTimeSpan"/>.
     /// </summary>
+    [Pure]
     public static FluentTimeSpan SubtractFluentTimeSpan(this TimeSpan timeSpan, FluentTimeSpan fluentTimeSpan) =>
         FluentTimeSpan.SubtractInternal(timeSpan, fluentTimeSpan);
 
@@ -22,6 +24,7 @@ public static class TimeSpanExtensions
     /// </summary>
     /// <param name="timeSpan">The <see cref="TimeSpan"/> to convert</param>
     /// <returns>A human readable string for <paramref name="timeSpan"/></returns>
+    [Pure]
     public static string ToDisplayString(this FluentTimeSpan timeSpan) =>
         ((TimeSpan) timeSpan).ToDisplayString();
 
@@ -30,6 +33,7 @@ public static class TimeSpanExtensions
     /// </summary>
     /// <param name="timeSpan">The <see cref="TimeSpan"/> to convert</param>
     /// <returns>A human readable string for <paramref name="timeSpan"/></returns>
+    [Pure]
     public static string ToDisplayString(this TimeSpan timeSpan)
     {
         if (timeSpan.TotalDays > 1)
@@ -62,6 +66,7 @@ public static class TimeSpanExtensions
     /// Rounds <paramref name="timeSpan"/> to the nearest <see cref="RoundTo"/>.
     /// </summary>
     /// <returns>The rounded <see cref="TimeSpan"/>.</returns>
+    [Pure]
     public static TimeSpan Round(this TimeSpan timeSpan, RoundTo rt)
     {
         TimeSpan rounded;

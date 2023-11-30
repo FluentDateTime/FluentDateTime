@@ -28,6 +28,7 @@ public struct FluentTimeSpan :
     /// </summary>
     /// <param name="number">The number to add to this <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the addition.</returns>
+    [Pure]
     public FluentTimeSpan Add(FluentTimeSpan number) =>
         AddInternal(this, number);
 
@@ -36,6 +37,7 @@ public struct FluentTimeSpan :
     /// </summary>
     /// <param name="timeSpan">The <see cref="TimeSpan"/> to add to this <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the addition.</returns>
+    [Pure]
     public FluentTimeSpan Add(TimeSpan timeSpan) =>
         AddInternal(this, timeSpan);
 
@@ -44,6 +46,7 @@ public struct FluentTimeSpan :
     /// </summary>
     /// <param name="fluentTimeSpan">The matrix to subtract from this <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the subtraction.</returns>
+    [Pure]
     public FluentTimeSpan Subtract(FluentTimeSpan fluentTimeSpan) =>
         SubtractInternal(this, fluentTimeSpan);
 
@@ -52,6 +55,7 @@ public struct FluentTimeSpan :
     /// </summary>
     /// <param name="timeSpan">The <see cref="TimeSpan"/> to subtract from this <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the subtraction.</returns>
+    [Pure]
     public FluentTimeSpan Subtract(TimeSpan timeSpan) =>
         SubtractInternal(this, timeSpan);
 
@@ -61,12 +65,15 @@ public struct FluentTimeSpan :
     /// <param name="left">The left hand <see cref="FluentTimeSpan"/>.</param>
     /// <param name="right">The right hand <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the addition.</returns>
+    [Pure]
     public static FluentTimeSpan operator +(FluentTimeSpan left, FluentTimeSpan right) =>
         AddInternal(left, right);
 
+    [Pure]
     public static FluentTimeSpan operator +(FluentTimeSpan left, TimeSpan right) =>
         AddInternal(left, right);
 
+    [Pure]
     public static FluentTimeSpan operator +(TimeSpan left, FluentTimeSpan right) =>
         AddInternal(left, right);
 
@@ -76,12 +83,15 @@ public struct FluentTimeSpan :
     /// <param name="left">The left hand <see cref="FluentTimeSpan"/>.</param>
     /// <param name="right">The right hand <see cref="FluentTimeSpan"/>.</param>
     /// <returns>The result of the subtraction.</returns>
+    [Pure]
     public static FluentTimeSpan operator -(FluentTimeSpan left, FluentTimeSpan right) =>
         SubtractInternal(left, right);
 
+    [Pure]
     public static FluentTimeSpan operator -(TimeSpan left, FluentTimeSpan right) =>
         SubtractInternal(left, right);
 
+    [Pure]
     public static FluentTimeSpan operator -(FluentTimeSpan left, TimeSpan right) =>
         SubtractInternal(left, right);
 
@@ -91,14 +101,17 @@ public struct FluentTimeSpan :
     /// <param name="left">The left hand side.</param>
     /// <param name="right">The right hand side.</param>
     /// <returns><c>true</c> is <paramref name="left"/> is equal to <paramref name="right"/>; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool operator ==(FluentTimeSpan left, FluentTimeSpan right) =>
         left.Years == right.Years &&
         left.Months == right.Months &&
         left.TimeSpan == right.TimeSpan;
 
+    [Pure]
     public static bool operator ==(TimeSpan left, FluentTimeSpan right) =>
         (FluentTimeSpan) left == right;
 
+    [Pure]
     public static bool operator ==(FluentTimeSpan left, TimeSpan right) =>
         left == (FluentTimeSpan) right;
 
@@ -108,12 +121,15 @@ public struct FluentTimeSpan :
     /// <param name="left">The left hand side.</param>
     /// <param name="right">The right hand side.</param>
     /// <returns><c>true</c> is <paramref name="left"/> is not equal to <paramref name="right"/>; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool operator !=(FluentTimeSpan left, FluentTimeSpan right) =>
         !(left == right);
 
+    [Pure]
     public static bool operator !=(TimeSpan left, FluentTimeSpan right) =>
         !(left == right);
 
+    [Pure]
     public static bool operator !=(FluentTimeSpan left, TimeSpan right) =>
         !(left == right);
 
@@ -123,36 +139,47 @@ public struct FluentTimeSpan :
     public static bool operator <(FluentTimeSpan left, FluentTimeSpan right) =>
         (TimeSpan) left < (TimeSpan) right;
 
+    [Pure]
     public static bool operator <(FluentTimeSpan left, TimeSpan right) =>
         (TimeSpan) left < right;
 
+    [Pure]
     public static bool operator <(TimeSpan left, FluentTimeSpan right) =>
         left < (TimeSpan) right;
 
+    [Pure]
     public static bool operator <=(FluentTimeSpan left, FluentTimeSpan right) =>
         (TimeSpan) left <= (TimeSpan) right;
 
+    [Pure]
     public static bool operator <=(FluentTimeSpan left, TimeSpan right) =>
         (TimeSpan) left <= right;
 
+    [Pure]
     public static bool operator <=(TimeSpan left, FluentTimeSpan right) =>
         left <= (TimeSpan) right;
 
+    [Pure]
     public static bool operator >(FluentTimeSpan left, FluentTimeSpan right) =>
         (TimeSpan) left > (TimeSpan) right;
 
+    [Pure]
     public static bool operator >(FluentTimeSpan left, TimeSpan right) =>
         (TimeSpan) left > right;
 
+    [Pure]
     public static bool operator >(TimeSpan left, FluentTimeSpan right) =>
         left > (TimeSpan) right;
 
+    [Pure]
     public static bool operator >=(FluentTimeSpan left, FluentTimeSpan right) =>
         (TimeSpan) left >= (TimeSpan) right;
 
+    [Pure]
     public static bool operator >=(FluentTimeSpan left, TimeSpan right) =>
         (TimeSpan) left >= right;
 
+    [Pure]
     public static bool operator >=(TimeSpan left, FluentTimeSpan right) =>
         left >= (TimeSpan) right;
 
@@ -294,6 +321,7 @@ public struct FluentTimeSpan :
     public int CompareTo(FluentTimeSpan value) =>
         ((TimeSpan) this).CompareTo(value);
 
+    [Pure]
     public TimeSpan Negate() =>
         new FluentTimeSpan
         {

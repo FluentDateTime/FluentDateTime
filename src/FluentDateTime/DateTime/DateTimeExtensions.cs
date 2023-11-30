@@ -11,6 +11,7 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns a new <see cref="DateTime"/> that adds the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
     /// </summary>
+    [Pure]
     public static DateTime AddFluentTimeSpan(this DateTime dateTime, FluentTimeSpan timeSpan) =>
         dateTime.AddMonths(timeSpan.Months)
             .AddYears(timeSpan.Years)
@@ -19,6 +20,7 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns a new <see cref="DateTime"/> that subtracts the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
     /// </summary>
+    [Pure]
     public static DateTime SubtractFluentTimeSpan(this DateTime dateTime, FluentTimeSpan timeSpan) =>
         dateTime.AddMonths(-timeSpan.Months)
             .AddYears(-timeSpan.Years)
@@ -27,12 +29,14 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
     /// </summary>
+    [Pure]
     public static DateTime EndOfDay(this DateTime date) =>
         new(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind);
 
     /// <summary>
     /// Returns the timezone-adjusted very end of the given day (the last millisecond of the last hour for the given <see cref="DateTime"/>).
     /// </summary>
+    [Pure]
     public static DateTime EndOfDay(this DateTime date, int timeZoneOffset) =>
         new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Kind)
             .AddHours(timeZoneOffset);
@@ -40,60 +44,70 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns the last day of the week changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfWeek(this DateTime date) =>
         date.LastDayOfWeek().EndOfDay();
 
     /// <summary>
     /// Returns the last day of the week changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfWeek(this DateTime date, int timeZoneOffset) =>
         date.LastDayOfWeek().EndOfDay(timeZoneOffset);
 
     /// <summary>
     /// Returns the last day of the month changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfMonth(this DateTime date) =>
         date.LastDayOfMonth().EndOfDay();
 
     /// <summary>
     /// Returns the last day of the month changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfMonth(this DateTime date, int timeZoneOffset) =>
         date.LastDayOfMonth().EndOfDay(timeZoneOffset);
 
     /// <summary>
     /// Returns the last day of the quarter changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfQuarter(this DateTime date) =>
         date.LastDayOfQuarter().EndOfDay();
 
     /// <summary>
     /// Returns the last day of the quarter changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfQuarter(this DateTime date, int timeZoneOffset) =>
         date.LastDayOfQuarter().EndOfDay(timeZoneOffset);
 
     /// <summary>
     /// Returns the last day of the year changing the time to the very end of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfYear(this DateTime date) =>
         date.LastDayOfYear().EndOfDay();
 
     /// <summary>
     /// Returns the last day of the year changing the time to the very end of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T23:59:59.999
     /// </summary>
+    [Pure]
     public static DateTime EndOfYear(this DateTime date, int timeZoneOffset) =>
         date.LastDayOfYear().EndOfDay(timeZoneOffset);
 
     /// <summary>
     /// Returns the Start of the given day (the first millisecond of the given <see cref="DateTime"/>).
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfDay(this DateTime date) =>
         new(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind);
 
     /// <summary>
     /// Returns the timezone-adjusted Start of the given day (the first millisecond of the given <see cref="DateTime"/>).
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfDay(this DateTime date, int timezoneOffset) =>
         new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0, date.Kind)
             .AddHours(timezoneOffset);
@@ -101,48 +115,56 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns the Start day of the week changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-19T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfWeek(this DateTime date) =>
         date.FirstDayOfWeek().BeginningOfDay();
 
     /// <summary>
     /// Returns the Start day of the week changing the time to the very start of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-19T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfWeek(this DateTime date, int timezoneOffset) =>
         date.FirstDayOfWeek().BeginningOfDay(timezoneOffset);
 
     /// <summary>
     /// Returns the Start day of the month changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-12-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfMonth(this DateTime date) =>
         date.FirstDayOfMonth().BeginningOfDay();
 
     /// <summary>
     /// Returns the Start day of the month changing the time to the very start of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-12-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfMonth(this DateTime date, int timezoneOffset) =>
         date.FirstDayOfMonth().BeginningOfDay(timezoneOffset);
 
     /// <summary>
     /// Returns the Start day of the quarter changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-10-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfQuarter(this DateTime date) =>
         date.FirstDayOfQuarter().BeginningOfDay();
 
     /// <summary>
     /// Returns the Start day of the quarter changing the time to the very start of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-10-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfQuarter(this DateTime date, int timezoneOffset) =>
         date.FirstDayOfQuarter().BeginningOfDay(timezoneOffset);
 
     /// <summary>
     /// Returns the Start day of the year changing the time to the very start of the day. Eg, 2011-12-24T06:40:20.005 => 2011-01-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfYear(this DateTime date) =>
         date.FirstDayOfYear().BeginningOfDay();
 
     /// <summary>
     /// Returns the Start day of the year changing the time to the very start of the day with timezone-adjusted. Eg, 2011-12-24T06:40:20.005 => 2011-01-01T00:00:00.000. <see cref="DateTime"/>
     /// </summary>
+    [Pure]
     public static DateTime BeginningOfYear(this DateTime date, int timezoneOffset) =>
         date.FirstDayOfYear().BeginningOfDay(timezoneOffset);
 
@@ -150,6 +172,7 @@ public static class DateTimeExtensions
     /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year.
     /// If that day does not exist in next year in same month, number of missing days is added to the last day in same month next year.
     /// </summary>
+    [Pure]
     public static DateTime NextYear(this DateTime start)
     {
         var nextYear = start.Year + 1;
@@ -168,6 +191,7 @@ public static class DateTimeExtensions
     /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the previous calendar year.
     /// If that day does not exist in previous year in same month, number of missing days is added to the last day in same month previous year.
     /// </summary>
+    [Pure]
     public static DateTime PreviousYear(this DateTime start)
     {
         var previousYear = start.Year - 1;
@@ -185,18 +209,21 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns <see cref="DateTime"/> increased by 24 hours ie Next Day.
     /// </summary>
+    [Pure]
     public static DateTime NextDay(this DateTime start) =>
         start + 1.Days();
 
     /// <summary>
     /// Returns <see cref="DateTime"/> decreased by 24h period ie Previous Day.
     /// </summary>
+    [Pure]
     public static DateTime PreviousDay(this DateTime start) =>
         start - 1.Days();
 
     /// <summary>
     /// Returns first next occurrence of specified <see cref="DayOfWeek"/>.
     /// </summary>
+    [Pure]
     public static DateTime Next(this DateTime start, DayOfWeek day)
     {
         do
@@ -210,6 +237,7 @@ public static class DateTimeExtensions
     /// <summary>
     /// Returns first next occurrence of specified <see cref="DayOfWeek"/>.
     /// </summary>
+    [Pure]
     public static DateTime Previous(this DateTime start, DayOfWeek day)
     {
         do
@@ -223,78 +251,91 @@ public static class DateTimeExtensions
     /// <summary>
     /// Increases supplied <see cref="DateTime"/> for 7 days ie returns the Next Week.
     /// </summary>
+    [Pure]
     public static DateTime WeekAfter(this DateTime start) =>
         start + 1.Weeks();
 
     /// <summary>
     /// Decreases supplied <see cref="DateTime"/> for 7 days ie returns the Previous Week.
     /// </summary>
+    [Pure]
     public static DateTime WeekEarlier(this DateTime start) =>
         start - 1.Weeks();
 
     /// <summary>
     /// Increases the <see cref="DateTime"/> object with given <see cref="TimeSpan"/> value.
     /// </summary>
+    [Pure]
     public static DateTime IncreaseTime(this DateTime startDate, TimeSpan toAdd) =>
         startDate + toAdd;
 
     /// <summary>
     /// Decreases the <see cref="DateTime"/> object with given <see cref="TimeSpan"/> value.
     /// </summary>
+    [Pure]
     public static DateTime DecreaseTime(this DateTime startDate, TimeSpan toSubtract) =>
         startDate - toSubtract;
 
     /// <summary>
     /// Returns the original <see cref="DateTime"/> with Hour part changed to supplied hour parameter.
     /// </summary>
+    [Pure]
     public static DateTime SetTime(this DateTime originalDate, int hour) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns the original <see cref="DateTime"/> with Hour and Minute parts changed to supplied hour and minute parameters.
     /// </summary>
+    [Pure]
     public static DateTime SetTime(this DateTime originalDate, int hour, int minute) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns the original <see cref="DateTime"/> with Hour, Minute and Second parts changed to supplied hour, minute and second parameters.
     /// </summary>
+    [Pure]
     public static DateTime SetTime(this DateTime originalDate, int hour, int minute, int second) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns the original <see cref="DateTime"/> with Hour, Minute, Second and Millisecond parts changed to supplied hour, minute, second and millisecond parameters.
     /// </summary>
+    [Pure]
     public static DateTime SetTime(this DateTime originalDate, int hour, int minute, int second, int millisecond) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Hour part.
     /// </summary>
+    [Pure]
     public static DateTime SetHour(this DateTime originalDate, int hour) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Minute part.
     /// </summary>
+    [Pure]
     public static DateTime SetMinute(this DateTime originalDate, int minute) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Second part.
     /// </summary>
+    [Pure]
     public static DateTime SetSecond(this DateTime originalDate, int second) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, second, originalDate.Millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Millisecond part.
     /// </summary>
+    [Pure]
     public static DateTime SetMillisecond(this DateTime originalDate, int millisecond) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, originalDate.Second, millisecond, originalDate.Kind);
 
     /// <summary>
     /// Returns original <see cref="DateTime"/> value with time part set to midnight (alias for <see cref="BeginningOfDay(DateTime)"/> method).
     /// </summary>
+    [Pure]
     public static DateTime Midnight(this DateTime value) =>
         value.BeginningOfDay();
 
@@ -303,42 +344,49 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="value">The <see cref="DateTime"/> find Noon for.</param>
     /// <returns>A <see cref="DateTime"/> value with time part set to Noon (12:00:00h).</returns>
+    [Pure]
     public static DateTime Noon(this DateTime value) =>
         value.SetTime(12, 0, 0, 0);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Year part.
     /// </summary>
+    [Pure]
     public static DateTime SetDate(this DateTime value, int year) =>
         new(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Year and Month part.
     /// </summary>
+    [Pure]
     public static DateTime SetDate(this DateTime value, int year, int month) =>
         new(year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Year, Month and Day part.
     /// </summary>
+    [Pure]
     public static DateTime SetDate(this DateTime value, int year, int month, int day) =>
         new(year, month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Year part.
     /// </summary>
+    [Pure]
     public static DateTime SetYear(this DateTime value, int year) =>
         new(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Month part.
     /// </summary>
+    [Pure]
     public static DateTime SetMonth(this DateTime value, int month) =>
         new(value.Year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
     /// <summary>
     /// Returns <see cref="DateTime"/> with changed Day part.
     /// </summary>
+    [Pure]
     public static DateTime SetDay(this DateTime value, int day) =>
         new(value.Year, value.Month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Kind);
 
@@ -350,6 +398,7 @@ public static class DateTimeExtensions
     /// <returns>
     /// <c>true</c> if the specified current is before; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool IsBefore(this DateTime current, DateTime toCompareWith) =>
         current < toCompareWith;
 
@@ -361,6 +410,7 @@ public static class DateTimeExtensions
     /// <returns>
     /// <c>true</c> if the specified current is after; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool IsAfter(this DateTime current, DateTime toCompareWith) =>
         current > toCompareWith;
 
@@ -371,6 +421,7 @@ public static class DateTimeExtensions
     /// <param name="hour">The hour to set time to.</param>
     /// <param name="minute">The minute to set time to.</param>
     /// <returns><see cref="DateTime"/> with hour and minute set to given values.</returns>
+    [Pure]
     public static DateTime At(this DateTime current, int hour, int minute) =>
         current.SetTime(hour, minute);
 
@@ -382,6 +433,7 @@ public static class DateTimeExtensions
     /// <param name="minute">The minute to set time to.</param>
     /// <param name="second">The second to set time to.</param>
     /// <returns><see cref="DateTime"/> with hour and minutes and seconds set to given values.</returns>
+    [Pure]
     public static DateTime At(this DateTime current, int hour, int minute, int second) =>
         current.SetTime(hour, minute, second);
 
@@ -394,6 +446,7 @@ public static class DateTimeExtensions
     /// <param name="second">The second to set time to.</param>
     /// <param name="milliseconds">The milliseconds to set time to.</param>
     /// <returns><see cref="DateTime"/> with hour and minutes and seconds set to given values.</returns>
+    [Pure]
     public static DateTime At(this DateTime current, int hour, int minute, int second, int milliseconds) =>
         current.SetTime(hour, minute, second, milliseconds);
 
@@ -403,6 +456,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current"></param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the first day in the quarter.</returns>
+    [Pure]
     public static DateTime FirstDayOfQuarter(this DateTime current)
     {
         var currentQuarter = (current.Month - 1) / 3 + 1;
@@ -416,6 +470,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The current <see cref="DateTime"/> to be changed.</param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the first day in that month.</returns>
+    [Pure]
     public static DateTime FirstDayOfMonth(this DateTime current) =>
         current.SetDay(1);
 
@@ -425,6 +480,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current"></param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the last day in the quarter.</returns>
+    [Pure]
     public static DateTime LastDayOfQuarter(this DateTime current)
     {
         var currentQuarter = (current.Month - 1) / 3 + 1;
@@ -437,6 +493,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The current DateTime to be changed.</param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the last day in that month.</returns>
+    [Pure]
     public static DateTime LastDayOfMonth(this DateTime current) =>
         current.SetDay(DateTime.DaysInMonth(current.Year, current.Month));
 
@@ -446,6 +503,7 @@ public static class DateTimeExtensions
     /// <param name="current">The date to be changed.</param>
     /// <param name="days">Number of business days to be added.</param>
     /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
+    [Pure]
     public static DateTime AddBusinessDays(this DateTime current, int days)
     {
         var sign = Math.Sign(days);
@@ -467,6 +525,7 @@ public static class DateTimeExtensions
     /// <param name="current">The date to be changed.</param>
     /// <param name="days">Number of business days to be subtracted.</param>
     /// <returns>A <see cref="DateTime"/> increased by a given number of business days.</returns>
+    [Pure]
     public static DateTime SubtractBusinessDays(this DateTime current, int days) =>
         AddBusinessDays(current, -days);
 
@@ -475,6 +534,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="dateTime">The date to be checked.</param>
     /// <returns><c>true</c> if <paramref name="dateTime"/> is in the future; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool IsInFuture(this DateTime dateTime) =>
         dateTime > DateTime.Now;
 
@@ -483,6 +543,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="dateTime">The date to be checked.</param>
     /// <returns><c>true</c> if <paramref name="dateTime"/> is in the past; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool IsInPast(this DateTime dateTime) =>
         dateTime < DateTime.Now;
 
@@ -490,6 +551,7 @@ public static class DateTimeExtensions
     /// Rounds <paramref name="dateTime"/> to the nearest <see cref="RoundTo"/>.
     /// </summary>
     /// <returns>The rounded <see cref="DateTime"/>.</returns>
+    [Pure]
     public static DateTime Round(this DateTime dateTime, RoundTo rt)
     {
         DateTime rounded;
@@ -547,6 +609,7 @@ public static class DateTimeExtensions
     /// <param name="dateTime">The DateTime to adjust</param>
     /// <returns>A DateTime instance adjusted to the beginning of the current week</returns>
     /// <remarks>the beginning of the week is controlled by the current Culture</remarks>
+    [Pure]
     public static DateTime FirstDayOfWeek(this DateTime dateTime)
     {
         var currentCulture = CultureInfo.CurrentCulture;
@@ -563,6 +626,7 @@ public static class DateTimeExtensions
     /// <param name="dateTime"></param>
     /// <returns></returns>
     [Obsolete("This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.")]
+    [Pure]
     public static DateTime StartOfWeek(this DateTime dateTime) =>
         FirstDayOfWeek(dateTime);
 
@@ -571,6 +635,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTime FirstDayOfYear(this DateTime current) =>
         current.SetDate(current.Year, 1, 1);
 
@@ -579,6 +644,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTime LastDayOfWeek(this DateTime current) =>
         current.FirstDayOfWeek().AddDays(6);
 
@@ -587,6 +653,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTime LastDayOfYear(this DateTime current) =>
         current.SetDate(current.Year, 12, 31);
 
@@ -596,6 +663,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTime PreviousMonth(this DateTime current)
     {
         var year = current.Month == 1 ? current.Year - 1 : current.Year;
@@ -617,6 +685,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTime NextMonth(this DateTime current)
     {
 
@@ -641,6 +710,7 @@ public static class DateTimeExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same year then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameDay(this DateTime current, DateTime date) =>
         current.Date == date.Date;
 
@@ -652,6 +722,7 @@ public static class DateTimeExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same month and year then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameMonth(this DateTime current, DateTime date) =>
         current.Month == date.Month && current.Year == date.Year;
 
@@ -663,6 +734,7 @@ public static class DateTimeExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same date then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameYear(this DateTime current, DateTime date) =>
         current.Year == date.Year;
 }

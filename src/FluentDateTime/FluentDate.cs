@@ -53,12 +53,14 @@ public class FluentDate
     /// <param name="millisecond">
     /// The milliseconds (0 through 999).
     /// </param>
+    [Pure]
     public DateTime At(int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         At(DateTimeKind.Unspecified, hour, minute, second, millisecond);
 
     /// <summary>
     /// Returns specified time at the current date in the Coordinated Universal Time (UTC) time zone.
     /// </summary>
+    [Pure]
     public DateTime AtUtc(int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         At(DateTimeKind.Utc, hour, minute, second, millisecond);
 
@@ -77,6 +79,7 @@ public class FluentDate
     /// <param name="millisecond">
     /// The milliseconds (0 through 999).
     /// </param>
+    [Pure]
     public DateTime AtLocal(int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         At(DateTimeKind.Local, hour, minute, second, millisecond);
 
@@ -98,6 +101,7 @@ public class FluentDate
     /// <param name="millisecond">
     /// The milliseconds (0 through 999).
     /// </param>
+    [Pure]
     public DateTime At(DateTimeKind kind, int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         new(Date.Year, Date.Month, Date.Day, hour, minute, second, millisecond, kind);
 
@@ -119,6 +123,7 @@ public class FluentDate
     /// <param name="millisecond">
     /// The milliseconds (0 through 999).
     /// </param>
+    [Pure]
     public DateTimeOffset At(TimeSpan offset, int hour, int minute = 0, int second = 0, int millisecond = 0) =>
         new(Date.Year, Date.Month, Date.Day, hour, minute, second, millisecond, offset);
 

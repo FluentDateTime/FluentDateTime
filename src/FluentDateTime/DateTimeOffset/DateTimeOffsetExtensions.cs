@@ -11,6 +11,7 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Returns a new <see cref="DateTime"/> that adds the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
     /// </summary>
+    [Pure]
     public static DateTimeOffset AddFluentTimeSpan(this DateTimeOffset dateTimeOffset, FluentTimeSpan timeSpan) =>
         dateTimeOffset.AddMonths(timeSpan.Months)
             .AddYears(timeSpan.Years)
@@ -19,6 +20,7 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Returns a new <see cref="DateTime"/> that subtracts the value of the specified <see cref="FluentTimeSpan"/> to the value of this instance.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SubtractFluentTimeSpan(this DateTimeOffset dateTimeOffset, FluentTimeSpan timeSpan) =>
         dateTimeOffset.AddMonths(-timeSpan.Months)
             .AddYears(-timeSpan.Years)
@@ -27,12 +29,14 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Returns the very end of the given day (the last millisecond of the last hour for the given <see cref="DateTimeOffset"/>).
     /// </summary>
+    [Pure]
     public static DateTimeOffset EndOfDay(this DateTimeOffset date) =>
         new(date.Year, date.Month, date.Day, 23, 59, 59, 999, date.Offset);
 
     /// <summary>
     /// Returns the Start of the given day (the first millisecond of the given <see cref="DateTimeOffset"/>).
     /// </summary>
+    [Pure]
     public static DateTimeOffset BeginningOfDay(this DateTimeOffset date) =>
         new(date.Year, date.Month, date.Day, 0, 0, 0, date.Offset);
 
@@ -40,6 +44,7 @@ public static class DateTimeOffsetExtensions
     /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the next calendar year.
     /// If that day does not exist in next year in same month, number of missing days is added to the last day in same month next year.
     /// </summary>
+    [Pure]
     public static DateTimeOffset NextYear(this DateTimeOffset start)
     {
         var nextYear = start.Year + 1;
@@ -59,6 +64,7 @@ public static class DateTimeOffsetExtensions
     /// Returns the same date (same Day, Month, Hour, Minute, Second etc) in the previous calendar year.
     /// If that day does not exist in previous year in same month, number of missing days is added to the last day in same month previous year.
     /// </summary>
+    [Pure]
     public static DateTimeOffset PreviousYear(this DateTimeOffset start)
     {
         var previousYear = start.Year - 1;
@@ -77,12 +83,14 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> increased by 24 hours ie Next Day.
     /// </summary>
+    [Pure]
     public static DateTimeOffset NextDay(this DateTimeOffset start) =>
         start + 1.Days();
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> decreased by 24h period ie Previous Day.
     /// </summary>
+    [Pure]
     public static DateTimeOffset PreviousDay(this DateTimeOffset start) =>
         start - 1.Days();
 
@@ -102,6 +110,7 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Returns first next occurrence of specified <see cref="DayOfWeek"/>.
     /// </summary>
+    [Pure]
     public static DateTimeOffset Previous(this DateTimeOffset start, DayOfWeek day)
     {
         do
@@ -115,78 +124,91 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Increases supplied <see cref="DateTimeOffset"/> for 7 days ie returns the Next Week.
     /// </summary>
+    [Pure]
     public static DateTimeOffset WeekAfter(this DateTimeOffset start) =>
         start + 1.Weeks();
 
     /// <summary>
     /// Decreases supplied <see cref="DateTimeOffset"/> for 7 days ie returns the Previous Week.
     /// </summary>
+    [Pure]
     public static DateTimeOffset WeekEarlier(this DateTimeOffset start) =>
         start - 1.Weeks();
 
     /// <summary>
     /// Increases the <see cref="DateTimeOffset"/> object with given <see cref="TimeSpan"/> value.
     /// </summary>
+    [Pure]
     public static DateTimeOffset IncreaseTime(this DateTimeOffset startDate, TimeSpan toAdd) =>
         startDate + toAdd;
 
     /// <summary>
     /// Decreases the <see cref="DateTimeOffset"/> object with given <see cref="TimeSpan"/> value.
     /// </summary>
+    [Pure]
     public static DateTimeOffset DecreaseTime(this DateTimeOffset startDate, TimeSpan toSubtract) =>
         startDate - toSubtract;
 
     /// <summary>
     /// Returns the original <see cref="DateTimeOffset"/> with Hour part changed to supplied hour parameter.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetTime(this DateTimeOffset originalDate, int hour) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns the original <see cref="DateTimeOffset"/> with Hour and Minute parts changed to supplied hour and minute parameters.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetTime(this DateTimeOffset originalDate, int hour, int minute) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns the original <see cref="DateTimeOffset"/> with Hour, Minute and Second parts changed to supplied hour, minute and second parameters.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetTime(this DateTimeOffset originalDate, int hour, int minute, int second) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns the original <see cref="DateTimeOffset"/> with Hour, Minute, Second and Millisecond parts changed to supplied hour, minute, second and millisecond parameters.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetTime(this DateTimeOffset originalDate, int hour, int minute, int second, int millisecond) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, minute, second, millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Hour part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetHour(this DateTimeOffset originalDate, int hour) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, hour, originalDate.Minute, originalDate.Second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Minute part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetMinute(this DateTimeOffset originalDate, int minute) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, minute, originalDate.Second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Second part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetSecond(this DateTimeOffset originalDate, int second) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, second, originalDate.Millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Millisecond part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetMillisecond(this DateTimeOffset originalDate, int millisecond) =>
         new(originalDate.Year, originalDate.Month, originalDate.Day, originalDate.Hour, originalDate.Minute, originalDate.Second, millisecond, originalDate.Offset);
 
     /// <summary>
     /// Returns original <see cref="DateTimeOffset"/> value with time part set to midnight (alias for <see cref="BeginningOfDay"/> method).
     /// </summary>
+    [Pure]
     public static DateTimeOffset Midnight(this DateTimeOffset value) =>
         value.BeginningOfDay();
 
@@ -195,42 +217,49 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="value">The <see cref="DateTimeOffset"/> find Noon for.</param>
     /// <returns>A <see cref="DateTimeOffset"/> value with time part set to Noon (12:00:00h).</returns>
+    [Pure]
     public static DateTimeOffset Noon(this DateTimeOffset value) =>
         value.SetTime(12, 0, 0, 0);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Year part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetDate(this DateTimeOffset value, int year) =>
         new(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Year and Month part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetDate(this DateTimeOffset value, int year, int month) =>
         new(year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Year, Month and Day part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetDate(this DateTimeOffset value, int year, int month, int day) =>
         new(year, month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Year part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetYear(this DateTimeOffset value, int year) =>
         new(year, value.Month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Month part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetMonth(this DateTimeOffset value, int month) =>
         new(value.Year, month, value.Day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
     /// <summary>
     /// Returns <see cref="DateTimeOffset"/> with changed Day part.
     /// </summary>
+    [Pure]
     public static DateTimeOffset SetDay(this DateTimeOffset value, int day) =>
         new(value.Year, value.Month, day, value.Hour, value.Minute, value.Second, value.Millisecond, value.Offset);
 
@@ -242,6 +271,7 @@ public static class DateTimeOffsetExtensions
     /// <returns>
     /// <c>true</c> if the specified current is before; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool IsBefore(this DateTimeOffset current, DateTimeOffset toCompareWith) =>
         current < toCompareWith;
 
@@ -253,6 +283,7 @@ public static class DateTimeOffsetExtensions
     /// <returns>
     /// <c>true</c> if the specified current is after; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool IsAfter(this DateTimeOffset current, DateTimeOffset toCompareWith) =>
         current > toCompareWith;
 
@@ -263,6 +294,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="hour">The hour to set time to.</param>
     /// <param name="minute">The minute to set time to.</param>
     /// <returns><see cref="DateTimeOffset"/> with hour and minute set to given values.</returns>
+    [Pure]
     public static DateTimeOffset At(this DateTimeOffset current, int hour, int minute) =>
         current.SetTime(hour, minute);
 
@@ -274,6 +306,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="minute">The minute to set time to.</param>
     /// <param name="second">The second to set time to.</param>
     /// <returns><see cref="DateTimeOffset"/> with hour and minutes and seconds set to given values.</returns>
+    [Pure]
     public static DateTimeOffset At(this DateTimeOffset current, int hour, int minute, int second) =>
         current.SetTime(hour, minute, second);
 
@@ -286,6 +319,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="second">The second to set time to.</param>
     /// <param name="milliseconds">The milliseconds to set time to.</param>
     /// <returns><see cref="DateTimeOffset"/> with hour and minutes and seconds set to given values.</returns>
+    [Pure]
     public static DateTimeOffset At(this DateTimeOffset current, int hour, int minute, int second, int milliseconds) =>
         current.SetTime(hour, minute, second, milliseconds);
 
@@ -295,6 +329,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current"></param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in the quarter.</returns>
+    [Pure]
     public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
     {
         var currentQuarter = (current.Month - 1) / 3 + 1;
@@ -306,6 +341,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The current <see cref="DateTimeOffset"/> to be changed.</param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in that month.</returns>
+    [Pure]
     public static DateTimeOffset FirstDayOfMonth(this DateTimeOffset current) =>
         current.SetDay(1);
 
@@ -315,6 +351,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current"></param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in the quarter.</returns>
+    [Pure]
     public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
     {
         var currentQuarter = (current.Month - 1) / 3 + 1;
@@ -327,6 +364,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The current DateTimeOffset to be changed.</param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in that month.</returns>
+    [Pure]
     public static DateTimeOffset LastDayOfMonth(this DateTimeOffset current) =>
         current.SetDay(DateTime.DaysInMonth(current.Year, current.Month));
 
@@ -336,6 +374,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The date to be changed.</param>
     /// <param name="days">Number of business days to be added.</param>
     /// <returns>A <see cref="DateTimeOffset"/> increased by a given number of business days.</returns>
+    [Pure]
     public static DateTimeOffset AddBusinessDays(this DateTimeOffset current, int days)
     {
         var sign = Math.Sign(days);
@@ -357,6 +396,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="current">The date to be changed.</param>
     /// <param name="days">Number of business days to be subtracted.</param>
     /// <returns>A <see cref="DateTimeOffset"/> increased by a given number of business days.</returns>
+    [Pure]
     public static DateTimeOffset SubtractBusinessDays(this DateTimeOffset current, int days) =>
         AddBusinessDays(current, -days);
 
@@ -365,6 +405,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="dateTime">The date to be checked.</param>
     /// <returns><c>true</c> if <paramref name="dateTime"/> is in the future; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool IsInFuture(this DateTimeOffset dateTime) =>
         dateTime > DateTimeOffset.Now;
 
@@ -373,6 +414,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="dateTime">The date to be checked.</param>
     /// <returns><c>true</c> if <paramref name="dateTime"/> is in the past; otherwise <c>false</c>.</returns>
+    [Pure]
     public static bool IsInPast(this DateTimeOffset dateTime) =>
         dateTime < DateTimeOffset.Now;
 
@@ -380,6 +422,7 @@ public static class DateTimeOffsetExtensions
     /// Rounds <paramref name="dateTime"/> to the nearest <see cref="RoundTo"/>.
     /// </summary>
     /// <returns>The rounded <see cref="DateTimeOffset"/>.</returns>
+    [Pure]
     public static DateTimeOffset Round(this DateTimeOffset dateTime, RoundTo rt)
     {
         DateTimeOffset rounded;
@@ -441,6 +484,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="dateTime">The DateTimeOffset to adjust</param>
     /// <returns>A DateTimeOffset instance adjusted to the beginning of the current week</returns>
     /// <remarks>the beginning of the week is controlled by the current Culture</remarks>
+    [Pure]
     public static DateTimeOffset FirstDayOfWeek(this DateTimeOffset dateTime)
     {
         var currentCulture = CultureInfo.CurrentCulture;
@@ -457,6 +501,7 @@ public static class DateTimeOffsetExtensions
     /// <param name="dateTime"></param>
     /// <returns></returns>
     [Obsolete("This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.")]
+    [Pure]
     public static DateTimeOffset StartOfWeek(this DateTimeOffset dateTime) =>
         FirstDayOfWeek(dateTime);
 
@@ -465,6 +510,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTimeOffset FirstDayOfYear(this DateTimeOffset current) =>
         current.SetDate(current.Year, 1, 1);
 
@@ -473,6 +519,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTimeOffset LastDayOfWeek(this DateTimeOffset current) =>
         current.FirstDayOfWeek().AddDays(6);
 
@@ -481,6 +528,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTimeOffset LastDayOfYear(this DateTimeOffset current) =>
         current.SetDate(current.Year, 12, 31);
 
@@ -490,6 +538,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTimeOffset PreviousMonth(this DateTimeOffset current)
     {
         var year = current.Month == 1 ? current.Year - 1 : current.Year;
@@ -511,6 +560,7 @@ public static class DateTimeOffsetExtensions
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
     /// <returns></returns>
+    [Pure]
     public static DateTimeOffset NextMonth(this DateTimeOffset current)
     {
 
@@ -535,6 +585,7 @@ public static class DateTimeOffsetExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same year then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameDay(this DateTimeOffset current, DateTimeOffset date) =>
         current.Date == date.Date;
 
@@ -546,6 +597,7 @@ public static class DateTimeOffsetExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same month and year then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameMonth(this DateTimeOffset current, DateTimeOffset date) =>
         current.Month == date.Month && current.Year == date.Year;
 
@@ -557,6 +609,7 @@ public static class DateTimeOffsetExtensions
     /// <returns>
     /// <c>true</c> if the specified date is exactly the same date then current; otherwise, <c>false</c>.
     /// </returns>
+    [Pure]
     public static bool SameYear(this DateTimeOffset current, DateTimeOffset date) =>
         current.Year == date.Year;
 }

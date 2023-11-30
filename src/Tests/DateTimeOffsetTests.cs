@@ -14,6 +14,7 @@ public class DateTimeOffsetTests
     {
         var originalPointInTime = new DateTimeOffset(1976, 1, 1, 0, 0, 0, TimeSpan.Zero);
         var fluentTimeSpan = 1.Months();
+        originalPointInTime.AddFluentTimeSpan(fluentTimeSpan);
         Assert.Equal(new(1976, 2, 1, 0, 0, 0, TimeSpan.Zero), originalPointInTime.AddFluentTimeSpan(fluentTimeSpan));
     }
 
