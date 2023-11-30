@@ -173,7 +173,7 @@ public static class IntExtensions
     /// </param>
     /// <param name="day">
     /// The day (1 through 31).
-    /// </
+    /// </param>
     [Pure]
     public static FluentDate August(this int year, int day) =>
         new(year, 8, day);
