@@ -15,8 +15,6 @@ public static class NumberExtensions
     /// <summary>
     /// Generates <see cref="TimeSpan"/> value for given number of Quarters.
     /// </summary>
-    /// <param name="quarters"></param>
-    /// <returns></returns>
     [Pure]
     public static FluentTimeSpan Quarters(this int quarters) =>
         new() {Months = quarters * 3};

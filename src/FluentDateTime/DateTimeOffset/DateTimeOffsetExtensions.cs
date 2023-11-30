@@ -327,7 +327,6 @@ public static class DateTimeOffsetExtensions
     /// Sets the day of the <see cref="DateTimeOffset"/> to the first day in that calendar quarter.
     /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
     /// </summary>
-    /// <param name="current"></param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the first day in the quarter.</returns>
     [Pure]
     public static DateTimeOffset FirstDayOfQuarter(this DateTimeOffset current)
@@ -349,7 +348,6 @@ public static class DateTimeOffsetExtensions
     /// Sets the day of the <see cref="DateTimeOffset"/> to the last day in that calendar quarter.
     /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
     /// </summary>
-    /// <param name="current"></param>
     /// <returns>given <see cref="DateTimeOffset"/> with the day part set to the last day in the quarter.</returns>
     [Pure]
     public static DateTimeOffset LastDayOfQuarter(this DateTimeOffset current)
@@ -498,8 +496,6 @@ public static class DateTimeOffsetExtensions
     /// <summary>
     /// Obsolete. This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.
     /// </summary>
-    /// <param name="dateTime"></param>
-    /// <returns></returns>
     [Obsolete("This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.")]
     [Pure]
     public static DateTimeOffset StartOfWeek(this DateTimeOffset dateTime) =>
@@ -509,7 +505,6 @@ public static class DateTimeOffsetExtensions
     /// Returns the first day of the year keeping the time component intact. Eg, 2011-02-04T06:40:20.005 => 2011-01-01T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTimeOffset FirstDayOfYear(this DateTimeOffset current) =>
         current.SetDate(current.Year, 1, 1);
@@ -518,7 +513,6 @@ public static class DateTimeOffsetExtensions
     /// Returns the last day of the week keeping the time component intact. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTimeOffset LastDayOfWeek(this DateTimeOffset current) =>
         current.FirstDayOfWeek().AddDays(6);
@@ -527,7 +521,6 @@ public static class DateTimeOffsetExtensions
     /// Returns the last day of the year keeping the time component intact. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTimeOffset LastDayOfYear(this DateTimeOffset current) =>
         current.SetDate(current.Year, 12, 31);
@@ -537,7 +530,6 @@ public static class DateTimeOffsetExtensions
     /// If the previous month doesn't have that many days the last day of the previous month is used. Eg, 2009-03-31T06:40:20.005 => 2009-02-28T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTimeOffset PreviousMonth(this DateTimeOffset current)
     {
@@ -559,7 +551,6 @@ public static class DateTimeOffsetExtensions
     /// If the next month doesn't have that many days the last day of the next month is used. Eg, 2013-01-31T06:40:20.005 => 2013-02-28T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTimeOffset to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTimeOffset NextMonth(this DateTimeOffset current)
     {

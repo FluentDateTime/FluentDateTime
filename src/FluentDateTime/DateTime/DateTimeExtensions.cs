@@ -454,7 +454,6 @@ public static class DateTimeExtensions
     /// Sets the day of the <see cref="DateTime"/> to the first day in that calendar quarter.
     /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
     /// </summary>
-    /// <param name="current"></param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the first day in the quarter.</returns>
     [Pure]
     public static DateTime FirstDayOfQuarter(this DateTime current)
@@ -478,7 +477,6 @@ public static class DateTimeExtensions
     /// Sets the day of the <see cref="DateTime"/> to the last day in that calendar quarter.
     /// credit to http://www.devcurry.com/2009/05/find-first-and-last-day-of-current.html
     /// </summary>
-    /// <param name="current"></param>
     /// <returns>given <see cref="DateTime"/> with the day part set to the last day in the quarter.</returns>
     [Pure]
     public static DateTime LastDayOfQuarter(this DateTime current)
@@ -623,8 +621,6 @@ public static class DateTimeExtensions
     /// <summary>
     /// Obsolete. This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.
     /// </summary>
-    /// <param name="dateTime"></param>
-    /// <returns></returns>
     [Obsolete("This method has been renamed to FirstDayOfWeek to be more consistent with existing conventions.")]
     [Pure]
     public static DateTime StartOfWeek(this DateTime dateTime) =>
@@ -634,7 +630,6 @@ public static class DateTimeExtensions
     /// Returns the first day of the year keeping the time component intact. Eg, 2011-02-04T06:40:20.005 => 2011-01-01T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTime FirstDayOfYear(this DateTime current) =>
         current.SetDate(current.Year, 1, 1);
@@ -643,7 +638,6 @@ public static class DateTimeExtensions
     /// Returns the last day of the week keeping the time component intact. Eg, 2011-12-24T06:40:20.005 => 2011-12-25T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTime LastDayOfWeek(this DateTime current) =>
         current.FirstDayOfWeek().AddDays(6);
@@ -652,7 +646,6 @@ public static class DateTimeExtensions
     /// Returns the last day of the year keeping the time component intact. Eg, 2011-12-24T06:40:20.005 => 2011-12-31T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTime LastDayOfYear(this DateTime current) =>
         current.SetDate(current.Year, 12, 31);
@@ -662,7 +655,6 @@ public static class DateTimeExtensions
     /// If the previous month doesn't have that many days the last day of the previous month is used. Eg, 2009-03-31T06:40:20.005 => 2009-02-28T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTime PreviousMonth(this DateTime current)
     {
@@ -684,7 +676,6 @@ public static class DateTimeExtensions
     /// If the next month doesn't have that many days the last day of the next month is used. Eg, 2013-01-31T06:40:20.005 => 2013-02-28T06:40:20.005
     /// </summary>
     /// <param name="current">The DateTime to adjust</param>
-    /// <returns></returns>
     [Pure]
     public static DateTime NextMonth(this DateTime current)
     {
