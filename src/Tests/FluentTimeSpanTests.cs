@@ -13,43 +13,15 @@ public class FluentTimeSpanTests
     [InlineData(0)]
     public void Years_Months_Weeks_Days_Hours_Minutes_Seconds_Milliseconds_SimpleTests(int value)
     {
-        Assert.Equal(value.Years(), new()
-        {
-            Years = value
-        });
-        Assert.Equal(value.Months(), new()
-        {
-            Months = value
-        });
-        Assert.Equal(value.Weeks(), new()
-        {
-            TimeSpan = TimeSpan.FromDays(value*7)
-        });
-        Assert.Equal(value.Days(), new()
-        {
-            TimeSpan = TimeSpan.FromDays(value)
-        });
-
-        Assert.Equal(value.Hours(), new()
-        {
-            TimeSpan = TimeSpan.FromHours(value)
-        });
-        Assert.Equal(value.Minutes(), new()
-        {
-            TimeSpan = TimeSpan.FromMinutes(value)
-        });
-        Assert.Equal(value.Seconds(), new()
-        {
-            TimeSpan = TimeSpan.FromSeconds(value)
-        });
-        Assert.Equal(value.Milliseconds(), new()
-        {
-            TimeSpan = TimeSpan.FromMilliseconds(value)
-        });
-        Assert.Equal(value.Ticks(), new()
-        {
-            TimeSpan = TimeSpan.FromTicks(value)
-        });
+        Assert.Equal(value.Years(), new(0, value, TimeSpan.Zero));
+        Assert.Equal(value.Months(), new(value, 0, TimeSpan.Zero));
+        Assert.Equal(value.Weeks(), new(0, 0, TimeSpan.FromDays(value * 7)));
+        Assert.Equal(value.Days(), new(0, 0, TimeSpan.FromDays(value)));
+        Assert.Equal(value.Hours(), new(0, 0, TimeSpan.FromHours(value)));
+        Assert.Equal(value.Minutes(), new(0, 0, TimeSpan.FromMinutes(value)));
+        Assert.Equal(value.Seconds(), new(0, 0, TimeSpan.FromSeconds(value)));
+        Assert.Equal(value.Milliseconds(), new(0, 0, TimeSpan.FromMilliseconds(value)));
+        Assert.Equal(value.Ticks(), new(0, 0, TimeSpan.FromTicks(value)));
     }
 
     [Fact]

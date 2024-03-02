@@ -1,17 +1,15 @@
-using System.Runtime.InteropServices;
-
 namespace FluentDate;
 
 [StructLayout(LayoutKind.Sequential)]
-public struct FluentTimeSpan :
+public readonly struct FluentTimeSpan(int months, int years, TimeSpan timeSpan) :
     IEquatable<FluentTimeSpan>,
     IComparable<TimeSpan>,
     IComparable<FluentTimeSpan>
 {
     public const int daysPerYear = 365;
-    public int Months { get; set; }
-    public int Years { get; set; }
-    public TimeSpan TimeSpan { get; set; }
+    public int Months { get; } = months;
+    public int Years { get; } = years;
+    public TimeSpan TimeSpan { get; } = timeSpan;
 
     /// <summary>
     /// Indicates whether the current object is equal to another object of the same type.
@@ -202,7 +200,7 @@ public struct FluentTimeSpan :
     /// <param name="timeSpan">The <see cref="TimeSpan"/> that will be converted.</param>
     /// <returns>The result of the conversion.</returns>
     public static implicit operator FluentTimeSpan(TimeSpan timeSpan) =>
-        new() {TimeSpan = timeSpan};
+        new(0, 0, timeSpan);
 
     /// <summary>
     /// Creates a new object that is a copy of the current instance.
@@ -211,12 +209,7 @@ public struct FluentTimeSpan :
     /// A new object that is a copy of this instance.
     /// </returns>
     public object Clone() =>
-        new FluentTimeSpan
-        {
-            TimeSpan = TimeSpan,
-            Months = Months,
-            Years = Years
-        };
+        new FluentTimeSpan(Months, Years, TimeSpan);
 
     /// <inheritdoc />
     public override string ToString() =>
@@ -246,44 +239,19 @@ public struct FluentTimeSpan :
         Months.GetHashCode() ^ Years.GetHashCode() ^ TimeSpan.GetHashCode();
 
     static FluentTimeSpan AddInternal(FluentTimeSpan left, TimeSpan right) =>
-        new()
-        {
-            Months = left.Months,
-            Years = left.Years,
-            TimeSpan = left.TimeSpan + right
-        };
+        new(left.Months, left.Years, left.TimeSpan + right);
 
     static FluentTimeSpan SubtractInternal(FluentTimeSpan left, TimeSpan right) =>
-        new()
-        {
-            Months = left.Months,
-            Years = left.Years,
-            TimeSpan = left.TimeSpan - right
-        };
+        new(left.Months, left.Years, left.TimeSpan - right);
 
     internal static FluentTimeSpan SubtractInternal(TimeSpan left, FluentTimeSpan right) =>
-        new()
-        {
-            Months = -right.Months,
-            Years = -right.Years,
-            TimeSpan = left - right.TimeSpan
-        };
+        new(-right.Months, -right.Years, left - right.TimeSpan);
 
     static FluentTimeSpan AddInternal(FluentTimeSpan left, FluentTimeSpan right) =>
-        new()
-        {
-            Years = left.Years + right.Years,
-            Months = left.Months + right.Months,
-            TimeSpan = left.TimeSpan + right.TimeSpan
-        };
+        new(left.Months + right.Months, left.Years + right.Years, left.TimeSpan + right.TimeSpan);
 
     static FluentTimeSpan SubtractInternal(FluentTimeSpan left, FluentTimeSpan right) =>
-        new()
-        {
-            Years = left.Years - right.Years,
-            Months = left.Months - right.Months,
-            TimeSpan = left.TimeSpan - right.TimeSpan
-        };
+        new(left.Months - right.Months, left.Years - right.Years, left.TimeSpan - right.TimeSpan);
 
     /// <summary>
     /// Gets the number of ticks that represent the value of the current <see cref="TimeSpan"/> structure.
@@ -323,10 +291,5 @@ public struct FluentTimeSpan :
 
     [Pure]
     public TimeSpan Negate() =>
-        new FluentTimeSpan
-        {
-            TimeSpan = -TimeSpan,
-            Months = -Months,
-            Years = -Years
-        };
+        new FluentTimeSpan(-Months, -Years, -TimeSpan);
 }

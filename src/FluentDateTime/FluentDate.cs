@@ -1,6 +1,7 @@
 namespace FluentDate;
 
-public class FluentDate
+[StructLayout(LayoutKind.Sequential)]
+public readonly struct FluentDate
 {
     /// <summary>
     /// Initializes a new instance with the specified date.
@@ -14,7 +15,8 @@ public class FluentDate
     /// <param name="day">
     /// The day (1 through the number of days in <paramref name="month" />).
     /// </param>
-    public FluentDate(int year, int month, int day) => Date = new(year, month, day, 0, 0, 0, DateTimeKind.Unspecified);
+    public FluentDate(int year, int month, int day) =>
+        Date = new(year, month, day, 0, 0, 0, DateTimeKind.Unspecified);
 
 #if NET6_0_OR_GREATER
     /// <summary>
