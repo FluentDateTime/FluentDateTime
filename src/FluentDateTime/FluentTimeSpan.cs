@@ -242,7 +242,7 @@ public readonly struct FluentTimeSpan(int months, int years, TimeSpan timeSpan) 
         new(left.Months, left.Years, left.TimeSpan + right);
 
     static FluentTimeSpan SubtractInternal(FluentTimeSpan left, TimeSpan right) =>
-        new(left.Months, left.Years, left.TimeSpan + right);
+        new(left.Months, left.Years, left.TimeSpan - right);
 
     internal static FluentTimeSpan SubtractInternal(TimeSpan left, FluentTimeSpan right) =>
         new(-right.Months, -right.Years, left - right.TimeSpan);
