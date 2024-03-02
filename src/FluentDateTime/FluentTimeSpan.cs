@@ -315,7 +315,7 @@ public struct FluentTimeSpan :
         {
             return ((TimeSpan) this).CompareTo(timeSpan);
         }
-        throw new ArgumentException("Value must be a TimeSpan", "value");
+        throw new ArgumentException("Value must be a TimeSpan", nameof(value));
     }
 
     public int CompareTo(FluentTimeSpan value) =>
