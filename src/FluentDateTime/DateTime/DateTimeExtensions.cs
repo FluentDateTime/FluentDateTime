@@ -594,7 +594,7 @@ public static class DateTimeExtensions
             }
             default:
             {
-                throw new ArgumentOutOfRangeException("rt");
+                throw new ArgumentOutOfRangeException(nameof(rt));
             }
         }
 
