@@ -2,7 +2,7 @@
 
 public class DateTimeTests
 {
-    const int DaysPerWeek = 7;
+    const int daysPerWeek = 7;
 
     [Theory]
     [InlineData(1)]
@@ -19,7 +19,7 @@ public class DateTimeTests
 
         DateAssert.Equal(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
         DateAssert.Equal(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
-        DateAssert.Equal(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * DaysPerWeek));
+        DateAssert.Equal(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue * daysPerWeek));
         DateAssert.Equal(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
 
         DateAssert.Equal(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
@@ -77,7 +77,7 @@ public class DateTimeTests
 
         DateAssert.Equal(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
         DateAssert.Equal(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
-        DateAssert.Equal(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * DaysPerWeek));
+        DateAssert.Equal(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value * daysPerWeek));
         DateAssert.Equal(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
 
         DateAssert.Equal(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
