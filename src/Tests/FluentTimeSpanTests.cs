@@ -1,6 +1,3 @@
-using FluentDate;
-using Xunit;
-
 public class FluentTimeSpanTests
 {
     [Theory]

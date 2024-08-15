@@ -1,7 +1,4 @@
-﻿using FluentDate;
-using Xunit;
-
-public class FluentDateTests
+﻿public class FluentDateTests
 {
     static Dictionary<int, Func<int, int, FluentDate.FluentDate>> fluentDatesFull = new()
     {

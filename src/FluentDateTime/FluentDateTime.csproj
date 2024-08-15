@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
     <NoWarn>CS1591</NoWarn>
     <PackageTags>DateTime</PackageTags>
     <Description>Allows cleaner DateTime expressions and operations</Description>

@@ -1,13 +1,12 @@
 ﻿// ReSharper disable InvokeAsExtensionMethod
-using System.Globalization;
-using FluentDate;
+
 using FluentDateTimeOffset;
-using Xunit;
+
 // ReSharper disable UnusedVariable
 
 public class DateTimeOffsetTests
 {
-    const int DaysPerWeek = 7;
+    const int daysPerWeek = 7;
 
     [Fact]
     public void AddFluentTimeSpan()
@@ -41,7 +40,7 @@ public class DateTimeOffsetTests
 
         Assert.Equal(agoValue.Years().Before(originalPointInTime), originalPointInTime.AddYears(-agoValue));
         Assert.Equal(agoValue.Months().Before(originalPointInTime), originalPointInTime.AddMonths(-agoValue));
-        Assert.Equal(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue*DaysPerWeek));
+        Assert.Equal(agoValue.Weeks().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue*daysPerWeek));
         Assert.Equal(agoValue.Days().Before(originalPointInTime), originalPointInTime.AddDays(-agoValue));
 
         Assert.Equal(agoValue.Hours().Before(originalPointInTime), originalPointInTime.AddHours(-agoValue));
@@ -83,7 +82,7 @@ public class DateTimeOffsetTests
 
         Assert.Equal(value.Years().From(originalPointInTime), originalPointInTime.AddYears(value));
         Assert.Equal(value.Months().From(originalPointInTime), originalPointInTime.AddMonths(value));
-        Assert.Equal(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value*DaysPerWeek));
+        Assert.Equal(value.Weeks().From(originalPointInTime), originalPointInTime.AddDays(value*daysPerWeek));
         Assert.Equal(value.Days().From(originalPointInTime), originalPointInTime.AddDays(value));
 
         Assert.Equal(value.Hours().From(originalPointInTime), originalPointInTime.AddHours(value));
