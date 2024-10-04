@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-    <PackageVersion Include="ProjectDefaults" Version="1.0.137" />
+    <PackageVersion Include="ProjectDefaults" Version="1.0.138" />
     <PackageVersion Include="xunit.v3" Version="0.4.0-pre.20" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0-pre.35" />
   </ItemGroup>
