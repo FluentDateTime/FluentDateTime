@@ -1,4 +1,5 @@
 ﻿using FluentDateTime;
+// ReSharper disable ReturnValueOfPureMethodIsNotUsed
 
 public class DateTimeTests
 {
@@ -108,7 +109,7 @@ public class DateTimeTests
     {
         var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => { toChange.SetTime(value); });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(value));
     }
 
     [Theory]
@@ -129,7 +130,7 @@ public class DateTimeTests
     public void ChangeTime_Minute_SimpleTests_Arg_Checks(int value)
     {
         var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
-        Assert.Throws<ArgumentOutOfRangeException>(() => { toChange.SetTime(0, value); });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, value));
     }
 
     [Theory]
@@ -154,7 +155,7 @@ public class DateTimeTests
     {
         var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => { toChange.SetTime(0, 0, value); });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, 0, value));
     }
 
     [Theory]
@@ -175,7 +176,7 @@ public class DateTimeTests
     public void ChangeTime_Millisecond_SimpleTests_Arg_Check(int value)
     {
         var toChange = new DateTime(2008, 10, 25, 0, 0, 0, 0, DateTimeKind.Local);
-        Assert.Throws<ArgumentOutOfRangeException>(() => { toChange.SetTime(0, 0, 0, value); });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, 0, 0, value));
     }
 
     [Fact]

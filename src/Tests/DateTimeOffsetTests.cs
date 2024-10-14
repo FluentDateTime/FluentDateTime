@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InvokeAsExtensionMethod
 
 using FluentDateTimeOffset;
+// ReSharper disable ReturnValueOfPureMethodIsNotUsed
 
 // ReSharper disable UnusedVariable
 
@@ -113,10 +114,7 @@ public class DateTimeOffsetTests
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
-            toChange.SetTime(value);
-        });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(value));
     }
 
     [Theory]
@@ -137,10 +135,7 @@ public class DateTimeOffsetTests
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
-            toChange.SetTime(0, value);
-        });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, value));
     }
 
     [Theory]
@@ -166,10 +161,7 @@ public class DateTimeOffsetTests
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
-            toChange.SetTime(0, 0, value);
-        });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, 0, value));
     }
 
     [Theory]
@@ -189,10 +181,7 @@ public class DateTimeOffsetTests
     public void ChangeTime_Millisecond_SimpleTests_Arg_Checks(int value)
     {
         var toChange = new DateTimeOffset(2008, 10, 25, 0, 0, 0, 0, TimeSpan.Zero);
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
-            toChange.SetTime(0, 0, 0, value);
-        });
+        Assert.Throws<ArgumentOutOfRangeException>(() => toChange.SetTime(0, 0, 0, value));
     }
 
     [Fact]
