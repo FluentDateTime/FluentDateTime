@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.141" />
-    <PackageVersion Include="xunit.v3" Version="0.5.0-pre.27" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0-pre.42" />
+    <PackageVersion Include="xunit.v3" Version="0.6.0-pre.7" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0-pre.49" />
   </ItemGroup>
 </Project>
