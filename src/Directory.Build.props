@@ -2,6 +2,7 @@
 <Project>
   <PropertyGroup>
     <Version>3.0.0</Version>
+    <NoWarn>NU1608</NoWarn>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <LangVersion>preview</LangVersion>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
