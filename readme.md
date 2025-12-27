@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> FluentDateTime
 
-[![Build status](https://ci.appveyor.com/api/projects/status/me89rbu5iv976k2q/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/fluentdatetime)
+[![Build status](https://img.shields.io/appveyor/build/SimonCropp/fluentdatetime)](https://ci.appveyor.com/project/SimonCropp/fluentdatetime)
 [![NuGet Status](https://img.shields.io/nuget/v/FluentDateTime.svg?label=FluentDateTime&cacheSeconds=86400)](https://www.nuget.org/packages/FluentDateTime/)
 
 Allows cleaner DateTime expressions and operations.
